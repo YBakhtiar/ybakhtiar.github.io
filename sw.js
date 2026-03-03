@@ -1,71 +1,65 @@
-// نام کش را به v2 تغییر دادیم تا مرورگر مجبور شود فایل‌های جدید را جایگزین کند
-const CACHE_NAME = 'quran-cache-v2';
+// تغییر نام به v3 برای اجبار مرورگر به حذف نسخه‌های قبلی و خراب
+const CACHE_NAME = 'quran-cache-v3';
 
-// لیست فایل‌های حیاتی که باید در همان لحظه اول کش شوند
-const CORE_ASSETS = [
-    './',
-    './index.html',
-    './manifest.json',
-    './sw.js',
-    // کش کردن لینک استایل فونت‌ها تا در حالت آفلاین صفحه گیر نکند
-    'https://cdnjs.cloudflare.com/ajax/libs/vazirmatn/33.0.0/Vazirmatn-font-face.min.css',
-    'https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css'
+// آدرس‌های دقیق برای گیت‌هاب پیجز
+const ASSETS_TO_CACHE = [
+  './',
+  './index.html',
+  './manifest.json',
+  'https://cdnjs.cloudflare.com/ajax/libs/vazirmatn/33.0.0/Vazirmatn-font-face.min.css',
+  'https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css'
 ];
 
-// 1. نصب سرویس ورکر و دانلود فایل‌های اصلی
+// 1. نصب سرویس ورکر و کش کردن فایل‌های اولیه
 self.addEventListener('install', event => {
-    event.waitUntil(
-        caches.open(CACHE_NAME).then(cache => {
-            console.log('در حال کش کردن فایل‌های اصلی...');
-            return cache.addAll(CORE_ASSETS);
-        })
-    );
-    // اجبار مرورگر به استفاده فوری از این سرویس ورکر جدید
-    self.skipWaiting(); 
+  self.skipWaiting(); // نصب فوری نسخه جدید
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(cache => {
+        return cache.addAll(ASSETS_TO_CACHE);
+      })
+  );
 });
 
-// 2. پاک کردن حافظه‌های قدیمی (نسخه v1) برای جلوگیری از تداخل
+// 2. پاک کردن حافظه‌های خراب قبلی
 self.addEventListener('activate', event => {
-    event.waitUntil(
-        caches.keys().then(cacheNames => {
-            return Promise.all(
-                cacheNames.map(cache => {
-                    if (cache !== CACHE_NAME) {
-                        console.log('پاک کردن کش قدیمی:', cache);
-                        return caches.delete(cache);
-                    }
-                })
-            );
+  self.clients.claim(); // کنترل فوری صفحات
+  event.waitUntil(
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cacheName => {
+          if (cacheName !== CACHE_NAME) {
+            return caches.delete(cacheName); 
+          }
         })
-    );
-    self.clients.claim();
+      );
+    })
+  );
 });
 
-// 3. رهگیری درخواست‌ها (هوشمند)
+// 3. رهگیری هوشمند درخواست‌ها
 self.addEventListener('fetch', event => {
-    event.respondWith(
-        caches.match(event.request).then(cachedResponse => {
-            // الف) اگر فایل در حافظه بود (مثل عکس‌هایی که کاربر با دکمه دانلود کرده)، همان را بده
-            if (cachedResponse) {
-                return cachedResponse;
-            }
+  if (event.request.method !== 'GET') return;
 
-            // ب) اگر در حافظه نبود، سعی کن از اینترنت بگیری
-            return fetch(event.request).then(networkResponse => {
-                // فایل‌های جدیدی که از نت می‌گیری (مثل فایل اصلی فونت ttf) را هم خودکار کش کن
-                if (event.request.method === 'GET' && networkResponse.status === 200) {
-                    const responseToCache = networkResponse.clone();
-                    caches.open(CACHE_NAME).then(cache => {
-                        cache.put(event.request, responseToCache);
-                    });
-                }
-                return networkResponse;
-            }).catch(() => {
-                // ج) اگر اینترنت قطع بود و کاربر آدرس سایت را زد، حتماً فایل index.html را به او نشان بده
-                if (event.request.mode === 'navigate') {
-                    return caches.match('./index.html');
-                }
-            });
-        })
-    );
+  event.respondWith(
+    // ابتدا چک می‌کنیم آیا فایل در حافظه هست؟ (با نادیده گرفتن پارامترهای اضافی آدرس)
+    caches.match(event.request, { ignoreSearch: true }).then(cachedResponse => {
+      if (cachedResponse) {
+        return cachedResponse;
+      }
+
+      // اگر در حافظه نبود، از اینترنت می‌گیریم و خودکار در حافظه ذخیره می‌کنیم
+      return fetch(event.request).then(networkResponse => {
+        return caches.open(CACHE_NAME).then(cache => {
+          cache.put(event.request, networkResponse.clone());
+          return networkResponse;
+        });
+      }).catch(() => {
+        // اگر اینترنت کاملاً قطع بود و کاربر می‌خواست صفحه اصلی را باز کند
+        if (event.request.mode === 'navigate') {
+          return caches.match('./index.html');
+        }
+      });
+    })
+  );
 });
