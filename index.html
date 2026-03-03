@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>القرآن الكريم</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/vazirmatn@32.1.1/Vazirmatn-font-face.css" rel="stylesheet" type="text/css">
+
     <style>
         body {
             background-color: #1e272e;
-            font-family: Tahoma, Arial, sans-serif;
+            /* اضافه کردن فونت‌های جایگزین برای اطمینان از اعمال شدن */
+            font-family: 'Vazirmatn', 'Vazir', 'IRANSans', 'B Yekan', 'B Nazanin', Tahoma, Arial, sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
@@ -31,7 +35,8 @@
             color: #d4af37;
             text-align: center;
             margin-bottom: 15px;
-            font-size: 16px;
+            font-size: 17px;
+            font-weight: 700;
             border-bottom: 1px solid #d4af37;
             padding-bottom: 10px;
         }
@@ -46,13 +51,14 @@
             border-radius: 4px;
             cursor: pointer;
             transition: 0.3s;
-            font-family: inherit;
-            font-size: 14px;
+            /* اعمال مستقیم فونت روی دکمه‌ها */
+            font-family: 'Vazirmatn', 'Vazir', 'IRANSans', 'B Yekan', Tahoma, sans-serif;
+            font-size: 15px;
         }
         .sidebar button:hover {
             background-color: #d4af37;
             color: #1e272e;
-            font-weight: bold;
+            font-weight: 700;
         }
         
         #juzList {
@@ -233,7 +239,7 @@
             juzListDiv.appendChild(btn);
         }
 
-        // تابع فرمت کردن عدد به شکل سه‌رقمی (مثلا تبدیل 1 به 001)
+        // تابع فرمت کردن عدد به شکل سه‌رقمی
         function formatPageNumber(num) {
             return String(num).padStart(3, '0');
         }
@@ -244,7 +250,6 @@
                 rightPageNum -= 1;
             }
 
-            // استفاده از تابع جدید برای تولید نام فایل: Quran001.jpg
             document.getElementById("rightPage").src = "Quran" + formatPageNumber(rightPageNum) + ".jpg";
             
             let leftPageNum = rightPageNum + 1;
