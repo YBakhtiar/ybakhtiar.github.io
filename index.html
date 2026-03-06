@@ -96,7 +96,7 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* مودال دانلود (قدیمی) */
+        /* مودال دانلود */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -213,7 +213,7 @@
         }
         .splash-btn i { margin-left: 8px; font-size: 20px; }
 
-        /* مودال مرکزی اجزاء (جایگزین سایدبار) */
+        /* مودال مرکزی اجزاء */
         .juz-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -239,23 +239,7 @@
             color: white;
             display: flex;
             flex-direction: column;
-        }
-        .juz-card .close-btn {
-            align-self: flex-start;
-            background: rgba(255,255,255,0.1);
-            border: none;
-            color: #cfddec;
-            font-size: 22px;
-            cursor: pointer;
-            padding: 5px 15px;
-            border-radius: 30px;
-            margin-bottom: 15px;
-            transition: 0.3s;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .juz-card .close-btn:hover {
-            background: rgba(255,255,255,0.2);
-            color: white;
+            position: relative;
         }
         .juz-card .continue-btn {
             background: rgba(255, 215, 150, 0.15);
@@ -282,7 +266,7 @@
             scrollbar-width: thin;
             scrollbar-color: rgba(255,255,255,0.3) transparent;
             padding-left: 5px;
-            margin-bottom: 15px;
+            margin-bottom: 5px;
         }
         .juz-list-container::-webkit-scrollbar { width: 4px; }
         .juz-list-container::-webkit-scrollbar-track { background: transparent; }
@@ -309,11 +293,12 @@
             transform: scale(1.02);
             border-color: rgba(255, 255, 255, 0.3);
         }
-        .delete-offline-btn {
+        /* استایل دکمه حذف که بعد از جزء ۳۰ قرار می‌گیرد */
+        .delete-offline-item {
             display: block;
             width: 100%;
             padding: 14px 0;
-            margin-top: 10px;
+            margin: 15px 0 8px 0;
             background: rgba(201, 106, 117, 0.1);
             border: 1px dashed rgba(201, 106, 117, 0.4);
             border-radius: 30px;
@@ -324,7 +309,7 @@
             font-family: 'Vazirmatn', sans-serif;
             text-align: center;
         }
-        .delete-offline-btn:hover {
+        .delete-offline-item:hover {
             background: rgba(201, 106, 117, 0.2);
             border-color: rgba(201, 106, 117, 0.8);
             color: #e57e8a;
@@ -393,13 +378,12 @@
         </div>
     </div>
 
-    <!-- مودال مرکزی اجزاء -->
+    <!-- مودال مرکزی اجزاء (بدون دکمه بستن) -->
     <div id="juzOverlay" class="juz-overlay">
         <div class="juz-card">
-            <button class="close-btn" onclick="closeJuzOverlay()">✕</button>
             <button class="continue-btn" id="continueFromJuzBtn">▶ ادامه تلاوت</button>
             <div class="juz-list-container" id="juzList"></div>
-            <button class="delete-offline-btn" id="deleteOfflineBtn" onclick="deleteOfflineFiles()">🗑 حذف فایل‌های آفلاین</button>
+            <!-- دکمه حذف آفلاین به صورت آیتم درون لیست اضافه می‌شود -->
         </div>
     </div>
 
@@ -457,12 +441,18 @@
         // ======== توابع مودال اجزاء ========
         function openJuzOverlay() {
             document.getElementById('juzOverlay').style.display = 'flex';
-            // اگر اسپلش باز است، ببندش
             document.getElementById('splashModal').style.display = 'none';
         }
         function closeJuzOverlay() {
             document.getElementById('juzOverlay').style.display = 'none';
         }
+
+        // بستن مودال با کلیک روی پس‌زمینه (overlay)
+        document.getElementById('juzOverlay').addEventListener('click', function(e) {
+            if (e.target === this) { // اگر روی خود overlay کلیک شد (نه روی محتوا)
+                closeJuzOverlay();
+            }
+        });
 
         // ======== توابع اسپلش ========
         function hideSplash() {
@@ -604,7 +594,7 @@
             return num.toString().replace(/\d/g, x => farsiDigits[x]);
         }
 
-        // تولید لیست اجزاء در مودال
+        // تولید لیست اجزاء در مودال + دکمه حذف بعد از جزء ۳۰
         const juzListDiv = document.getElementById("juzList");
         for (let i = 1; i <= 30; i++) {
             let startPage;
@@ -622,6 +612,14 @@
             };
             juzListDiv.appendChild(btn);
         }
+
+        // اضافه کردن دکمه حذف آفلاین به عنوان آیتم پایانی (بعد از جزء ۳۰)
+        const deleteBtn = document.createElement("button");
+        deleteBtn.className = "delete-offline-item";
+        deleteBtn.id = "deleteOfflineItem";
+        deleteBtn.innerText = "🗑 حذف فایل‌های آفلاین";
+        deleteBtn.onclick = deleteOfflineFiles;
+        juzListDiv.appendChild(deleteBtn);
 
         function formatPageNumber(num) { return String(num).padStart(3, '0'); }
 
