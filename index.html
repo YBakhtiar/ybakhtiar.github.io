@@ -155,7 +155,14 @@
             font-family: 'Vazirmatn', sans-serif;
             max-height: 80vh;
             overflow-y: auto;
+            /* استایل اسکرول‌بار مشابه juz-list-container */
+            scrollbar-width: thin;
+            scrollbar-color: var(--text-secondary) transparent;
         }
+        .modal-content::-webkit-scrollbar { width: 4px; }
+        .modal-content::-webkit-scrollbar-track { background: transparent; }
+        .modal-content::-webkit-scrollbar-thumb { background: var(--text-secondary); border-radius: 4px; }
+
         .modal-content h3 { margin-top: 0; color: var(--text-primary); }
         .modal-content p { font-size: 13px; color: var(--text-secondary); margin-bottom: 20px; }
 
@@ -287,6 +294,29 @@
         .splash-btn:first-of-type:hover {
             background: rgba(255, 215, 150, 0.3);
         }
+        /* لینک تلگرام با SVG */
+        .telegram-link {
+            margin-top: 30px;
+            font-size: 12px;
+            opacity: 0.6;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .telegram-link a {
+            color: inherit;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .telegram-link svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
 
         /* مودال اجزاء */
         .juz-overlay {
@@ -390,32 +420,54 @@
             transform: translateY(-2px);
         }
 
-        /* بخش تنظیمات پیشرفته حالت شب - جمع‌شونده */
-        .night-settings {
-            display: block;
-            width: 100%;
+        /* تنظیمات پیشرفته حالت شب - بازطراحی شده حرفه‌ای */
+        .night-settings-container {
             margin: 15px 0 8px 0;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 20px;
-            border: 1px solid var(--border-light);
-            color: var(--text-primary);
-            font-size: 14px;
-            box-sizing: border-box;
+            border-radius: 30px;
             overflow: hidden;
+            background: var(--button-bg);
+            border: 1px solid var(--border-light);
         }
-        .night-settings.hidden {
+        .night-settings-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 14px 20px;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .night-settings-toggle:hover {
+            background: var(--button-hover);
+        }
+        .night-settings-toggle .arrow {
+            transition: transform 0.3s;
+        }
+        .night-settings-toggle.active .arrow {
+            transform: rotate(180deg);
+        }
+        .night-settings-panel {
+            padding: 15px 20px;
+            border-top: 1px solid var(--border-light);
+            background: rgba(0,0,0,0.2);
             display: none;
         }
-        .night-settings-content {
-            padding: 10px 15px;
-            border-top: 1px solid var(--border-light);
+        .night-settings-panel.visible {
+            display: block;
         }
         .slider-container {
             margin-bottom: 15px;
             text-align: right;
         }
         .slider-container label {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             margin-bottom: 5px;
             color: var(--text-secondary);
             font-size: 13px;
@@ -438,14 +490,12 @@
             border: none;
         }
         .slider-value {
-            display: inline-block;
-            margin-right: 10px;
-            color: var(--text-primary);
-            font-size: 12px;
             background: var(--button-bg);
             padding: 2px 8px;
             border-radius: 10px;
             border: 1px solid var(--border-light);
+            font-size: 12px;
+            margin-right: 10px;
         }
         .reset-filter-btn {
             background: rgba(255, 255, 255, 0.05);
@@ -562,11 +612,13 @@
             <button class="splash-btn" id="juzListBtn">
                 <i>📑</i> فهرست اجزاء
             </button>
-            <!-- لینک تلگرام با شفافیت کم -->
-            <div style="margin-top: 30px; font-size: 12px; opacity: 0.6; color: var(--text-secondary);">
-                پیشنهادات و نظریات 
-                <a href="https://t.me/YBAKHTIAR" target="_blank" style="color: inherit; text-decoration: none; direction: ltr; display: inline-flex; align-items: center; gap: 5px;">
-                    ✈️ @YBAKHTIAR
+            <!-- لینک تلگرام با SVG و بدون نام کاربری -->
+            <div class="telegram-link">
+                <a href="https://t.me/YBAKHTIAR" target="_blank">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.05-.2-.06-.06-.15-.04-.22-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.4-1.08.39-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.37.74-.56 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .24z"/>
+                    </svg>
+                    پیشنهادات و نظریات
                 </a>
             </div>
         </div>
@@ -681,12 +733,12 @@
                 themeBtn.innerHTML = document.body.classList.contains('night-mode') ? '☀️ حالت روز' : '🌙 حالت شب';
             }
             // نمایش/مخفی کردن بخش تنظیمات شب بر اساس تم
-            const settingsDiv = document.getElementById('nightSettings');
-            if (settingsDiv) {
+            const settingsContainer = document.getElementById('nightSettingsContainer');
+            if (settingsContainer) {
                 if (document.body.classList.contains('night-mode')) {
-                    settingsDiv.classList.remove('hidden');
+                    settingsContainer.style.display = 'block';
                 } else {
-                    settingsDiv.classList.add('hidden');
+                    settingsContainer.style.display = 'none';
                 }
             }
         }
@@ -918,38 +970,27 @@
         themeBtn.innerHTML = document.body.classList.contains('night-mode') ? '☀️ حالت روز' : '🌙 حالت شب';
         themeBtn.onclick = function() {
             toggleTheme();
-            closeJuzOverlay(); // اختیاری: بستن منو پس از تغییر تم
         };
         juzListDiv.appendChild(themeBtn);
 
-        // ساخت بخش تنظیمات شب به صورت collapsible
-        const settingsDiv = document.createElement("div");
-        settingsDiv.className = "night-settings" + (document.body.classList.contains('night-mode') ? '' : ' hidden');
-        settingsDiv.id = "nightSettings";
+        // ساخت بخش تنظیمات شب به صورت حرفه‌ای (جمع‌شونده)
+        const settingsContainer = document.createElement("div");
+        settingsContainer.className = "night-settings-container";
+        settingsContainer.id = "nightSettingsContainer";
+        if (!document.body.classList.contains('night-mode')) {
+            settingsContainer.style.display = 'none';
+        }
 
-        // هدر
-        const headerDiv = document.createElement("div");
-        headerDiv.className = "theme-toggle-item";
-        headerDiv.style.display = "flex";
-        headerDiv.style.justifyContent = "space-between";
-        headerDiv.style.alignItems = "center";
-        headerDiv.style.padding = "14px 20px";
-        headerDiv.style.margin = "15px 0 0 0";
+        // دکمه باز/بسته
+        const toggleBtn = document.createElement("button");
+        toggleBtn.className = "night-settings-toggle";
+        toggleBtn.innerHTML = '<span>⚙️ تنظیمات حالت شب</span><span class="arrow">▼</span>';
 
-        const titleSpan = document.createElement("span");
-        titleSpan.textContent = "⚙️ تنظیمات حالت شب";
-        const toggleIcon = document.createElement("span");
-        toggleIcon.textContent = "▼"; // آیکون بسته
-        toggleIcon.style.transition = "transform 0.3s";
-
-        headerDiv.appendChild(titleSpan);
-        headerDiv.appendChild(toggleIcon);
-
-        // محتوا
-        const contentDiv = document.createElement("div");
-        contentDiv.className = "night-settings-content";
-        contentDiv.style.display = "none"; // پیش‌فرض جمع باشد
-        contentDiv.innerHTML = `
+        // پنل محتوا
+        const panel = document.createElement("div");
+        panel.className = "night-settings-panel";
+        panel.id = "nightSettingsPanel";
+        panel.innerHTML = `
             <div class="slider-container">
                 <label>Invert <span class="slider-value" id="invertVal">${nightFilter.invert.toFixed(2)}</span></label>
                 <input type="range" id="invertSlider" min="0" max="1" step="0.01" value="${nightFilter.invert}">
@@ -965,22 +1006,16 @@
             <button class="reset-filter-btn" id="resetFilterBtn">↺ بازنشانی به پیش‌فرض</button>
         `;
 
-        settingsDiv.appendChild(headerDiv);
-        settingsDiv.appendChild(contentDiv);
+        settingsContainer.appendChild(toggleBtn);
+        settingsContainer.appendChild(panel);
+        juzListDiv.appendChild(settingsContainer);
 
-        // رویداد کلیک روی هدر
-        headerDiv.addEventListener('click', function(e) {
+        // رویداد کلیک روی دکمه تنظیمات
+        toggleBtn.addEventListener('click', function(e) {
             e.stopPropagation();
-            if (contentDiv.style.display === 'none') {
-                contentDiv.style.display = 'block';
-                toggleIcon.textContent = '▲';
-            } else {
-                contentDiv.style.display = 'none';
-                toggleIcon.textContent = '▼';
-            }
+            panel.classList.toggle('visible');
+            toggleBtn.classList.toggle('active');
         });
-
-        juzListDiv.appendChild(settingsDiv);
 
         // مقداردهی اسلایدرها و دکمه ریست
         const invertSlider = document.getElementById('invertSlider');
@@ -1000,18 +1035,23 @@
             updateNightFilter();
         }
 
-        invertSlider.addEventListener('input', updateSlidersAndFilter);
-        brightnessSlider.addEventListener('input', updateSlidersAndFilter);
-        contrastSlider.addEventListener('input', updateSlidersAndFilter);
+        if (invertSlider) {
+            invertSlider.addEventListener('input', updateSlidersAndFilter);
+            brightnessSlider.addEventListener('input', updateSlidersAndFilter);
+            contrastSlider.addEventListener('input', updateSlidersAndFilter);
+        }
 
         // دکمه بازنشانی
-        document.getElementById('resetFilterBtn').addEventListener('click', function() {
-            nightFilter = { ...defaultFilter };
-            invertSlider.value = nightFilter.invert;
-            brightnessSlider.value = nightFilter.brightness;
-            contrastSlider.value = nightFilter.contrast;
-            updateSlidersAndFilter();
-        });
+        const resetBtn = document.getElementById('resetFilterBtn');
+        if (resetBtn) {
+            resetBtn.addEventListener('click', function() {
+                nightFilter = { ...defaultFilter };
+                invertSlider.value = nightFilter.invert;
+                brightnessSlider.value = nightFilter.brightness;
+                contrastSlider.value = nightFilter.contrast;
+                updateSlidersAndFilter();
+            });
+        }
 
         // در آخر دکمه حذف آفلاین
         const deleteBtn = document.createElement("button");
