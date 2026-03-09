@@ -36,10 +36,9 @@
             --splash-bg: rgba(10,20,30,0.8);
             --juz-card-bg: rgba(20,30,45,0.7);
             --modal-bg: #111d2b;
-            --image-filter: none; /* پیش‌فرض: بدون فیلتر (حالت روز) */
+            --image-filter: none;
         }
 
-        /* حالت شب: فیلتر از طریق متغیرهای سفارشی تنظیم می‌شود */
         body.night-mode {
             --image-filter: var(--night-filter);
         }
@@ -103,7 +102,7 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             font-size: 13px;
             cursor: pointer;
-            padding: 10px 15px;
+            padding: 8px 12px; /* کمی کوچکتر */
             border-radius: 12px;
             opacity: 0.7;
             transition: all 0.4s ease;
@@ -127,8 +126,8 @@
             display: none;
         }
         .main-download-btn svg {
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             fill: currentColor;
         }
 
@@ -162,12 +161,12 @@
         .modal-content {
             background: var(--modal-bg);
             border: 1px solid var(--border-light);
-            padding: 20px;
+            padding: 18px; /* کاهش padding */
             border-radius: 15px;
             text-align: center;
             color: var(--text-primary);
             max-width: 90%;
-            width: 320px; /* کوچکتر شد */
+            width: 300px; /* کوچکتر از قبل */
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             font-family: 'Vazirmatn', sans-serif;
             max-height: 80vh;
@@ -186,13 +185,14 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
+            font-size: 16px; /* کوچکتر */
         }
         .modal-content h3 svg {
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             fill: currentColor;
         }
-        .modal-content p { font-size: 13px; color: var(--text-secondary); margin-bottom: 20px; }
+        .modal-content p { font-size: 12px; color: var(--text-secondary); margin-bottom: 15px; }
 
         .dl-opt-btn {
             display: flex;
@@ -200,22 +200,22 @@
             justify-content: center;
             gap: 8px;
             width: 100%;
-            margin: 10px 0;
-            padding: 12px;
+            margin: 8px 0;
+            padding: 10px; /* کوچکتر */
             background: var(--button-bg);
             color: var(--text-primary);
             border: 1px solid var(--border-light);
-            border-radius: 10px;
+            border-radius: 8px;
             cursor: pointer;
             transition: 0.3s;
             font-family: inherit;
-            font-size: 14px;
+            font-size: 13px; /* کوچکتر */
         }
         .dl-opt-btn:hover { background: var(--button-hover); transform: scale(1.02); }
-        .dl-opt-btn span { display: block; font-size: 11px; opacity: 0.6; margin-top: 4px; }
+        .dl-opt-btn span { display: block; font-size: 10px; opacity: 0.6; margin-top: 2px; }
         .dl-opt-btn svg {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             fill: currentColor;
         }
 
@@ -223,45 +223,45 @@
             background: transparent;
             border: none;
             color: var(--danger-color);
-            margin-top: 15px;
+            margin-top: 12px;
             cursor: pointer;
-            padding: 5px 15px;
+            padding: 5px 12px;
             font-family: inherit;
-            font-size: 13px;
+            font-size: 12px;
         }
         .dl-cancel-btn:hover { text-decoration: underline; color: var(--danger-color); }
 
         .install-section {
-            margin-top: 25px;
-            padding-top: 20px;
+            margin-top: 20px;
+            padding-top: 15px;
             border-top: 1px solid var(--border-light);
         }
         .install-title {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 500;
             color: var(--text-primary);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
         }
         .install-title svg {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             fill: currentColor;
         }
         .install-btn {
             background: rgba(74, 144, 226, 0.2);
             border: 1px solid rgba(74, 144, 226, 0.5);
             color: var(--text-primary);
-            padding: 14px;
+            padding: 10px;
             width: 100%;
-            border-radius: 60px;
-            font-size: 16px;
+            border-radius: 40px;
+            font-size: 14px;
             cursor: pointer;
             transition: 0.3s;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             font-family: inherit;
             display: flex;
             align-items: center;
@@ -274,18 +274,18 @@
             transform: translateY(-2px);
         }
         .install-btn svg {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             fill: currentColor;
         }
         .install-instructions {
             background: rgba(0,0,0,0.2);
-            border-radius: 12px;
-            padding: 12px;
+            border-radius: 10px;
+            padding: 10px;
             text-align: right;
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-secondary);
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
         /* اسپلش */
@@ -308,15 +308,15 @@
             border: 1px solid var(--border-light);
             border-radius: 40px;
             padding: 40px 30px;
-            width: 320px;
+            width: 300px;
             max-width: 80%;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
             text-align: center;
             color: var(--text-primary);
         }
         .splash-card h1 {
-            font-size: 28px;
-            margin-bottom: 20px;
+            font-size: 26px;
+            margin-bottom: 15px;
             font-weight: 400;
             letter-spacing: 1px;
             color: var(--text-primary);
@@ -324,8 +324,8 @@
         }
         .splash-card .subtitle {
             color: var(--text-secondary);
-            margin-bottom: 40px;
-            font-size: 14px;
+            margin-bottom: 30px;
+            font-size: 13px;
         }
         .splash-btn {
             display: flex;
@@ -333,15 +333,15 @@
             justify-content: center;
             gap: 8px;
             width: 100%;
-            padding: 18px 0;
-            margin: 15px 0;
+            padding: 14px 0; /* کمی کوچکتر */
+            margin: 10px 0;
             border: none;
-            border-radius: 60px;
+            border-radius: 50px;
             background: var(--button-bg);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             color: var(--text-primary);
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -363,14 +363,14 @@
             background: rgba(255, 215, 150, 0.3);
         }
         .splash-btn svg {
-            width: 24px;
-            height: 24px;
+            width: 22px;
+            height: 22px;
             fill: currentColor;
         }
-        /* لینک تلگرام با SVG */
+
         .telegram-link {
-            margin-top: 30px;
-            font-size: 12px;
+            margin-top: 25px;
+            font-size: 11px;
             opacity: 0.6;
             color: var(--text-secondary);
             display: flex;
@@ -386,8 +386,8 @@
             gap: 6px;
         }
         .telegram-link svg {
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             fill: currentColor;
         }
 
@@ -410,7 +410,7 @@
             border: 1px solid var(--border-light);
             border-radius: 40px;
             padding: 30px 20px;
-            width: 400px;
+            width: 380px;
             max-width: 85%;
             max-height: 80vh;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
@@ -423,10 +423,10 @@
             background: rgba(255, 215, 150, 0.15);
             border: 1px solid rgba(255, 215, 150, 0.4);
             color: var(--text-primary);
-            font-size: 18px;
-            padding: 15px;
-            border-radius: 60px;
-            margin-bottom: 20px;
+            font-size: 16px;
+            padding: 12px;
+            border-radius: 50px;
+            margin-bottom: 15px;
             cursor: pointer;
             transition: 0.3s;
             font-family: 'Vazirmatn', sans-serif;
@@ -443,8 +443,8 @@
             transform: translateY(-2px);
         }
         .juz-card .continue-btn svg {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             fill: currentColor;
         }
         .juz-list-container {
@@ -459,7 +459,6 @@
         .juz-list-container::-webkit-scrollbar-track { background: transparent; }
         .juz-list-container::-webkit-scrollbar-thumb { background: var(--text-secondary); border-radius: 4px; }
 
-        /* مخفی کردن اسکرول بار در موبایل */
         @media screen and (max-width: 768px) {
             .juz-list-container {
                 scrollbar-width: none;
@@ -473,13 +472,13 @@
         .juz-item {
             display: block;
             width: 100%;
-            padding: 14px 0;
-            margin: 8px 0;
+            padding: 12px 0;
+            margin: 6px 0;
             background: var(--button-bg);
             border: 1px solid var(--border-light);
             border-radius: 30px;
             color: var(--text-primary);
-            font-size: 16px;
+            font-size: 15px;
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: 'Vazirmatn', sans-serif;
@@ -498,13 +497,13 @@
             justify-content: center;
             gap: 8px;
             width: 100%;
-            padding: 14px 0;
-            margin: 15px 0 8px 0;
+            padding: 12px 0;
+            margin: 12px 0 6px 0;
             background: rgba(74, 144, 226, 0.1);
             border: 1px solid rgba(74, 144, 226, 0.4);
             border-radius: 30px;
             color: var(--text-primary);
-            font-size: 16px;
+            font-size: 15px;
             cursor: pointer;
             transition: 0.3s;
             font-family: 'Vazirmatn', sans-serif;
@@ -516,14 +515,14 @@
             transform: translateY(-2px);
         }
         .theme-toggle-item svg {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             fill: currentColor;
         }
 
-        /* تنظیمات پیشرفته حالت شب - بازطراحی شده حرفه‌ای */
+        /* تنظیمات پیشرفته حالت شب */
         .night-settings-container {
-            margin: 15px 0 8px 0;
+            margin: 12px 0 6px 0;
             border-radius: 30px;
             overflow: hidden;
             background: var(--button-bg);
@@ -534,12 +533,12 @@
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            padding: 14px 20px;
+            padding: 12px 16px;
             background: transparent;
             border: none;
             color: var(--text-primary);
             font-family: 'Vazirmatn', sans-serif;
-            font-size: 16px;
+            font-size: 15px;
             cursor: pointer;
             transition: background 0.3s;
         }
@@ -553,13 +552,13 @@
             transform: rotate(180deg);
         }
         .night-settings-toggle svg {
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             fill: currentColor;
             margin-left: 8px;
         }
         .night-settings-panel {
-            padding: 15px 20px;
+            padding: 12px 16px;
             border-top: 1px solid var(--border-light);
             background: rgba(0,0,0,0.2);
             display: none;
@@ -568,7 +567,7 @@
             display: block;
         }
         .slider-container {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             text-align: right;
         }
         .slider-container label {
@@ -577,20 +576,20 @@
             justify-content: space-between;
             margin-bottom: 5px;
             color: var(--text-secondary);
-            font-size: 13px;
+            font-size: 12px;
         }
         .slider-container input {
             width: 100%;
             cursor: pointer;
             background: var(--button-bg);
             border-radius: 10px;
-            height: 6px;
+            height: 5px;
             -webkit-appearance: none;
         }
         .slider-container input::-webkit-slider-thumb {
             -webkit-appearance: none;
-            width: 20px;
-            height: 20px;
+            width: 16px;
+            height: 16px;
             border-radius: 50%;
             background: var(--accent-color);
             cursor: pointer;
@@ -598,35 +597,35 @@
         }
         .slider-value {
             background: var(--button-bg);
-            padding: 2px 8px;
-            border-radius: 10px;
+            padding: 2px 6px;
+            border-radius: 8px;
             border: 1px solid var(--border-light);
-            font-size: 12px;
-            margin-right: 10px;
+            font-size: 11px;
+            margin-right: 8px;
         }
         .reset-filter-btn {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-light);
             color: var(--text-primary);
-            padding: 8px 12px;
+            padding: 6px 10px;
             border-radius: 20px;
             cursor: pointer;
-            font-size: 13px;
+            font-size: 12px;
             width: 100%;
             margin-top: 5px;
             font-family: inherit;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
         }
         .reset-filter-btn:hover {
             background: var(--button-hover);
             border-color: var(--border-hover);
         }
         .reset-filter-btn svg {
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             fill: currentColor;
         }
 
@@ -636,13 +635,13 @@
             justify-content: center;
             gap: 8px;
             width: 100%;
-            padding: 14px 0;
-            margin: 15px 0 8px 0;
+            padding: 12px 0;
+            margin: 12px 0 6px 0;
             background: rgba(201, 106, 117, 0.1);
             border: 1px dashed var(--danger-color);
             border-radius: 30px;
             color: var(--danger-color);
-            font-size: 14px;
+            font-size: 13px;
             cursor: pointer;
             transition: 0.3s;
             font-family: 'Vazirmatn', sans-serif;
@@ -654,8 +653,8 @@
             color: var(--danger-color);
         }
         .delete-offline-item svg {
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             fill: currentColor;
         }
 
@@ -671,7 +670,6 @@
             height: 96vh; width: 100%; padding: 0 40px; box-sizing: border-box; touch-action: none; 
         }
 
-        /* wrapper برای اعمال سایه بدون تأثیر فیلتر */
         .page-wrapper {
             display: flex;
             justify-content: center;
@@ -713,7 +711,6 @@
             fill: currentColor;
         }
 
-        /* دکمه تمام‌صفحه (پایین چپ) - شبیه به دکمه منو */
         .fullscreen-btn {
             position: fixed; bottom: 25px; left: 25px; 
             background: var(--button-bg);
@@ -739,7 +736,6 @@
             fill: currentColor;
         }
 
-        /* در موبایل دکمه تمام‌صفحه مخفی می‌شود */
         @media screen and (max-width: 768px) {
             .quran-container { padding: 10px; gap: 0; }
             .page-wrapper { max-width: 100%; width: 100%; height: auto; }
@@ -756,8 +752,10 @@
             <h1>القرآن الكريم</h1>
             <div class="subtitle">به نرم‌افزار قرآن کریم خوش آمدید</div>
             <button class="splash-btn" id="continueReadingBtn">
+                <!-- آیکون کتاب (مناسب مطالعه) -->
                 <svg viewBox="0 0 24 24">
-                    <path d="M4 4h16v16H4V4zm2 2v12h12V6H6zm2 2h2v2H8V8zm0 4h2v2H8v-2zm0 4h2v2H8v-2zm4-8h2v2h-2V8zm0 4h2v2h-2v-2zm0 4h2v2h-2v-2zm4-8h2v2h-2V8zm0 4h2v2h-2v-2zm0 4h2v2h-2v-2z"/>
+                    <path d="M4 6H20v2H4V6zM4 12H20v2H4v-2zM4 18H14v2H4v-2z"/>
+                    <path d="M18 4H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H6V6h12v12z"/>
                 </svg>
                 ادامه مطالعه
             </button>
@@ -767,7 +765,6 @@
                 </svg>
                 فهرست اجزاء
             </button>
-            <!-- لینک تلگرام با SVG -->
             <div class="telegram-link">
                 <a href="https://t.me/YBAKHTIAR" target="_blank">
                     <svg viewBox="0 0 24 24">
@@ -806,29 +803,30 @@
                 <svg viewBox="0 0 24 24">
                     <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
                 </svg>
-                انتخاب کیفیت دانلود
+                انتخاب کیفیت
             </h3>
-            <p>لطفاً کیفیت مناسب خود را انتخاب کنید:</p>
+            <p>کیفیت مناسب خود را انتخاب کنید:</p>
             <button class="dl-opt-btn" onclick="startDownload('standard')">
                 <svg viewBox="0 0 24 24">
                     <path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/>
                 </svg>
-                کیفیت استاندارد (۷۰ مگابایت)<br><span>مناسب موبایل ها و تبلت‌ها</span>
+                استاندارد (۷۰ مگابایت)
+                <span>مناسب موبایل و تبلت</span>
             </button>
             <button class="dl-opt-btn" onclick="startDownload('hq')">
                 <svg viewBox="0 0 24 24">
                     <path d="M20 18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/>
                 </svg>
-                کیفیت بالا (۵۰۰ مگابایت)<br><span>مناسب کامپیوتر، تلویزیون و صفحه های بزرگ</span>
+                کیفیت بالا (۵۰۰ مگابایت)
+                <span>مناسب کامپیوتر، تلویزیون</span>
             </button>
             
-            <!-- بخش نصب PWA -->
             <div class="install-section" id="installSection">
                 <div class="install-title">
                     <svg viewBox="0 0 24 24">
                         <path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/>
                     </svg>
-                    نصب برنامه روی دستگاه
+                    نصب روی دستگاه
                 </div>
                 <button class="install-btn" id="installPwaBtn" style="display: none;">
                     <svg viewBox="0 0 24 24">
@@ -837,9 +835,9 @@
                     نصب اپلیکیشن
                 </button>
                 <div class="install-instructions" id="installInstructions">
-                    <i>🔹 در اندروید و کروم:</i> روی دکمه نصب کلیک کنید یا از منوی مرورگر گزینه "Install App" را انتخاب کنید.<br>
-                    <i>🔹 در آیفون/آیپد:</i> از منوی سافاری (دکمه اشتراک) گزینه "Add to Home Screen" را بزنید.<br>
-                    <i>🔹 در دسکتاپ:</i> در مرورگرهای مبتنی بر کروم، آیکون نصب در نوار آدرس ظاهر می‌شود.
+                    <i>🔹 اندروید/کروم:</i> دکمه نصب یا "Install App".<br>
+                    <i>🔹 آیفون/آیپد:</i> "Add to Home Screen".<br>
+                    <i>🔹 دسکتاپ:</i> آیکون نصب در نوار آدرس.
                 </div>
             </div>
             
@@ -887,7 +885,6 @@
         let currentPage = 1;
         let isDownloaded = false;
 
-        // متغیرهای مربوط به PWA
         let deferredPrompt = null;
         const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
 
@@ -901,21 +898,18 @@
         
         let objectUrls = { right: null, left: null };
 
-        // ========== مدیریت تم (شب/روز) و تنظیمات فیلتر شب ==========
+        // ========== مدیریت تم ==========
         const themeColorMeta = document.getElementById('theme-color-meta');
         const rootStyle = document.documentElement.style;
 
-        // مقادیر پیش‌فرض فیلتر شب: invert + brightness/contrast + hue-rotate 180
         const defaultFilter = {
             invert: 0.90,
             brightness: 1.10,
             contrast: 1.05
         };
 
-        // بارگذاری مقادیر ذخیره شده یا استفاده از پیش‌فرض
         let nightFilter = JSON.parse(localStorage.getItem('quran-night-filter')) || defaultFilter;
 
-        // به‌روزرسانی متغیر CSS فیلتر (شامل hue-rotate ثابت)
         function updateNightFilter() {
             const filterString = `invert(${nightFilter.invert}) brightness(${nightFilter.brightness}) contrast(${nightFilter.contrast}) hue-rotate(180deg)`;
             rootStyle.setProperty('--night-filter', filterString);
@@ -936,14 +930,15 @@
             }
             const themeBtn = document.getElementById('themeToggleMenuItem');
             if (themeBtn) {
-                // به‌روزرسانی متن و آیکون دکمه تغییر تم
                 const icon = themeBtn.querySelector('svg');
                 const textSpan = themeBtn.querySelector('span');
                 if (document.body.classList.contains('night-mode')) {
+                    // آیکون ماه برای حالت شب
                     icon.innerHTML = '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14c-2.76 0-5-2.24-5-5 0-1.1.35-2.12.95-2.95.85.58 1.87.95 2.95.95 1.08 0 2.1-.37 2.95-.95.6.83.95 1.85.95 2.95 0 2.76-2.24 5-5 5z"/>';
                     textSpan.textContent = 'حالت روز';
                 } else {
-                    icon.innerHTML = '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14c-2.76 0-5-2.24-5-5 0-1.1.35-2.12.95-2.95.85.58 1.87.95 2.95.95 1.08 0 2.1-.37 2.95-.95.6.83.95 1.85.95 2.95 0 2.76-2.24 5-5 5z"/>';
+                    // آیکون خورشید برای حالت روز
+                    icon.innerHTML = '<path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0 8c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm0-13c-.55 0-1 .45-1 1v2c0 .55.45 1 1 1s1-.45 1-1V3c0-.55-.45-1-1-1zm8 8h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zm-2 5.66l1.41 1.41c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L18.41 16c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41zM20 12c0 .55.45 1 1 1s1-.45 1-1-.45-1-1-1-1 .45-1 1zM4 12c0-.55-.45-1-1-1s-1 .45-1 1 .45 1 1 1 1-.45 1-1zm2.59-5.66L5.18 4.93c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41L5.18 7.75c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41z"/>';
                     textSpan.textContent = 'حالت شب';
                 }
             }
@@ -1139,7 +1134,7 @@
             return num.toString().replace(/\d/g, x => farsiDigits[x]);
         }
 
-        // ======== تولید لیست اجزاء و آیتم‌های اضافی ========
+        // ======== تولید لیست اجزاء ========
         const juzListDiv = document.getElementById("juzList");
         
         for (let i = 1; i <= 30; i++) {
@@ -1159,14 +1154,14 @@
             juzListDiv.appendChild(btn);
         }
 
-        // دکمه تغییر تم با آیکون SVG
+        // دکمه تغییر تم با آیکون مجزا
         const themeBtn = document.createElement("button");
         themeBtn.className = "theme-toggle-item";
         themeBtn.id = "themeToggleMenuItem";
         const isNight = document.body.classList.contains('night-mode');
         themeBtn.innerHTML = isNight ? 
             '<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14c-2.76 0-5-2.24-5-5 0-1.1.35-2.12.95-2.95.85.58 1.87.95 2.95.95 1.08 0 2.1-.37 2.95-.95.6.83.95 1.85.95 2.95 0 2.76-2.24 5-5 5z"/></svg><span>حالت روز</span>' : 
-            '<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14c-2.76 0-5-2.24-5-5 0-1.1.35-2.12.95-2.95.85.58 1.87.95 2.95.95 1.08 0 2.1-.37 2.95-.95.6.83.95 1.85.95 2.95 0 2.76-2.24 5-5 5z"/></svg><span>حالت شب</span>';
+            '<svg viewBox="0 0 24 24"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0 8c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm0-13c-.55 0-1 .45-1 1v2c0 .55.45 1 1 1s1-.45 1-1V3c0-.55-.45-1-1-1zm8 8h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zm-2 5.66l1.41 1.41c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L18.41 16c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41zM20 12c0 .55.45 1 1 1s1-.45 1-1-.45-1-1-1-1 .45-1 1zM4 12c0-.55-.45-1-1-1s-1 .45-1 1 .45 1 1 1 1-.45 1-1zm2.59-5.66L5.18 4.93c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41L5.18 7.75c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41z"/></svg><span>حالت شب</span>';
         themeBtn.onclick = toggleTheme;
         juzListDiv.appendChild(themeBtn);
 
@@ -1200,7 +1195,7 @@
             </div>
             <button class="reset-filter-btn" id="resetFilterBtn">
                 <svg viewBox="0 0 24 24"><path d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
-                بازنشانی به پیش‌فرض
+                بازنشانی
             </button>
         `;
 
@@ -1342,7 +1337,7 @@
             updatePages();
         }
 
-        // رویدادهای لمسی (با هدف قرار دادن wrapperها)
+        // رویدادهای لمسی
         let touchstartX = 0; let touchstartY = 0; let touchendX = 0; let touchendY = 0; let touchStartTime = 0;
         const swipeArea = document.getElementById('swipeArea');
         
