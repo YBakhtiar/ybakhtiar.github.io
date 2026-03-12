@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#0d1622" id="theme-color-meta">
+    <meta name="theme-color" content="#ffffff" id="theme-color-meta">
     <link rel="apple-touch-icon" href="./icon-192.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -13,7 +13,7 @@
     <!-- فونت وزیرمتن از Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- فونت وزیر به عنوان پشتیبان -->
     <link href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css" rel="stylesheet" type="text/css">
     <!-- Favicon -->
@@ -21,33 +21,77 @@
     <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png">
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
     <style>
-        /* متغیرهای رنگ */
+        /* متغیرهای رنگ - تم روز (پیش‌فرض) */
         :root {
-            --bg-primary: #0d1622;
-            --bg-secondary: #111d2b;
-            --text-primary: #cfddec;
-            --text-secondary: #8da4be;
-            --border-light: rgba(255,255,255,0.1);
-            --border-hover: rgba(255,255,255,0.3);
-            --button-bg: rgba(255,255,255,0.05);
-            --button-hover: rgba(255,255,255,0.1);
-            --accent-color: #4ade80;
-            --danger-color: #c96a75;
-            --splash-bg: rgba(10,20,30,0.8);
-            --juz-card-bg: rgba(20,30,45,0.7);
-            --modal-bg: #111d2b;
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #f1f5f9;
+            --text-primary: #0f172a;
+            --text-secondary: #334155;
+            --text-muted: #64748b;
+            --border-light: rgba(0, 0, 0, 0.08);
+            --border-hover: rgba(0, 0, 0, 0.15);
+            --button-bg: rgba(255, 255, 255, 0.7);
+            --button-hover: rgba(255, 255, 255, 0.9);
+            --accent-color: #2563eb;
+            --accent-soft: rgba(37, 99, 235, 0.1);
+            --danger-color: #dc2626;
+            --danger-soft: rgba(220, 38, 38, 0.1);
+            --success-color: #16a34a;
+            --splash-bg: rgba(255, 255, 255, 0.6);
+            --juz-card-bg: rgba(255, 255, 255, 0.7);
+            --modal-bg: #ffffff;
             --image-filter: none;
-            --blue-accent: #4a90e2;
-            --blue-accent-dim: rgba(74,144,226,0.2);
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            --blur-amount: 12px;
+            --transition-fast: 0.2s ease;
+            --transition-base: 0.3s ease;
         }
 
+        /* تم شب */
         body.night-mode {
+            --bg-primary: #0b1120;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border-light: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(255, 255, 255, 0.15);
+            --button-bg: rgba(30, 41, 59, 0.7);
+            --button-hover: rgba(30, 41, 59, 0.9);
+            --accent-color: #3b82f6;
+            --accent-soft: rgba(59, 130, 246, 0.2);
+            --danger-color: #ef4444;
+            --danger-soft: rgba(239, 68, 68, 0.2);
+            --success-color: #22c55e;
+            --splash-bg: rgba(0, 0, 0, 0.6);
+            --juz-card-bg: rgba(30, 41, 59, 0.8);
+            --modal-bg: #1e293b;
             --image-filter: var(--night-filter);
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.4);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.4);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.4);
+        }
+
+        /* فیلتر شب */
+        body.night-mode {
+            --night-filter: var(--night-filter-value);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
             background-color: var(--bg-primary);
-            font-family: 'Vazirmatn', 'Vazir', Tahoma, sans-serif !important;
+            font-family: 'Vazirmatn', 'Vazir', Tahoma, sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
@@ -56,315 +100,267 @@
             overscroll-behavior-y: contain;
             touch-action: none;
             color: var(--text-primary);
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            line-height: 1.5;
         }
 
-        /* دکمه‌های ثابت */
-        .menu-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
+        /* دکمه‌های ثابت - طراحی مدرن */
+        .menu-toggle, .settings-btn, .main-download-btn, .fullscreen-btn {
+            backdrop-filter: blur(var(--blur-amount));
+            -webkit-backdrop-filter: blur(var(--blur-amount));
             background: var(--button-bg);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            color: var(--text-primary);
             border: 1px solid var(--border-light);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: var(--shadow-md);
             cursor: pointer;
-            padding: 12px 16px;
-            border-radius: 14px;
-            opacity: 0.8;
-            transition: all 0.4s ease;
-            z-index: 1002;
+            border-radius: 16px;
+            padding: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-        .menu-toggle:hover {
-            opacity: 1;
-            background: var(--button-hover);
-            transform: scale(1.05);
-        }
-        .menu-toggle svg {
-            width: 24px;
-            height: 24px;
-            fill: currentColor;
+            transition: all var(--transition-base);
+            z-index: 1002;
+            color: var(--text-primary);
+            opacity: 0.9;
         }
 
-        /* دکمه تنظیمات جدید در بالا چپ */
-        .settings-btn {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: var(--button-bg);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            color: var(--text-primary);
-            border: 1px solid var(--border-light);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            padding: 12px 16px;
-            border-radius: 14px;
-            opacity: 0.8;
-            transition: all 0.4s ease;
-            z-index: 1002;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .settings-btn:hover {
+        .menu-toggle:hover, .settings-btn:hover, .main-download-btn:hover, .fullscreen-btn:hover {
             opacity: 1;
-            background: var(--button-hover);
-            transform: scale(1.05);
-        }
-        .settings-btn svg {
-            width: 24px;
-            height: 24px;
-            fill: currentColor;
-        }
-
-        /* دکمه دانلود آفلاین به پایین راست منتقل شد */
-        .main-download-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            top: auto;
-            left: auto;
-            background: var(--button-bg);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            color: var(--text-secondary);
-            border: 1px solid var(--border-light);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            font-size: 13px;
-            cursor: pointer;
-            padding: 8px 12px;
-            border-radius: 12px;
-            opacity: 0.7;
-            transition: all 0.4s ease;
-            z-index: 1002;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-family: 'Vazirmatn', 'Vazir', sans-serif;
-        }
-        .main-download-btn:hover {
-            opacity: 1;
-            color: var(--text-primary);
             background: var(--button-hover);
             border-color: var(--border-hover);
-            transform: scale(1.05);
-        }
-        .main-download-btn.done {
-            color: var(--accent-color);
-            border-color: var(--accent-color);
-            pointer-events: none;
-            display: none;
-        }
-        .main-download-btn svg {
-            width: 16px;
-            height: 16px;
-            fill: currentColor;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
         }
 
-        .progress-tooltip {
-            position: fixed;
-            top: 65px;
-            left: 20px;
-            color: var(--text-secondary);
-            font-size: 11px;
-            background: var(--bg-secondary);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            padding: 4px 8px;
-            border-radius: 6px;
-            display: none;
-            z-index: 1002;
-            border: 1px solid var(--border-light);
-        }
-
-        /* مودال‌ها */
-        .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(5px);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-        }
-        .modal-content {
-            background: var(--modal-bg);
-            border: 1px solid var(--border-light);
-            padding: 18px;
-            border-radius: 15px;
-            text-align: center;
-            color: var(--text-primary);
-            max-width: 90%;
-            width: 300px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            font-family: 'Vazirmatn', sans-serif;
-            max-height: 80vh;
-            overflow-y: auto;
-            scrollbar-width: thin;
-            scrollbar-color: var(--text-secondary) transparent;
-        }
-        .modal-content::-webkit-scrollbar { width: 4px; }
-        .modal-content::-webkit-scrollbar-track { background: transparent; }
-        .modal-content::-webkit-scrollbar-thumb { background: var(--text-secondary); border-radius: 4px; }
-
-        .modal-content h3 {
-            margin-top: 0;
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            font-size: 16px;
-        }
-        .modal-content h3 svg {
+        .menu-toggle svg, .settings-btn svg, .main-download-btn svg, .fullscreen-btn svg {
             width: 20px;
             height: 20px;
             fill: currentColor;
         }
-        .modal-content p { font-size: 12px; color: var(--text-secondary); margin-bottom: 15px; }
 
-        .dl-opt-btn {
+        /* دکمه تنظیمات (بالا چپ) */
+        .settings-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+        }
+
+        /* دکمه فهرست اجزاء (بالا راست) */
+        .menu-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+
+        /* دکمه دانلود (پایین راست) */
+        .main-download-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            gap: 8px;
+            padding: 10px 18px;
+            color: var(--text-secondary);
+        }
+        .main-download-btn.done {
+            color: var(--success-color);
+            border-color: var(--success-color);
+            pointer-events: none;
+            display: none;
+        }
+
+        /* دکمه تمام صفحه (پایین چپ) */
+        .fullscreen-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+        }
+
+        .progress-tooltip {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background: var(--bg-secondary);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--text-secondary);
+            font-size: 12px;
+            padding: 8px 16px;
+            border-radius: 40px;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-md);
+            display: none;
+            z-index: 1002;
+        }
+
+        /* مودال‌ها - طراحی کارت مدرن */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 16px;
+        }
+
+        .modal-content {
+            background: var(--modal-bg);
+            border: 1px solid var(--border-light);
+            border-radius: 32px;
+            padding: 24px;
+            max-width: 400px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-xl);
+            color: var(--text-primary);
+            font-family: 'Vazirmatn', sans-serif;
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .modal-content h3 {
+            margin-top: 0;
+            margin-bottom: 8px;
+            font-size: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-primary);
+        }
+        .modal-content h3 svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+        .modal-content p {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .dl-opt-btn, .theme-toggle-item, .delete-offline-item, .install-btn {
+            width: 100%;
+            padding: 16px;
+            margin: 8px 0;
+            border-radius: 20px;
+            border: 1px solid var(--border-light);
+            background: var(--button-bg);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-base);
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            width: 100%;
-            margin: 8px 0;
-            padding: 10px;
-            background: var(--button-bg);
-            color: var(--text-primary);
-            border: 1px solid var(--border-light);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: 0.3s;
-            font-family: inherit;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
         }
-        .dl-opt-btn:hover { background: var(--button-hover); transform: scale(1.02); }
+
+        .dl-opt-btn:hover, .theme-toggle-item:hover, .delete-offline-item:hover, .install-btn:hover {
+            background: var(--button-hover);
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
         .dl-opt-btn .main-text {
-            font-weight: bold;
-            font-size: 13px;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
+            font-weight: 600;
         }
         .dl-opt-btn .sub-text {
-            font-size: 10px;
-            opacity: 0.7;
-            margin-top: 2px;
-            font-weight: normal;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 4px;
         }
-        .dl-opt-btn svg {
-            width: 18px;
-            height: 18px;
-            fill: currentColor;
+
+        .delete-offline-item {
+            border-color: var(--danger-color);
+            color: var(--danger-color);
+            background: var(--danger-soft);
+            flex-direction: row;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .theme-toggle-item {
+            background: var(--accent-soft);
+            border-color: var(--accent-color);
+            flex-direction: row;
+            justify-content: center;
+            gap: 8px;
+            color: var(--accent-color);
         }
 
         .cancel-btn {
-            background: rgba(201, 106, 117, 0.1);
-            border: 1px solid var(--danger-color);
-            color: var(--danger-color);
-            padding: 8px 16px;
-            border-radius: 20px;
-            margin-top: 15px;
+            background: transparent;
+            border: 1px solid var(--border-light);
+            color: var(--text-muted);
+            padding: 12px 24px;
+            border-radius: 40px;
+            margin-top: 16px;
             cursor: pointer;
             font-family: inherit;
-            font-size: 13px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            transition: 0.3s;
-            width: auto;
-            min-width: 100px;
+            font-size: 14px;
+            transition: all var(--transition-base);
+            width: 100%;
         }
         .cancel-btn:hover {
-            background: rgba(201, 106, 117, 0.2);
-            transform: translateY(-2px);
-        }
-        .cancel-btn svg {
-            width: 16px;
-            height: 16px;
-            fill: currentColor;
+            background: var(--button-hover);
+            color: var(--text-primary);
         }
 
         .install-section {
-            margin-top: 20px;
-            padding-top: 15px;
+            margin-top: 24px;
+            padding-top: 20px;
             border-top: 1px solid var(--border-light);
         }
         .install-title {
-            font-size: 14px;
-            font-weight: 500;
+            font-size: 16px;
+            font-weight: 600;
             color: var(--text-primary);
-            margin-bottom: 12px;
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-        }
-        .install-title svg {
-            width: 18px;
-            height: 18px;
-            fill: currentColor;
-        }
-        .install-btn {
-            background: rgba(74, 144, 226, 0.2);
-            border: 1px solid rgba(74, 144, 226, 0.5);
-            color: var(--text-primary);
-            padding: 10px;
-            width: 100%;
-            border-radius: 40px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: 0.3s;
-            margin-bottom: 12px;
-            font-family: inherit;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        .install-btn:hover {
-            background: rgba(74, 144, 226, 0.3);
-            border-color: rgba(74, 144, 226, 0.8);
-            transform: translateY(-2px);
-        }
-        .install-btn svg {
-            width: 18px;
-            height: 18px;
-            fill: currentColor;
         }
         .install-instructions {
-            background: rgba(0,0,0,0.2);
-            border-radius: 10px;
-            padding: 12px;
+            background: var(--bg-tertiary);
+            border-radius: 16px;
+            padding: 16px;
             text-align: right;
-            font-size: 12px;
+            font-size: 13px;
             color: var(--text-secondary);
             line-height: 1.8;
         }
         .install-instructions p {
-            margin: 8px 0;
             display: flex;
-            align-items: flex-start;
-            gap: 6px;
+            gap: 8px;
+            margin: 8px 0;
         }
         .install-instructions svg {
-            width: 14px;
-            height: 14px;
+            width: 16px;
+            height: 16px;
             fill: currentColor;
             flex-shrink: 0;
-            margin-top: 2px;
+            margin-top: 3px;
         }
 
-        /* اسپلش */
+        /* اسپلش مدرن */
         .splash-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -375,33 +371,39 @@
             justify-content: center;
             align-items: center;
             z-index: 3000;
-            transition: opacity 0.5s ease;
+            padding: 16px;
         }
         .splash-card {
             background: var(--juz-card-bg);
             backdrop-filter: blur(30px);
             -webkit-backdrop-filter: blur(30px);
             border: 1px solid var(--border-light);
-            border-radius: 40px;
-            padding: 40px 30px;
-            width: 300px;
-            max-width: 80%;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+            border-radius: 48px;
+            padding: 40px 32px;
+            width: 400px;
+            max-width: 100%;
+            box-shadow: var(--shadow-xl);
             text-align: center;
             color: var(--text-primary);
+            animation: splashFadeIn 0.4s ease;
+        }
+        @keyframes splashFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .splash-card h1 {
-            font-size: 26px;
-            margin-bottom: 15px;
-            font-weight: 400;
-            letter-spacing: 1px;
-            color: var(--text-primary);
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            font-size: 32px;
+            margin-bottom: 8px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-color), #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         .splash-card .subtitle {
-            color: var(--text-secondary);
-            margin-bottom: 30px;
-            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            font-size: 14px;
         }
         .splash-btn {
             display: flex;
@@ -409,205 +411,139 @@
             justify-content: center;
             gap: 8px;
             width: 100%;
-            padding: 14px 0;
+            padding: 16px;
             margin: 10px 0;
             border: none;
-            border-radius: 50px;
+            border-radius: 40px;
             background: var(--button-bg);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             color: var(--text-primary);
             font-size: 16px;
-            font-weight: 500;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all var(--transition-base);
             border: 1px solid var(--border-light);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: var(--shadow-md);
             font-family: 'Vazirmatn', sans-serif;
         }
-        .splash-btn:hover {
-            background: var(--button-hover);
-            transform: translateY(-3px);
-            border-color: var(--border-hover);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-        }
-        /* دکمه ادامه مطالعه (اولی) به رنگ آبی */
         .splash-btn:first-of-type {
-            background: var(--blue-accent-dim);
-            border-color: rgba(74, 144, 226, 0.5);
+            background: var(--accent-soft);
+            border-color: var(--accent-color);
+            color: var(--accent-color);
         }
-        .splash-btn:first-of-type:hover {
-            background: rgba(74, 144, 226, 0.3);
+        .splash-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            background: var(--button-hover);
         }
-        .splash-btn svg {
-            width: 22px;
-            height: 22px;
-            fill: currentColor;
-        }
-
         .telegram-link {
-            margin-top: 25px;
-            font-size: 11px;
-            opacity: 0.6;
-            color: var(--text-secondary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
+            margin-top: 24px;
+            font-size: 12px;
+            opacity: 0.7;
         }
         .telegram-link a {
-            color: inherit;
+            color: var(--text-muted);
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 6px;
+            transition: color var(--transition-fast);
         }
-        .telegram-link svg {
-            width: 14px;
-            height: 14px;
-            fill: currentColor;
+        .telegram-link a:hover {
+            color: var(--accent-color);
         }
 
         /* مودال اجزاء */
         .juz-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(10, 20, 30, 0.7);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             display: none;
             justify-content: center;
             align-items: center;
             z-index: 2500;
+            padding: 16px;
         }
         .juz-card {
             background: var(--juz-card-bg);
             backdrop-filter: blur(30px);
             -webkit-backdrop-filter: blur(30px);
             border: 1px solid var(--border-light);
-            border-radius: 40px;
-            padding: 30px 20px;
-            width: 380px;
-            max-width: 85%;
+            border-radius: 48px;
+            padding: 32px 24px;
+            width: 420px;
+            max-width: 100%;
             max-height: 80vh;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+            box-shadow: var(--shadow-xl);
             color: var(--text-primary);
             display: flex;
             flex-direction: column;
-            position: relative;
         }
-        /* دکمه ادامه تلاوت به رنگ آبی */
         .juz-card .continue-btn {
-            background: var(--blue-accent-dim);
-            border: 1px solid rgba(74, 144, 226, 0.5);
-            color: var(--text-primary);
+            background: var(--accent-soft);
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
             font-size: 16px;
-            padding: 12px;
-            border-radius: 50px;
-            margin-bottom: 15px;
+            font-weight: 600;
+            padding: 16px;
+            border-radius: 40px;
+            margin-bottom: 20px;
             cursor: pointer;
-            transition: 0.3s;
-            font-family: 'Vazirmatn', sans-serif;
-            text-align: center;
-            backdrop-filter: blur(5px);
+            transition: all var(--transition-base);
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
         }
         .juz-card .continue-btn:hover {
-            background: rgba(74, 144, 226, 0.3);
-            border-color: rgba(74, 144, 226, 0.8);
+            background: var(--accent-soft);
+            filter: brightness(1.1);
             transform: translateY(-2px);
-        }
-        .juz-card .continue-btn svg {
-            width: 18px;
-            height: 18px;
-            fill: currentColor;
+            box-shadow: var(--shadow-md);
         }
         .juz-list-container {
             overflow-y: auto;
             flex-grow: 1;
             scrollbar-width: thin;
-            scrollbar-color: var(--text-secondary) transparent;
-            padding-left: 5px;
-            margin-bottom: 5px;
+            scrollbar-color: var(--text-muted) transparent;
+            padding-left: 4px;
         }
         .juz-list-container::-webkit-scrollbar { width: 4px; }
         .juz-list-container::-webkit-scrollbar-track { background: transparent; }
-        .juz-list-container::-webkit-scrollbar-thumb { background: var(--text-secondary); border-radius: 4px; }
-
-        @media screen and (max-width: 768px) {
-            .juz-list-container {
-                scrollbar-width: none;
-                -ms-overflow-style: none;
-            }
-            .juz-list-container::-webkit-scrollbar {
-                display: none;
-            }
-        }
-
+        .juz-list-container::-webkit-scrollbar-thumb { background: var(--text-muted); border-radius: 4px; }
         .juz-item {
-            display: block;
             width: 100%;
-            padding: 12px 0;
+            padding: 14px;
             margin: 6px 0;
             background: var(--button-bg);
             border: 1px solid var(--border-light);
-            border-radius: 30px;
+            border-radius: 40px;
             color: var(--text-primary);
             font-size: 15px;
+            font-weight: 500;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all var(--transition-fast);
             font-family: 'Vazirmatn', sans-serif;
             text-align: center;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
         }
         .juz-item:hover {
             background: var(--button-hover);
-            transform: scale(1.02);
             border-color: var(--border-hover);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-sm);
         }
 
-        /* آیتم تغییر تم در تنظیمات - همان استایل قبلی */
-        .theme-toggle-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            width: 100%;
-            padding: 12px 0;
-            margin: 12px 0 6px 0;
-            background: rgba(74, 144, 226, 0.1);
-            border: 1px solid rgba(74, 144, 226, 0.4);
-            border-radius: 12px;
-            color: var(--text-primary);
-            font-size: 15px;
-            cursor: pointer;
-            transition: 0.3s;
-            font-family: 'Vazirmatn', sans-serif;
-            text-align: center;
-        }
-        .theme-toggle-item:hover {
-            background: rgba(74, 144, 226, 0.2);
-            border-color: rgba(74, 144, 226, 0.8);
-            transform: translateY(-2px);
-        }
-        .theme-toggle-item svg {
-            width: 18px;
-            height: 18px;
-            fill: currentColor;
-            stroke: currentColor;
-            transition: transform 0.3s ease;
-        }
-        .theme-toggle-item:active svg {
-            transform: rotate(360deg);
-        }
-
+        /* تنظیمات شب - داخل مودال */
         .night-settings-container {
-            margin: 12px 0 6px 0;
-            border-radius: 12px;
+            margin: 16px 0;
+            border-radius: 24px;
             overflow: hidden;
-            background: var(--button-bg);
+            background: var(--bg-tertiary);
             border: 1px solid var(--border-light);
         }
         .night-settings-toggle {
@@ -615,14 +551,15 @@
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            padding: 12px 16px;
+            padding: 16px;
             background: transparent;
             border: none;
             color: var(--text-primary);
-            font-family: 'Vazirmatn', sans-serif;
+            font-family: inherit;
             font-size: 15px;
+            font-weight: 500;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: background var(--transition-fast);
         }
         .night-settings-toggle:hover {
             background: var(--button-hover);
@@ -633,124 +570,95 @@
         .night-settings-toggle.active .arrow {
             transform: rotate(180deg);
         }
-        .night-settings-toggle svg {
-            width: 16px;
-            height: 16px;
-            fill: currentColor;
-            margin-left: 8px;
-        }
         .night-settings-panel {
-            padding: 12px 16px;
+            padding: 16px;
             border-top: 1px solid var(--border-light);
-            background: rgba(0,0,0,0.2);
+            background: var(--bg-secondary);
             display: none;
         }
         .night-settings-panel.visible {
             display: block;
         }
         .slider-container {
-            margin-bottom: 12px;
-            text-align: right;
+            margin-bottom: 16px;
         }
         .slider-container label {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             color: var(--text-secondary);
-            font-size: 12px;
+            font-size: 13px;
         }
         .slider-container input {
             width: 100%;
             cursor: pointer;
-            background: var(--button-bg);
-            border-radius: 10px;
-            height: 5px;
+            background: var(--bg-tertiary);
+            border-radius: 40px;
+            height: 6px;
             -webkit-appearance: none;
         }
         .slider-container input::-webkit-slider-thumb {
             -webkit-appearance: none;
-            width: 16px;
-            height: 16px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             background: var(--accent-color);
             cursor: pointer;
-            border: none;
+            border: 2px solid var(--bg-primary);
+            box-shadow: var(--shadow-sm);
         }
         .slider-value {
-            background: var(--button-bg);
-            padding: 2px 6px;
-            border-radius: 8px;
-            border: 1px solid var(--border-light);
-            font-size: 11px;
-            margin-right: 8px;
+            background: var(--bg-tertiary);
+            padding: 4px 10px;
+            border-radius: 40px;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-primary);
         }
         .reset-filter-btn {
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--button-bg);
             border: 1px solid var(--border-light);
             color: var(--text-primary);
-            padding: 6px 10px;
-            border-radius: 20px;
+            padding: 10px;
+            border-radius: 40px;
             cursor: pointer;
-            font-size: 12px;
+            font-size: 13px;
             width: 100%;
-            margin-top: 5px;
             font-family: inherit;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 6px;
+            transition: all var(--transition-fast);
         }
         .reset-filter-btn:hover {
             background: var(--button-hover);
             border-color: var(--border-hover);
         }
-        .reset-filter-btn svg {
-            width: 14px;
-            height: 14px;
-            fill: currentColor;
-        }
-
-        /* دکمه حذف آفلاین - متمایز با حاشیه خط‌چین و گوشه‌های تیزتر */
-        .delete-offline-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            width: 100%;
-            padding: 12px 0;
-            margin: 12px 0 6px 0;
-            background: rgba(201, 106, 117, 0.1);
-            border: 1px dashed var(--danger-color);
-            border-radius: 12px;
-            color: var(--danger-color);
-            font-size: 13px;
-            cursor: pointer;
-            transition: 0.3s;
-            font-family: 'Vazirmatn', sans-serif;
-            text-align: center;
-        }
-        .delete-offline-item:hover {
-            background: rgba(201, 106, 117, 0.2);
-            border-color: var(--danger-color);
-            color: var(--danger-color);
-        }
-        .delete-offline-item svg {
-            width: 16px;
-            height: 16px;
-            fill: currentColor;
-        }
 
         /* محتوای اصلی */
         .main-content {
-            position: relative; flex-grow: 1; display: flex;
-            align-items: center; justify-content: center;
-            height: 100vh; width: 100%; background-color: transparent; overflow: hidden; 
+            position: relative;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
         }
 
         .quran-container {
-            display: flex; justify-content: center; align-items: center; gap: 15px;
-            height: 96vh; width: 100%; padding: 0 40px; box-sizing: border-box; touch-action: none; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            height: 96vh;
+            width: 100%;
+            padding: 0 60px;
+            box-sizing: border-box;
+            touch-action: none;
         }
 
         .page-wrapper {
@@ -759,19 +667,21 @@
             align-items: center;
             height: 100%;
             max-width: 48%;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            border-radius: 8px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
             transition: box-shadow 0.3s ease;
+            background: white; /* fallback for pages */
         }
         body.night-mode .page-wrapper {
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
 
         .page {
             height: 100%;
             width: 100%;
             object-fit: contain;
-            border-radius: 8px;
+            border-radius: 24px;
             background-color: white;
             transform-origin: center center;
             will-change: transform;
@@ -779,73 +689,56 @@
             transition: filter 0.3s ease;
         }
 
-        /* دکمه‌های نویگیشن به سبک کاملاً اولیه (تمام‌قد ساده) */
+        /* دکمه‌های نویگیشن تمام‌قد با افکت شیشه‌ای */
         .nav-btn {
             position: absolute;
             top: 0;
             height: 100%;
-            background: var(--button-bg);
-            backdrop-filter: blur(3px);
-            -webkit-backdrop-filter: blur(3px);
+            width: 80px;
+            background: transparent;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
             color: var(--text-secondary);
-            padding: 0 8px;
             cursor: pointer;
             z-index: 100;
             border: none;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
-            opacity: 0.7;
-            transition: all 0.4s ease;
+            font-size: 32px;
+            opacity: 0.6;
+            transition: all var(--transition-base);
         }
         .nav-btn:hover {
-            background: var(--button-hover);
-            color: var(--text-primary);
             opacity: 1;
+            background: linear-gradient(to right, var(--button-bg), transparent);
+            color: var(--text-primary);
         }
         .right-btn {
             right: 0;
             border-left: 1px solid var(--border-light);
+            background: linear-gradient(to left, var(--button-bg), transparent);
         }
         .left-btn {
             left: 0;
             border-right: 1px solid var(--border-light);
+            background: linear-gradient(to right, var(--button-bg), transparent);
         }
         .nav-btn svg {
-            width: 24px;
-            height: 24px;
+            width: 32px;
+            height: 32px;
             fill: currentColor;
         }
 
-        .fullscreen-btn {
-            position: fixed; bottom: 25px; left: 25px; 
-            background: var(--button-bg);
-            backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); 
-            color: var(--text-primary);
-            border: 1px solid var(--border-light); 
-            border-radius: 14px;
-            padding: 12px 16px;
-            display: flex; justify-content: center; align-items: center;
-            cursor: pointer; opacity: 0.7; z-index: 1000; 
-            transition: all 0.4s ease; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        .fullscreen-btn:hover {
-            opacity: 1; background: var(--button-hover); transform: scale(1.05);
-        }
-        .fullscreen-btn svg {
-            width: 24px;
-            height: 24px;
-            fill: currentColor;
-        }
-
+        /* ریسپانسیو */
         @media screen and (max-width: 768px) {
             .quran-container { padding: 10px; gap: 0; }
-            .page-wrapper { max-width: 100%; width: 100%; height: auto; }
-            .page { max-height: 95vh; }
+            .page-wrapper { max-width: 100%; width: 100%; height: auto; border-radius: 16px; }
+            .page { max-height: 95vh; border-radius: 16px; }
             .nav-btn { display: none !important; }
             .fullscreen-btn { display: none !important; }
+            .menu-toggle, .settings-btn, .main-download-btn { padding: 10px; }
+            .menu-toggle svg, .settings-btn svg, .main-download-btn svg { width: 18px; height: 18px; }
         }
     </style>
 </head>
@@ -891,7 +784,7 @@
         </div>
     </div>
 
-    <!-- دکمه تنظیمات جدید (بالا چپ) -->
+    <!-- دکمه تنظیمات (بالا چپ) -->
     <button id="settingsBtn" class="settings-btn" onclick="openSettingsModal()">
         <svg viewBox="0 0 24 24">
             <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94 0 .31.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.57 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
@@ -907,7 +800,7 @@
     </button>
     <div id="progressTooltip" class="progress-tooltip">در حال دانلود...</div>
     
-    <!-- مودال دانلود (بدون تغییر) -->
+    <!-- مودال دانلود -->
     <div id="downloadModal" class="modal-overlay">
         <div class="modal-content">
             <h3>
@@ -967,7 +860,6 @@
                 </div>
             </div>
             
-            <!-- دکمه لغو -->
             <button class="cancel-btn" onclick="closeDownloadModal()">
                 <svg viewBox="0 0 24 24">
                     <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
@@ -977,7 +869,7 @@
         </div>
     </div>
 
-    <!-- مودال تنظیمات جدید -->
+    <!-- مودال تنظیمات -->
     <div id="settingsModal" class="modal-overlay">
         <div class="modal-content">
             <h3>
@@ -995,7 +887,7 @@
             <!-- تنظیمات حالت شب (اسلایدرها) -->
             <div class="night-settings-container" id="settingsNightContainer">
                 <button class="night-settings-toggle" id="settingsNightToggle">
-                    <span><svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94 0 .31.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.57 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg> تنظیمات حالت شب</span><span class="arrow">▼</span>
+                    <span><svg viewBox="0 0 24 24" width="18" height="18" style="margin-left: 8px;"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94 0 .31.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.57 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg> تنظیمات حالت شب</span><span class="arrow">▼</span>
                 </button>
                 <div class="night-settings-panel" id="settingsNightPanel">
                     <div class="slider-container">
@@ -1011,7 +903,7 @@
                         <input type="range" id="settingsContrastSlider" min="0.5" max="3" step="0.01" value="1.05">
                     </div>
                     <button class="reset-filter-btn" id="settingsResetFilterBtn">
-                        <svg viewBox="0 0 24 24"><path d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+                        <svg viewBox="0 0 24 24" width="16" height="16"><path d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
                         بازنشانی
                     </button>
                 </div>
@@ -1019,12 +911,12 @@
             
             <!-- دکمه حذف فایل‌های آفلاین -->
             <button class="delete-offline-item" id="settingsDeleteOfflineBtn">
-                <svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+                <svg viewBox="0 0 24 24" width="18" height="18"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
                 حذف فایل‌های آفلاین
             </button>
             
             <button class="cancel-btn" onclick="closeSettingsModal()">
-                <svg viewBox="0 0 24 24">
+                <svg viewBox="0 0 24 24" width="16" height="16">
                     <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
                 </svg>
                 بستن
@@ -1032,7 +924,7 @@
         </div>
     </div>
 
-    <!-- دکمه فهرست اجزاء (بالا راست) بدون تغییر -->
+    <!-- دکمه فهرست اجزاء (بالا راست) -->
     <button class="menu-toggle" onclick="openJuzOverlay()" title="فهرست اجزاء">
         <svg viewBox="0 0 24 24">
             <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
@@ -1100,7 +992,7 @@
 
         function updateNightFilter() {
             const filterString = `invert(${nightFilter.invert}) brightness(${nightFilter.brightness}) contrast(${nightFilter.contrast}) hue-rotate(180deg)`;
-            rootStyle.setProperty('--night-filter', filterString);
+            rootStyle.setProperty('--night-filter-value', filterString);
             localStorage.setItem('quran-night-filter', JSON.stringify(nightFilter));
         }
 
@@ -1109,23 +1001,21 @@
         function setTheme(mode) {
             if (mode === 'night') {
                 document.body.classList.add('night-mode');
-                themeColorMeta.setAttribute('content', '#0d1622');
+                themeColorMeta.setAttribute('content', '#0b1120');
                 localStorage.setItem('quran-theme', 'night');
             } else {
                 document.body.classList.remove('night-mode');
-                themeColorMeta.setAttribute('content', '#0d1622');
+                themeColorMeta.setAttribute('content', '#ffffff');
                 localStorage.setItem('quran-theme', 'day');
             }
             
             // به‌روزرسانی دکمه تغییر تم در مودال تنظیمات
             const themeBtn = document.getElementById('settingsThemeToggle');
             if (themeBtn) {
-                // پاک کردن محتوای قبلی
                 themeBtn.innerHTML = '';
                 if (document.body.classList.contains('night-mode')) {
-                    // حالت شب: آیکون خورشید، متن "حالت روز"
                     themeBtn.innerHTML = `
-                        <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                             <circle cx="12" cy="12" r="5"/>
                             <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
                                 <line x1="12" y1="1" x2="12" y2="4"/>
@@ -1141,9 +1031,8 @@
                         <span>حالت روز</span>
                     `;
                 } else {
-                    // حالت روز: آیکون ماه، متن "حالت شب"
                     themeBtn.innerHTML = `
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79"/>
                         </svg>
                         <span>حالت شب</span>
@@ -1151,7 +1040,6 @@
                 }
             }
             
-            // نمایش/مخفی کردن بخش تنظیمات شب بر اساس تم
             const settingsNightContainer = document.getElementById('settingsNightContainer');
             if (settingsNightContainer) {
                 settingsNightContainer.style.display = document.body.classList.contains('night-mode') ? 'block' : 'none';
@@ -1283,7 +1171,7 @@
             
             dlBtn.style.pointerEvents = "none"; 
             dlBtn.innerHTML = `<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>در حال دانلود...`;
-            progress.style.display = "block"; progress.style.color = "#8da4be";
+            progress.style.display = "block"; progress.style.color = "var(--text-secondary)";
             progress.innerText = "در حال دانلود...";
 
             const hqBaseUrl = 'https://raw.githubusercontent.com/YBakhtiar/quranh/main/'; 
@@ -1324,7 +1212,7 @@
                 updatePages();
                 
             } catch (error) {
-                progress.innerText = "❌ خطا در دانلود"; progress.style.color = "#c96a75";
+                progress.innerText = "❌ خطا در دانلود"; progress.style.color = "var(--danger-color)";
                 dlBtn.style.pointerEvents = "auto"; 
                 dlBtn.innerHTML = `<svg viewBox="0 0 24 24"><path d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>تلاش مجدد`;
             }
@@ -1335,7 +1223,7 @@
             try {
                 const progress = document.getElementById('progressTooltip');
                 progress.style.display = "block"; progress.innerText = "در حال حذف...";
-                progress.style.color = "#8da4be";
+                progress.style.color = "var(--text-secondary)";
                 
                 await caches.delete('quran-cache-v1');
                 resetDownloadedUI();
@@ -1355,7 +1243,7 @@
             return num.toString().replace(/\d/g, x => farsiDigits[x]);
         }
 
-        // ======== تولید لیست اجزاء (فقط اجزاء، بدون گزینه‌های اضافی) ========
+        // ======== تولید لیست اجزاء (فقط اجزاء) ========
         const juzListDiv = document.getElementById("juzList");
         
         for (let i = 1; i <= 30; i++) {
@@ -1377,13 +1265,11 @@
 
         // ======== راه‌اندازی تنظیمات مودال تنظیمات ========
         (function setupSettingsModal() {
-            // دکمه تغییر تم
             const themeToggle = document.getElementById('settingsThemeToggle');
             if (themeToggle) {
                 themeToggle.addEventListener('click', toggleTheme);
             }
 
-            // دکمه باز و بسته شدن پنل تنظیمات شب
             const nightToggle = document.getElementById('settingsNightToggle');
             const nightPanel = document.getElementById('settingsNightPanel');
             if (nightToggle && nightPanel) {
@@ -1394,7 +1280,6 @@
                 });
             }
 
-            // اسلایدرها
             const invertSlider = document.getElementById('settingsInvertSlider');
             const brightnessSlider = document.getElementById('settingsBrightnessSlider');
             const contrastSlider = document.getElementById('settingsContrastSlider');
@@ -1413,7 +1298,6 @@
             }
 
             if (invertSlider) {
-                // مقداردهی اولیه از nightFilter
                 invertSlider.value = nightFilter.invert;
                 brightnessSlider.value = nightFilter.brightness;
                 contrastSlider.value = nightFilter.contrast;
@@ -1426,7 +1310,6 @@
                 contrastSlider.addEventListener('input', updateSlidersAndFilter);
             }
 
-            // دکمه بازنشانی
             const resetBtn = document.getElementById('settingsResetFilterBtn');
             if (resetBtn) {
                 resetBtn.addEventListener('click', function() {
@@ -1438,7 +1321,6 @@
                 });
             }
 
-            // دکمه حذف فایل‌های آفلاین
             const deleteBtn = document.getElementById('settingsDeleteOfflineBtn');
             if (deleteBtn) {
                 deleteBtn.addEventListener('click', deleteOfflineFiles);
@@ -1532,7 +1414,7 @@
             updatePages();
         }
 
-        // رویدادهای لمسی (بدون تغییر)
+        // رویدادهای لمسی
         let touchstartX = 0; let touchstartY = 0; let touchendX = 0; let touchendY = 0; let touchStartTime = 0;
         const swipeArea = document.getElementById('swipeArea');
         
