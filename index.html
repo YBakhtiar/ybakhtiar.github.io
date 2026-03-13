@@ -263,6 +263,89 @@
         }
         .modal-header svg { width: 22px; height: 22px; fill: var(--accent); flex-shrink: 0; }
 
+        /* استایل جدید تنظیمات - شبیه پنل */
+        .settings-section {
+            margin-bottom: 1.5rem;
+        }
+        .setting-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+        .setting-label {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+        .setting-label svg {
+            width: 1.3rem;
+            height: 1.3rem;
+            fill: var(--accent);
+        }
+        .setting-value {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .theme-selector-group, .language-selector-group {
+            display: flex;
+            gap: 8px;
+        }
+        .theme-selector-btn, .lang-btn {
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: 1px solid var(--border-light);
+            background: var(--card-bg);
+            color: var(--text-primary);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .theme-selector-btn.active, .lang-btn.active {
+            background: var(--accent-soft);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        .theme-selector-btn svg, .lang-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+        .settings-btn-row {
+            width: 100%;
+            padding: 12px;
+            border-radius: 16px;
+            border: 1px solid var(--border-light);
+            background: var(--card-bg);
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .settings-btn-row.danger {
+            border-color: var(--danger);
+            background: var(--danger-soft);
+            color: var(--danger);
+        }
+        .settings-btn-row.accent {
+            border-color: var(--accent);
+            background: var(--accent-soft);
+            color: var(--accent);
+        }
+
         .close-btn {
             width: 100%;
             padding: 14px;
@@ -537,7 +620,7 @@
             gap: 8px;
         }
         .surah-grid {
-            grid-template-columns: repeat(2, 1fr); /* برای سوره‌ها دو ستون */
+            grid-template-columns: repeat(2, 1fr);
         }
         .juz-item, .surah-item {
             padding: 14px 8px;
@@ -559,133 +642,6 @@
             color: var(--accent);
             transform: translateY(-2px);
             box-shadow: var(--shadow-soft);
-        }
-
-        /* تنظیمات - طراحی جدید */
-        .settings-section {
-            margin-bottom: 28px;
-        }
-        .section-label {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-muted);
-            letter-spacing: 0.5px;
-            margin-bottom: 14px;
-            padding-right: 6px;
-            text-transform: uppercase;
-        }
-
-        .theme-selector-group {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-        .theme-selector-btn {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 4px;
-            padding: 12px 4px;
-            border-radius: 16px;
-            border: 2px solid var(--border-light);
-            background: var(--card-bg);
-            color: var(--text-primary);
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 13px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.25s ease;
-        }
-        .theme-selector-btn:hover {
-            transform: translateY(-2px);
-            border-color: var(--accent);
-        }
-        .theme-selector-btn.active {
-            border-color: var(--accent);
-            background: var(--accent-soft);
-            color: var(--accent);
-        }
-        .theme-selector-btn svg {
-            width: 24px;
-            height: 24px;
-            fill: currentColor;
-            opacity: 0.9;
-        }
-
-        .language-selector-group {
-            display: flex;
-            gap: 8px;
-            margin-top: 8px;
-        }
-        .lang-btn {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            padding: 10px 0;
-            border-radius: 16px;
-            border: 1px solid var(--border-light);
-            background: var(--card-bg);
-            color: var(--text-primary);
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 12px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .lang-btn:hover {
-            background: var(--bg-tertiary);
-            border-color: var(--border-hover);
-        }
-        .lang-btn.active {
-            border-color: var(--accent);
-            background: var(--accent-soft);
-            color: var(--accent);
-        }
-        .lang-btn svg {
-            width: 22px;
-            height: 22px;
-            fill: currentColor;
-        }
-
-        .settings-btn-row {
-            width: 100%;
-            padding: 16px 18px;
-            border-radius: 20px;
-            border: 1px solid var(--border-light);
-            background: var(--card-bg);
-            color: var(--text-primary);
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 15px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin: 8px 0;
-            backdrop-filter: blur(4px);
-        }
-        .settings-btn-row svg { width: 20px; height: 20px; fill: currentColor; }
-        .settings-btn-row:hover {
-            background: var(--bg-tertiary);
-            border-color: var(--border-hover);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-        .settings-btn-row.accent {
-            border-color: var(--accent);
-            background: var(--accent-soft);
-            color: var(--accent);
-        }
-        .settings-btn-row.danger {
-            border-color: var(--danger);
-            background: var(--danger-soft);
-            color: var(--danger);
         }
 
         /* دکمه‌های دانلود (مودال) */
@@ -839,7 +795,7 @@
             .page-wrapper { max-width: 100%; width: 100%; height: auto; border-radius: 12px; }
             .nav-btn { display: none !important; }
             .btn-fullscreen { display: none !important; }
-            .float-btn { width: 38px; height: 38px; } /* کوچک‌تر برای موبایل */
+            .float-btn { width: 38px; height: 38px; }
             .float-btn svg { width: 18px; height: 18px; }
             .juz-grid { grid-template-columns: repeat(2, 1fr); }
             .surah-grid { grid-template-columns: repeat(2, 1fr); }
@@ -879,26 +835,20 @@
                 <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                 <span id="juzContinueText">ادامه تلاوت</span>
             </button>
-
-            <!-- تب‌ها -->
-            <div class="tab-bar" id="tabBar">
+            <div class="tab-bar">
                 <button class="tab-btn active" id="tabJuzBtn">اجزاء</button>
                 <button class="tab-btn" id="tabSurahBtn">سوره‌ها</button>
             </div>
-
-            <!-- محتوای اجزاء -->
             <div class="tab-content" id="juzTabContent">
                 <div class="juz-grid" id="juzGrid"></div>
             </div>
-
-            <!-- محتوای سوره‌ها -->
             <div class="tab-content" id="surahTabContent" style="display: none;">
                 <div class="surah-grid" id="surahGrid"></div>
             </div>
         </div>
     </div>
 
-    <!-- مودال تنظیمات -->
+    <!-- مودال تنظیمات (با استایل جدید) -->
     <div class="overlay settings-overlay" id="settingsOverlay">
         <div class="overlay-backdrop"></div>
         <div class="modal-card">
@@ -907,25 +857,31 @@
                 <span id="settingsTitle">تنظیمات</span>
             </div>
 
-            <!-- انتخاب تم اصلی -->
-            <div class="settings-section">
-                <div class="section-label" id="themeLabel">تم اصلی</div>
-                <div class="theme-selector-group">
+            <!-- آیتم تم اصلی -->
+            <div class="setting-item">
+                <span class="setting-label">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"/></svg>
+                    <span id="themeLabel">تم اصلی</span>
+                </span>
+                <span class="setting-value">
                     <button class="theme-selector-btn" id="themeZardBtn">
-                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"/></svg>
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
                         <span>زرد</span>
                     </button>
                     <button class="theme-selector-btn" id="themeAbiBtn">
-                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"/></svg>
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
                         <span>آبی</span>
                     </button>
-                </div>
+                </span>
             </div>
 
-            <!-- انتخاب زبان (فقط فارسی و عربی) -->
-            <div class="settings-section">
-                <div class="section-label" id="languageLabel">زبان</div>
-                <div class="language-selector-group">
+            <!-- آیتم زبان -->
+            <div class="setting-item">
+                <span class="setting-label">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+                    <span id="languageLabel">زبان</span>
+                </span>
+                <span class="setting-value">
                     <button class="lang-btn" id="langFa">
                         <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
                         <span>فارسی</span>
@@ -934,24 +890,42 @@
                         <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
                         <span>العربية</span>
                     </button>
-                </div>
+                </span>
             </div>
 
-            <!-- بخش ظاهر -->
-            <div class="settings-section">
-                <div class="section-label" id="appearanceLabel">ظاهر</div>
-                <button class="settings-btn-row accent" id="themeToggle"></button>
-                <button class="settings-btn-row" id="darkUiToggle"></button>
+            <!-- آیتم حالت روز/شب -->
+            <div class="setting-item">
+                <span class="setting-label">
+                    <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7z"/></svg>
+                    <span id="appearanceLabel">ظاهر</span>
+                </span>
+                <span class="setting-value">
+                    <button class="settings-btn-row accent" id="themeToggle" style="padding:6px 12px; margin:0;"></button>
+                </span>
             </div>
 
-            <!-- مدیریت حافظه -->
-            <div class="settings-section">
-                <div class="section-label" id="storageLabel">مدیریت حافظه</div>
-                <button class="settings-btn-row danger" id="deleteOfflineBtn">
+            <!-- آیتم پس‌زمینه تیره/روشن -->
+            <div class="setting-item">
+                <span class="setting-label">
+                    <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7z"/></svg>
+                    <span>پس‌زمینه</span>
+                </span>
+                <span class="setting-value">
+                    <button class="settings-btn-row" id="darkUiToggle" style="padding:6px 12px; margin:0;"></button>
+                </span>
+            </div>
+
+            <!-- آیتم حذف فایل‌های آفلاین -->
+            <div class="setting-item" style="border-bottom: none;">
+                <span class="setting-label">
                     <svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
-                    <span id="deleteBtnText">حذف فایل‌های آفلاین</span>
-                </button>
+                    <span id="storageLabel">مدیریت حافظه</span>
+                </span>
             </div>
+            <button class="settings-btn-row danger" id="deleteOfflineBtn" style="margin-top:0;">
+                <svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+                <span id="deleteBtnText">حذف فایل‌های آفلاین</span>
+            </button>
 
             <button class="close-btn" id="settingsClose"><span id="closeBtnText">بستن</span></button>
         </div>
@@ -1022,9 +996,9 @@
 
     <script>
         // ================== CONST & STATE ==================
-        const totalPages = 623;
+        const totalPages = 611; // آخرین فایل Quran612.jpg معادل صفحه 611
         const GITHUB_BASE = 'https://raw.githubusercontent.com/YBakhtiar/quranh/main/';
-        let currentPage = 1;
+        let currentPage = 3; // پیش‌فرض صفحه 2 (فاتحه) اما فایل 3 است
         let isDownloaded = false;
         let objectUrls = { right: null, left: null };
         let indicatorTimer = null;
@@ -1146,13 +1120,13 @@
         };
 
         let currentLang = localStorage.getItem('quran-language') || 'fa';
-        if (!['fa', 'ar'].includes(currentLang)) currentLang = 'fa'; // fallback
+        if (!['fa', 'ar'].includes(currentLang)) currentLang = 'fa';
 
         // توابع فرمت اعداد بر اساس زبان
         function formatNumber(num) {
             if (currentLang === 'fa') {
                 return num.toString().replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
-            } else { // عربی
+            } else {
                 return num.toString().replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
             }
         }
@@ -1189,8 +1163,6 @@
             document.getElementById('hqText').textContent = t.hq;
             document.getElementById('hqSub').textContent = t.hqSub;
             document.getElementById('cancelText').textContent = t.cancel;
-
-            // بروزرسانی تب‌ها
             document.getElementById('tabJuzBtn').textContent = t.tabJuz;
             document.getElementById('tabSurahBtn').textContent = t.tabSurah;
 
@@ -1351,18 +1323,28 @@
         }
 
         // ================== توابع کمکی ==================
+        function getRealPageFromFile(fileNumber) {
+            return fileNumber - 1; // چون Quran003.jpg = صفحه 2
+        }
+
         function showPageIndicator() {
             const el = document.getElementById('pageIndicator');
             const isMobile = window.innerWidth <= 768;
-            let displayPage;
             if (isMobile) {
-                displayPage = currentPage;
+                const realPage = getRealPageFromFile(currentPage);
+                const pageText = translations[currentLang].page + ' ' + formatNumber(realPage);
+                el.textContent = pageText;
             } else {
-                displayPage = (currentPage % 2 !== 0) ? currentPage : currentPage - 1;
+                let rightPN = (currentPage % 2 !== 0) ? currentPage : currentPage - 1;
+                let leftPN = rightPN + 1;
+                const rightReal = getRealPageFromFile(rightPN);
+                const leftReal = getRealPageFromFile(leftPN);
+                if (leftPN <= totalPages) {
+                    el.textContent = translations[currentLang].page + ' ' + formatNumber(rightReal) + ' و ' + formatNumber(leftReal);
+                } else {
+                    el.textContent = translations[currentLang].page + ' ' + formatNumber(rightReal);
+                }
             }
-            const pageZeroBased = displayPage; // صفحه از 1 شروع می‌شود
-            const pageText = translations[currentLang].page + ' ' + formatNumber(pageZeroBased);
-            el.textContent = pageText;
             el.classList.add('visible');
             clearTimeout(indicatorTimer);
             indicatorTimer = setTimeout(() => el.classList.remove('visible'), 2200);
@@ -1553,9 +1535,9 @@
             grid.innerHTML = '';
             for (let i = 1; i <= 30; i++) {
                 let startPage;
-                if (i === 1) startPage = 3;          // جزء 1 = صفحه 3
-                else if (i === 30) startPage = 588;   // جزء 30 = صفحه 588
-                else startPage = 4 + ((i - 1) * 20);  // جزء 2 = 24, جزء 3 = 44, ...
+                if (i === 1) startPage = 3;
+                else if (i === 30) startPage = 588; // جزء 30 صفحه 588 (فایل)
+                else startPage = 4 + ((i - 1) * 20);
                 const btn = document.createElement('button');
                 btn.className = 'juz-item';
                 btn.textContent = translations[currentLang].juzPrefix + formatNumber(i);
@@ -1570,9 +1552,9 @@
             }
         }
 
-        // ================== داده‌های سوره‌ها (بر اساس مصحف پاکستانی/هندی) ==================
+        // ================== داده‌های سوره‌ها (بر اساس مصحف پاکستانی/هندی با تغییرات درخواستی) ==================
         let surahPages = [
-            3,4,52,79,108,130,153,179,189,210,223,237,251,257,263,269,284,295,307,314,324,333,344,352,361,368,378,387,398,406,413,417,420,430,436,442,447,454,460,469,479,485,491,497,500,504,508,513,517,520,522,525,528,530,533,536,539,544,547,551,553,555,556,558,560,562,564,566,569,571,571,572,574,576,579,580,582,584,585,587,588,589,589,591,592,593,593,594,595,596,597,597,598,598,599,599,600,600,601,601,601,602,602,602,603,603,603,604,604,604,605,605,605,606
+            3,4,52,79,108,130,153,179,189,210,223,237,251,257,263,268,284,295,307,314,324,332,344,352,361,367,377,387,398,406,415,417,420,430,436,442,446,453,460,469,479,485,491,496,499,504,507,513,517,520,522,525,528,529,533,536,539,545,548,553,555,557,559,561,564,566,568,572,574,571,572,574,576,579,580,582,584,585,587,588,589,589,591,592,593,593,594,595,596,597,597,598,598,599,599,600,600,601,601,601,602,602,602,603,603,603,604,604,604,605,605,605,606,606
         ];
 
         const surahNamesAr = [
@@ -1591,7 +1573,7 @@
                 let name = (currentLang === 'fa') ? surahNamesFa[i] : surahNamesAr[i];
                 const btn = document.createElement('button');
                 btn.className = 'surah-item';
-                btn.textContent = `${surahNumber}. ${name}`; // بدون شماره صفحه
+                btn.textContent = `${surahNumber}. ${name}`;
                 btn.onclick = () => {
                     let target = page;
                     if (window.innerWidth > 768 && target % 2 === 0) target--;
@@ -1647,7 +1629,7 @@
             tabJuz.classList.remove('active');
             contentSurah.style.display = 'block';
             contentJuz.style.display = 'none';
-            rebuildSurahGrid(); // اطمینان از نمایش با زبان جاری
+            rebuildSurahGrid();
         });
 
         // بستن مودال‌ها با کلیک روی backdrop
