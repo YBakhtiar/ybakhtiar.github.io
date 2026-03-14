@@ -851,7 +851,7 @@
             <div class="setting-item">
                 <span class="setting-label">
                     <svg viewBox="0 0 24 24"><path d="M20 3H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4v2h8v-2h4c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H4V5h16v12z"/></svg>
-                    <span id="backgroundLabelSpan">الخلفية</span>  <!-- برچسب ترجمه‌شده -->
+                    <span id="backgroundLabelSpan">الخلفية</span>
                 </span>
                 <span class="setting-value">
                     <button class="settings-btn-row" id="darkUiToggle"></button>
@@ -1135,7 +1135,7 @@
             document.getElementById('themeLabel').textContent = t.themeLabel;
             document.getElementById('languageLabel').textContent = t.languageLabel;
             document.getElementById('appearanceLabel').textContent = t.appearanceLabel;
-            document.getElementById('backgroundLabelSpan').textContent = t.backgroundLabel; // برچسب پس‌زمینه
+            document.getElementById('backgroundLabelSpan').textContent = t.backgroundLabel;
             document.getElementById('storageLabel').textContent = t.storageLabel;
             document.getElementById('deleteBtnText').textContent = t.deleteBtn;
             document.getElementById('closeBtnText').textContent = t.closeBtn;
@@ -1407,7 +1407,7 @@
             dlBtn.style.pointerEvents = 'none';
             dlBtn.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="currentColor"/></svg>';
             progress.style.display = 'block';
-            progress.textContent = translations[currentLang].downloading; // ترجمه شده
+            progress.textContent = translations[currentLang].downloading;
 
             try {
                 const cache = await caches.open('quran-cache-v1');
@@ -1428,7 +1428,6 @@
                     }
                     await Promise.all(promises);
                     downloaded += batch;
-                    // نمایش پیشرفت ترجمه‌شده
                     progress.textContent = translations[currentLang].progress
                         .replace('{current}', formatNumber(Math.min(downloaded, totalFiles-2)))
                         .replace('{total}', formatNumber(totalFiles-2));
@@ -1450,9 +1449,8 @@
             if (btn) { btn.style.display = 'none'; btn.classList.add('done'); }
             if (prog) prog.style.display = 'none';
             isDownloaded = true;
-            // اگر فایل‌ها وجود دارند، دکمه حذف در منوی مدیریت حافظه قابل نمایش می‌شود (با کلیک روی storageToggle)
-            // نیازی به تغییر خودکار نمایش نیست، چون storageToggle کلیک می‌خورد و بررسی می‌کند.
         }
+
         function resetDownloadedUI() {
             const btn = document.getElementById('btnDownload');
             if (btn) {
@@ -1462,7 +1460,6 @@
                 btn.classList.remove('done');
             }
             isDownloaded = false;
-            // پس از حذف، container دکمه حذف را مخفی می‌کنیم
             document.getElementById('deleteOptionContainer').style.display = 'none';
         }
 
@@ -1471,7 +1468,7 @@
             if (!confirmed) return;
             const prog = document.getElementById('progressPill');
             prog.style.display = 'block';
-            prog.textContent = translations[currentLang].downloading; // یا "در حال حذف" اما همان دانلودینگ موقتی است
+            prog.textContent = translations[currentLang].downloading;
             try {
                 await caches.delete('quran-cache-v1');
                 resetDownloadedUI();
@@ -1591,16 +1588,14 @@
         const deleteContainer = document.getElementById('deleteOptionContainer');
         storageToggle.addEventListener('click', () => {
             if (isDownloaded) {
-                // اگر فایل آفلاین موجود است، نمایش/عدم نمایش container
                 if (deleteContainer.style.display === 'none' || deleteContainer.style.display === '') {
                     deleteContainer.style.display = 'block';
                 } else {
                     deleteContainer.style.display = 'none';
                 }
             } else {
-                // اگر فایلی نیست، container را مخفی نگه دار
                 deleteContainer.style.display = 'none';
-                // می‌توان پیام داد: "هیچ فایل آفلاینی موجود نیست"
+                // (اختیاری) می‌توانید پیغامی نمایش دهید که فایلی موجود نیست
             }
         });
         document.getElementById('deleteOfflineBtn').addEventListener('click', deleteOfflineFiles);
@@ -1694,7 +1689,7 @@
         // ================== مقداردهی اولیه ==================
         (function init() {
             applyTheme();
-            setLanguage(currentLang); // زبان پیش‌فرض عربی
+            setLanguage(currentLang);
             buildJuzGrid();
             rebuildSurahGrid();
             let saved = localStorage.getItem('lastQuranFile');
