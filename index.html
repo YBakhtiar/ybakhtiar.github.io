@@ -798,7 +798,7 @@
             color: var(--text-primary);
             margin-bottom: 16px;
         }
-       /* بخش نصب اپلیکیشن */
+/* بخش نصب اپلیکیشن */
 .install-section {
     margin-top: 20px;
     padding-top: 20px;
@@ -813,6 +813,11 @@
     font-weight: 600;
     color: var(--text-primary);
     margin-bottom: 14px;
+}
+.install-title svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
 }
 .install-btn {
     width: 100%;
@@ -830,6 +835,12 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
+}
+.install-btn svg {
+    width: 18px;   /* اندازه مناسب برای دسکتاپ */
+    height: 18px;
+    fill: currentColor;
+    flex-shrink: 0;
 }
 .install-btn:hover {
     filter: brightness(1.1);
@@ -858,6 +869,35 @@
     margin-top: 3px;
 }
 
+/* تنظیمات برای موبایل */
+@media (max-width: 768px) {
+    .install-title {
+        font-size: 14px;
+        gap: 5px;
+        margin-bottom: 12px;
+    }
+    .install-title svg {
+        width: 16px;
+        height: 16px;
+    }
+    .install-btn {
+        padding: 10px 14px;
+        font-size: 13px;
+        gap: 6px;
+    }
+    .install-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+    .install-instructions {
+        padding: 12px;
+        font-size: 12px;
+    }
+    .install-instructions svg {
+        width: 14px;
+        height: 14px;
+    }
+}
 /* تنظیمات برای موبایل */
 @media (max-width: 768px) {
     .install-title {
