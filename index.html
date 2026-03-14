@@ -596,7 +596,7 @@
         .dl-option .dl-main svg { width: 24px; height: 24px; fill: var(--accent); }
         .dl-option .dl-sub { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
 
-        /* نصب */
+        /* نصب - بخش راهنمای جدید */
         .install-section {
             margin-top: 20px;
             padding-top: 20px;
@@ -613,6 +613,25 @@
             margin-bottom: 14px;
         }
         .install-title svg { width: 18px; height: 18px; fill: currentColor; }
+
+        .guide-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 12px;
+            text-align: justify;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .guide-item svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--accent);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
         .install-btn {
             width: 100%;
             padding: 12px 16px;
@@ -629,29 +648,10 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
+            margin: 16px 0 8px;
         }
         .install-btn svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
         .install-btn:hover { filter: brightness(1.1); transform: translateY(-2px); box-shadow: var(--shadow-md); }
-        .install-instructions {
-            background: var(--bg-tertiary);
-            border-radius: 16px;
-            padding: 14px;
-            margin-top: 12px;
-            font-size: 12.5px;
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-        .install-instructions p { display: flex; gap: 8px; margin: 6px 0; }
-        .install-instructions svg { width: 15px; height: 15px; fill: currentColor; flex-shrink: 0; margin-top: 3px; }
-
-        @media (max-width: 768px) {
-            .install-title { font-size: 14px; gap: 5px; margin-bottom: 12px; }
-            .install-title svg { width: 16px; height: 16px; }
-            .install-btn { padding: 10px 14px; font-size: 13px; gap: 6px; }
-            .install-btn svg { width: 16px; height: 16px; }
-            .install-instructions { padding: 12px; font-size: 12px; }
-            .install-instructions svg { width: 14px; height: 14px; }
-        }
 
         .progress-pill {
             position: fixed;
@@ -887,13 +887,37 @@
                 <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
                 <span id="downloadTitle">اختيار الجودة</span>
             </div>
-            <p style="color:var(--text-muted);font-size:13px;margin-bottom:16px;" id="downloadDesc">اختر الجودة المناسبة:</p>
-            
-            <!-- متن راهنمای آفلاین جدید -->
-            <div style="background: var(--bg-tertiary); border-radius: 16px; padding: 16px; margin-bottom: 16px; font-size: 0.9rem; color: var(--text-secondary);">
-                <p id="offlineInstructions" style="margin:0; line-height:1.7;"></p>
+
+            <!-- بخش راهنمای نصب (جای جدید) -->
+            <div class="install-section" id="installSection">
+                <div class="install-title">
+                    <svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+                    <span id="installTitle">راهنمای نصب</span>
+                </div>
+                
+                <!-- سه خط راهنما با آیکون -->
+                <div class="guide-item">
+                    <svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+                    <span id="guideAndroid">اندروید: روی دکمه نصب اپلیکیشن کلیک نمایید یا از قسمت منوی مرورگر خود افزودن به صفحه اصلی را انتخاب کنید</span>
+                </div>
+                <div class="guide-item">
+                    <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83.76-1.75 1.32-2.86 1.32-1.11 0-1.47-.42-2.86-.42-1.39 0-1.9.42-2.86.42-1.11 0-2.03-.56-2.86-1.32C4.5 16.5 3.76 12.8 5.21 10.4c.99-1.65 2.56-2.61 4.18-2.61 1.3 0 2.21.56 3.19.56.98 0 2.21-.56 3.19-.56 1.62 0 3.19.96 4.18 2.61 1.45 2.4.71 6.1-1.23 8.1zM15 4.5c.83.76 1.23 1.81 1.23 2.87 0 .21-.02.42-.05.63-1.01-.06-2.03-.54-2.73-1.26-.7-.72-1.09-1.67-1.09-2.65 0-.21.02-.42.05-.62.46.01.98.18 1.4.45.45.27.81.63 1.14 1.04 0 0 .02.03.03.04z"/></svg>
+                    <span id="guideIos">آیفون/آیپد: گزینه Share را بزنید بعد "Add to Home Screen".</span>
+                </div>
+                <div class="guide-item">
+                    <svg viewBox="0 0 24 24"><path d="M20 18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>
+                    <span id="guideDesktop">دسکتاپ: روی دکمه نصب اپلیکیشن یا روی آیکون نصب در نوار آدرس کلیک نمایید</span>
+                </div>
+
+                <!-- دکمه نصب PWA (در صورت پشتیبانی) -->
+                <button class="install-btn" id="installPwaBtn" style="display: none;">
+                    <svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+                    <span id="installBtnText">نصب اپلیکیشن</span>
+                </button>
             </div>
 
+            <!-- گزینه‌های دانلود -->
+            <p style="color:var(--text-muted);font-size:13px;margin:16px 0 8px;" id="downloadDesc">اختر الجودة المناسبة:</p>
             <button class="dl-option" id="dlStandard">
                 <div class="dl-main">
                     <svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
@@ -908,23 +932,6 @@
                 </div>
                 <div class="dl-sub" id="hqSub">مناسب للكمبيوتر والشاشات الكبيرة</div>
             </button>
-
-            <!-- بخش نصب -->
-            <div class="install-section" id="installSection">
-                <div class="install-title">
-                    <svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
-                    <span id="installTitle">تثبيت على الجهاز</span>
-                </div>
-                <button class="install-btn" id="installPwaBtn" style="display: none;">
-                    <svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
-                    <span id="installBtnText">تثبيت التطبيق</span>
-                </button>
-                <div class="install-instructions" id="installInstructions">
-                    <p><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg><span id="installInstr1"><strong>أندرويد وكروم:</strong> زر التثبيت أو "Install App".</span></p>
-                    <p><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg><span id="installInstr2"><strong>آيفون/آيباد:</strong> "Add to Home Screen".</span></p>
-                    <p><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg><span id="installInstr3"><strong>سطح المكتب:</strong> أيقونة التثبيت في شريط العنوان.</span></p>
-                </div>
-            </div>
 
             <button class="close-btn" id="downloadClose"><span id="cancelText">إلغاء</span></button>
         </div>
@@ -1024,11 +1031,9 @@
                 cancel: 'لغو',
                 ok: 'باشه',
                 confirmDeleteTitle: 'تأیید',
-                // پیام حذف با هشدار جدید
                 confirmDeleteMsg: 'تمام فایل‌های دانلود شده حذف می‌شوند. اگر فایل‌های آفلاین را حذف کنید، دیگر نمی‌توانید از برنامه به صورت آفلاین استفاده کنید و برای استفاده مجدد باید آن‌ها را دوباره دانلود کنید. ادامه می‌دهید؟',
                 confirmDownloadTitle: 'دانلود آفلاین',
                 confirmDownloadMsg: 'فایل‌های آفلاین حدود {size} حجم دارد. ادامه می‌دهید؟',
-                // پیام موفقیت دانلود جدید
                 downloadSuccessMsg: 'دانلود فایل‌ها با موفقیت انجام شد. اکنون می‌توانید از برنامه به صورت کاملاً آفلاین و بدون اینترنت استفاده کنید.',
                 page: 'صفحه',
                 tabJuz: 'اجزاء',
@@ -1045,19 +1050,17 @@
                 nightMode: 'حالت شب',
                 lightBg: 'پس‌زمینه روشن',
                 darkBg: 'پس‌زمینه تیره',
-                downloadSuccess: 'دانلود با موفقیت انجام شد!', // (قدیمی، نگه داشته می‌شود اما استفاده نمی‌کنیم)
+                downloadSuccess: 'دانلود با موفقیت انجام شد!',
                 deleteSuccess: 'فایل‌های آفلاین حذف شدند.',
                 downloadError: 'خطا در دانلود!',
                 deleteError: 'خطا در حذف!',
-                installTitle: 'نصب روی دستگاه',
+                installTitle: 'راهنمای نصب',
                 installBtn: 'نصب اپلیکیشن',
-                installInstr1: '<strong>اندروید و کروم:</strong> دکمه نصب یا "Install App".',
-                installInstr2: '<strong>آیفون/آیپد:</strong> "Add to Home Screen".',
-                installInstr3: '<strong>دسکتاپ:</strong> آیکون نصب در نوار آدرس.',
+                guideAndroid: 'اندروید: روی دکمه نصب اپلیکیشن کلیک نمایید یا از قسمت منوی مرورگر خود افزودن به صفحه اصلی را انتخاب کنید',
+                guideIos: 'آیفون/آیپد: گزینه Share را بزنید بعد "Add to Home Screen".',
+                guideDesktop: 'دسکتاپ: روی دکمه نصب اپلیکیشن یا روی آیکون نصب در نوار آدرس کلیک نمایید',
                 downloading: 'در حال دانلود...',
-                progress: 'پیشرفت: {current} از {total}',
-                // متن راهنمای آفلاین
-                offlineInstructions: 'برای استفاده آفلاین از برنامه، ابتدا آن را نصب کرده و به صفحه اصلی اضافه کنید. سپس از طریق صفحه اصلی برنامه را باز کرده و فایل‌های آفلاین را دانلود نمایید. پس از آن می‌توانید در مراحل بعدی بدون نیاز به اینترنت از قرآن استفاده کنید.'
+                progress: 'پیشرفت: {current} از {total}'
             },
             ar: {
                 splashSubtitle: 'مرحباً بكم في تطبيق القرآن الكريم',
@@ -1105,14 +1108,13 @@
                 deleteSuccess: 'تم حذف الملفات غير المتصلة.',
                 downloadError: 'خطأ في التحميل!',
                 deleteError: 'خطأ في الحذف!',
-                installTitle: 'تثبيت على الجهاز',
+                installTitle: 'دليل التثبيت',
                 installBtn: 'تثبيت التطبيق',
-                installInstr1: '<strong>أندرويد وكروم:</strong> زر التثبيت أو "Install App".',
-                installInstr2: '<strong>آيفون/آيباد:</strong> "Add to Home Screen".',
-                installInstr3: '<strong>سطح المكتب:</strong> أيقونة التثبيت في شريط العنوان.',
+                guideAndroid: 'أندرويد: انقر على زر تثبيت التطبيق أو اختر "إضافة إلى الشاشة الرئيسية" من قائمة المتصفح',
+                guideIos: 'آيفون/آيباد: اضغط على زر المشاركة ثم "Add to Home Screen".',
+                guideDesktop: 'سطح المكتب: انقر على زر تثبيت التطبيق أو على أيقونة التثبيت في شريط العنوان',
                 downloading: 'جاري التحميل...',
-                progress: 'التقدم: {current} من {total}',
-                offlineInstructions: 'لاستخدام التطبيق دون اتصال، قم أولاً بتثبيته وإضافته إلى الشاشة الرئيسية. ثم افتح التطبيق من الشاشة الرئيسية وقم بتنزيل الملفات غير المتصلة بالإنترنت. بعد ذلك يمكنك استخدام القرآن في المرات اللاحقة بدون الحاجة إلى الإنترنت.'
+                progress: 'التقدم: {current} من {total}'
             }
         };
 
@@ -1164,11 +1166,9 @@
             document.getElementById('tabSurahBtn').textContent = t.tabSurah;
             document.getElementById('installTitle').textContent = t.installTitle;
             document.getElementById('installBtnText').textContent = t.installBtn;
-            document.getElementById('installInstr1').innerHTML = t.installInstr1;
-            document.getElementById('installInstr2').innerHTML = t.installInstr2;
-            document.getElementById('installInstr3').innerHTML = t.installInstr3;
-            // متن راهنمای آفلاین
-            document.getElementById('offlineInstructions').textContent = t.offlineInstructions;
+            document.getElementById('guideAndroid').textContent = t.guideAndroid;
+            document.getElementById('guideIos').textContent = t.guideIos;
+            document.getElementById('guideDesktop').textContent = t.guideDesktop;
         }
 
         function updateLangButtons() {
@@ -1460,7 +1460,6 @@
                         .replace('{total}', formatNumber(totalFiles-2));
                 }
                 setDownloadedUI();
-                // پیام موفقیت جدید
                 await showDialogAlert(translations[currentLang].downloadSuccessMsg, translations[currentLang].confirmDownloadTitle);
                 updatePages();
             } catch (err) {
