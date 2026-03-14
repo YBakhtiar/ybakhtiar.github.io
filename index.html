@@ -778,9 +778,82 @@
         .dl-option .dl-main svg {
             width: 24px;
             height: 24px;
-            fill: var(--accent); /* آیکون سفید/طلایی */
+            fill: var(--accent);
         }
         .dl-option .dl-sub { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+
+        /* بخش نصب اپلیکیشن */
+        .install-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-light);
+        }
+        .install-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+        .install-btn {
+            width: 100%;
+            padding: 16px;
+            margin: 8px 0;
+            border-radius: 20px;
+            border: 1px solid var(--accent);
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+.install-btn {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+    /* سایر خصوصیات */
+}
+.install-btn svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+        .install-btn:hover {
+            filter: brightness(1.1);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        .install-btn svg { width: 20px; height: 20px; fill: currentColor; }
+        .install-instructions {
+            background: var(--bg-tertiary);
+            border-radius: 16px;
+            padding: 16px;
+            margin-top: 12px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        .install-instructions p {
+            display: flex;
+            gap: 8px;
+            margin: 8px 0;
+        }
+        .install-instructions svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
 
         .progress-pill {
             position: fixed;
@@ -819,7 +892,7 @@
             height: 96vh;
             width: 100%;
             padding: 0 56px;
-            transition: none; /* حذف ترانزیشن */
+            transition: none;
         }
 
         .page-wrapper {
@@ -852,7 +925,7 @@
             border-radius: 16px;
             background-color: white;
             filter: var(--image-filter);
-            transition: filter 0.4s ease; /* فقط فیلتر شب */
+            transition: filter 0.4s ease;
             user-select: none;
             -webkit-user-drag: none;
         }
@@ -882,15 +955,13 @@
         .nav-right { right: 0; --grad-dir: left; }
         .nav-left { left: 0; --grad-dir: right; }
 
-        /* صفحه‌شمار حذف شد */
-
         @media (max-width: 768px) {
             .quran-container { padding: 8px; gap: 0; }
             .page-wrapper { max-width: 100%; width: 100%; height: auto; border-radius: 12px; }
             .nav-btn { display: none !important; }
             .btn-fullscreen { display: none !important; }
             .float-btn { width: 38px; height: 38px; }
-            .float-btn svg { width: 16px; height: 16px; } /* کوچک‌تر برای موبایل */
+            .float-btn svg { width: 16px; height: 16px; }
             .juz-grid { grid-template-columns: repeat(2, 1fr); }
             .surah-grid { grid-template-columns: repeat(2, 1fr); }
         }
@@ -942,7 +1013,7 @@
         </div>
     </div>
 
-    <!-- مودال تنظیمات (با استایل جدید و آیکون‌های مناسب) -->
+    <!-- مودال تنظیمات -->
     <div class="overlay settings-overlay" id="settingsOverlay">
         <div class="overlay-backdrop"></div>
         <div class="modal-card">
@@ -951,7 +1022,6 @@
                 <span id="settingsTitle">تنظیمات</span>
             </div>
 
-            <!-- آیتم تم اصلی با آیکون پالت -->
             <div class="setting-item">
                 <span class="setting-label">
                     <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v2h-2zm0 4h2v6h-2z"/></svg>
@@ -969,7 +1039,6 @@
                 </span>
             </div>
 
-            <!-- آیتم زبان با آیکون کره -->
             <div class="setting-item">
                 <span class="setting-label">
                     <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
@@ -987,7 +1056,6 @@
                 </span>
             </div>
 
-            <!-- آیتم حالت روز/شب با آیکون خورشید/ماه -->
             <div class="setting-item">
                 <span class="setting-label">
                     <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7z"/></svg>
@@ -998,7 +1066,6 @@
                 </span>
             </div>
 
-            <!-- آیتم پس‌زمینه تیره/روشن با آیکون نمایشگر -->
             <div class="setting-item">
                 <span class="setting-label">
                     <svg viewBox="0 0 24 24"><path d="M20 3H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4v2h8v-2h4c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H4V5h16v12z"/></svg>
@@ -1009,7 +1076,6 @@
                 </span>
             </div>
 
-            <!-- آیتم مدیریت حافظه (قابل کلیک برای باز کردن گزینه حذف) -->
             <div class="setting-item storage-toggle" id="storageToggle">
                 <span class="setting-label">
                     <svg viewBox="0 0 24 24"><path d="M20 8h-2.81c-.45-.78-1.07-1.45-1.82-1.96L17 4.41 15.59 3l-2.17 2.17C12.96 5.06 12.49 5 12 5s-.96.06-1.41.17L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-6 8h-4v-2h4v2zm0-4h-4v-2h4v2z"/></svg>
@@ -1019,7 +1085,6 @@
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="var(--text-muted)"><path d="M7 10l5 5 5-5H7z"/></svg>
                 </span>
             </div>
-            <!-- گزینه حذف که به صورت پیش‌فرض پنهان است -->
             <div id="deleteOptionContainer" style="display: none; margin-top: 10px;">
                 <div class="delete-option" id="deleteOfflineBtn">
                     <svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
@@ -1031,7 +1096,7 @@
         </div>
     </div>
 
-    <!-- مودال دانلود -->
+    <!-- مودال دانلود + نصب PWA -->
     <div class="overlay download-overlay" id="downloadOverlay">
         <div class="overlay-backdrop"></div>
         <div class="modal-card">
@@ -1054,6 +1119,33 @@
                 </div>
                 <div class="dl-sub" id="hqSub">مناسب کامپیوتر و صفحات بزرگ</div>
             </button>
+
+            <!-- بخش نصب اپلیکیشن -->
+            <div class="install-section" id="installSection">
+                <div class="install-title">
+                    <svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+                    <span id="installTitle">نصب روی دستگاه</span>
+                </div>
+                <button class="install-btn" id="installPwaBtn" style="display: none;">
+                    <svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+                    <span id="installBtnText">نصب اپلیکیشن</span>
+                </button>
+                <div class="install-instructions" id="installInstructions">
+                    <p>
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        <span id="installInstr1"><strong>اندروید و کروم:</strong> دکمه نصب یا "Install App".</span>
+                    </p>
+                    <p>
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        <span id="installInstr2"><strong>آیفون/آیپد:</strong> "Add to Home Screen".</span>
+                    </p>
+                    <p>
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        <span id="installInstr3"><strong>دسکتاپ:</strong> آیکون نصب در نوار آدرس.</span>
+                    </p>
+                </div>
+            </div>
+
             <button class="close-btn" id="downloadClose"><span id="cancelText">لغو</span></button>
         </div>
     </div>
@@ -1092,8 +1184,6 @@
         </button>
     </div>
 
-    <!-- صفحه‌شمار به طور کلی حذف شد -->
-
     <script>
         // ================== CONST & STATE ==================
         const totalFiles = 612; // آخرین فایل Quran612.jpg = صفحه 610
@@ -1101,7 +1191,10 @@
         let currentFile = 3; // پیش‌فرض فایل 3 (صفحه 1 = فاتحه)
         let isDownloaded = false;
         let objectUrls = { right: null, left: null };
-        // indicatorTimer حذف شد
+
+        // PWA
+        let deferredPrompt = null;
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
 
         // zoom & pan
         let currentScale = 1;
@@ -1112,17 +1205,18 @@
         let lastTapTime = 0;
         let hasMoved = false;
 
-        // PWA
-        let deferredPrompt = null;
-        const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('sw.js').catch(err => console.log('SW reg error:', err));
             });
         }
+
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
+            if (!isStandalone) {
+                document.getElementById('installPwaBtn').style.display = 'flex';
+            }
         });
 
         // ================== ترجمه (فقط فارسی و عربی) ==================
@@ -1171,6 +1265,11 @@
                 deleteSuccess: 'فایل‌های آفلاین حذف شدند.',
                 downloadError: 'خطا در دانلود!',
                 deleteError: 'خطا در حذف!',
+                installTitle: 'نصب روی دستگاه',
+                installBtn: 'نصب اپلیکیشن',
+                installInstr1: '<strong>اندروید و کروم:</strong> دکمه نصب یا "Install App".',
+                installInstr2: '<strong>آیفون/آیپد:</strong> "Add to Home Screen".',
+                installInstr3: '<strong>دسکتاپ:</strong> آیکون نصب در نوار آدرس.',
             },
             ar: {
                 splashSubtitle: 'مرحباً بكم في تطبيق القرآن الكريم',
@@ -1216,13 +1315,17 @@
                 deleteSuccess: 'تم حذف الملفات غير المتصلة.',
                 downloadError: 'خطأ في التحميل!',
                 deleteError: 'خطأ في الحذف!',
+                installTitle: 'تثبيت على الجهاز',
+                installBtn: 'تثبيت التطبيق',
+                installInstr1: '<strong>أندرويد وكروم:</strong> زر التثبيت أو "Install App".',
+                installInstr2: '<strong>آيفون/آيباد:</strong> "Add to Home Screen".',
+                installInstr3: '<strong>سطح المكتب:</strong> أيقونة التثبيت في شريط العنوان.',
             }
         };
 
         let currentLang = localStorage.getItem('quran-language') || 'fa';
         if (!['fa', 'ar'].includes(currentLang)) currentLang = 'fa';
 
-        // توابع فرمت اعداد بر اساس زبان
         function formatNumber(num) {
             if (currentLang === 'fa') {
                 return num.toString().replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
@@ -1265,6 +1368,12 @@
             document.getElementById('cancelText').textContent = t.cancel;
             document.getElementById('tabJuzBtn').textContent = t.tabJuz;
             document.getElementById('tabSurahBtn').textContent = t.tabSurah;
+            // نصب
+            document.getElementById('installTitle').textContent = t.installTitle;
+            document.getElementById('installBtnText').textContent = t.installBtn;
+            document.getElementById('installInstr1').innerHTML = t.installInstr1;
+            document.getElementById('installInstr2').innerHTML = t.installInstr2;
+            document.getElementById('installInstr3').innerHTML = t.installInstr3;
         }
 
         function updateLangButtons() {
@@ -1422,10 +1531,8 @@
 
         // ================== توابع کمکی ==================
         function getPageFromFile(fileNumber) {
-            return fileNumber - 2; // Quran003.jpg = صفحه 1
+            return fileNumber - 2;
         }
-
-        // تابع showPageIndicator به طور کلی حذف شد
 
         // ================== مدیریت صفحات و کش ==================
         async function loadPageImage(imgId, fileNumber, side) {
@@ -1500,7 +1607,6 @@
             if (currentFile + step <= totalFiles) currentFile += step;
             else if (currentFile < totalFiles) currentFile++;
             else return;
-            // بدون افکت opacity
             updatePages();
         }
         function prevPage() {
@@ -1530,7 +1636,7 @@
                 const cache = await caches.open('quran-cache-v1');
                 let downloaded = 0;
                 const batch = 10;
-                for (let i = 3; i <= totalFiles; i += batch) { // از فایل 3 شروع کن
+                for (let i = 3; i <= totalFiles; i += batch) {
                     const promises = [];
                     for (let j = 0; j < batch && i + j <= totalFiles; j++) {
                         let fileNum = i + j;
@@ -1609,9 +1715,9 @@
             grid.innerHTML = '';
             for (let i = 1; i <= 30; i++) {
                 let startFile;
-                if (i === 1) startFile = 3;          // جزء 1 = صفحه 1 = فایل 3
-                else if (i === 30) startFile = 588;   // جزء 30 = صفحه 586 = فایل 588
-                else startFile = 4 + ((i - 1) * 20);  // جزء 2 = 24, جزء 3 = 44, ...
+                if (i === 1) startFile = 3;
+                else if (i === 30) startFile = 588;
+                else startFile = 4 + ((i - 1) * 20);
                 const btn = document.createElement('button');
                 btn.className = 'juz-item';
                 btn.textContent = translations[currentLang].juzPrefix + formatNumber(i);
@@ -1626,15 +1732,11 @@
             }
         }
 
-        // ================== داده‌های سوره‌ها بر اساس جدول جدید IndoPak (۶۱۰ صفحه) ==================
-        // صفحه‌ها 1 تا 610. فایل مربوطه = صفحه + 2
+        // ================== داده‌های سوره‌ها ==================
         const surahPages = [
             1,2,50,77,106,128,151,177,187,208,221,235,249,255,262,267,282,293,305,312,322,331,342,350,359,366,376,385,396,404,411,415,418,428,434,440,445,452,458,467,477,483,489,495,498,502,506,511,515,518,520,523,526,528,531,534,537,542,545,549,551,553,554,556,558,560,562,564,567,569,571,573,576,578,580,582,584,586,587,589,590,591,592,594,595,596,597,597,598,600,600,601,602,602,603,603,604,604,605,605,606,606,607,607,607,608,608,608,609,609,609,610,610,610
         ];
-
-        // تبدیل صفحه به شماره فایل
         const surahFiles = surahPages.map(p => p + 2);
-
         const surahNamesAr = [
             "الفاتحة","البقرة","آل عمران","النساء","المائدة","الأنعام","الأعراف","الأنفال","التوبة","يونس","هود","يوسف","الرعد","إبراهيم","الحجر","النحل","الإسراء","الكهف","مريم","طه","الأنبياء","الحج","المؤمنون","النور","الفرقان","الشعراء","النمل","القصص","العنكبوت","الروم","لقمان","السجدة","الأحزاب","سبأ","فاطر","يس","الصافات","ص","الزمر","غافر","فصلت","الشورى","الزخرف","الدخان","الجاثية","الأحقاف","محمد","الفتح","الحجرات","ق","الذاريات","الطور","النجم","القمر","الرحمن","الواقعة","الحديد","المجادلة","الحشر","الممتحنة","الصف","الجمعة","المنافقون","التغابن","الطلاق","التحريم","الملك","القلم","الحاقة","المعارج","نوح","الجن","المزمل","المدثر","القيامة","الإنسان","المرسلات","النبأ","النازعات","عبس","التكوير","الانفطار","المطففين","الانشقاق","البروج","الطارق","الأعلى","الغاشية","الفجر","البلد","الشمس","الليل","الضحى","الشرح","التين","العلق","القدر","البينة","الزلزلة","العاديات","القارعة","التكاثر","العصر","الهمزة","الفيل","قريش","الماعون","الكوثر","الكافرون","النصر","المسد","الإخلاص","الفلق","الناس"
         ];
@@ -1690,7 +1792,17 @@
         document.getElementById('dlHQ').addEventListener('click', () => startDownload('hq'));
         document.getElementById('downloadClose').addEventListener('click', () => closeOverlay('downloadOverlay'));
 
-        // مدیریت حافظه - کلیک روی آیتم باز کردن/بستن گزینه حذف
+        // نصب PWA
+        document.getElementById('installPwaBtn').addEventListener('click', async () => {
+            if (!deferredPrompt) return;
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            console.log('User response to install prompt:', outcome);
+            deferredPrompt = null;
+            document.getElementById('installPwaBtn').style.display = 'none';
+        });
+
+        // مدیریت حافظه
         const storageToggle = document.getElementById('storageToggle');
         const deleteContainer = document.getElementById('deleteOptionContainer');
         storageToggle.addEventListener('click', () => {
