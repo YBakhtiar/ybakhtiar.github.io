@@ -858,7 +858,8 @@
                 </span>
             </div>
 
-            <div class="setting-item storage-toggle" id="storageToggle">
+            <!-- آیتم مدیریت حافظه که به صورت شرطی نمایش داده می‌شود -->
+            <div class="setting-item storage-toggle" id="storageToggle" style="display: none;">
                 <span class="setting-label">
                     <svg viewBox="0 0 24 24"><path d="M20 8h-2.81c-.45-.78-1.07-1.45-1.82-1.96L17 4.41 15.59 3l-2.17 2.17C12.96 5.06 12.49 5 12 5s-.96.06-1.41.17L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-6 8h-4v-2h4v2zm0-4h-4v-2h4v2z"/></svg>
                     <span id="storageLabel">إدارة التخزين</span>
@@ -890,14 +891,14 @@
             <button class="dl-option" id="dlStandard">
                 <div class="dl-main">
                     <svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
-                    <span id="standardText">قياسي (۷۰ م.ب)</span>
+                    <span id="standardText">قياسي (۷۰ ميغابايت)</span>  <!-- ترجمه شده -->
                 </div>
                 <div class="dl-sub" id="standardSub">مناسب للجوال والتابلت</div>
             </button>
             <button class="dl-option" id="dlHQ">
                 <div class="dl-main">
                     <svg viewBox="0 0 24 24"><path d="M20 18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>
-                    <span id="hqText">جودة عالية (۵۰۰ م.ب)</span>
+                    <span id="hqText">جودة عالية (۵۰۰ ميغابايت)</span>  <!-- ترجمه شده -->
                 </div>
                 <div class="dl-sub" id="hqSub">مناسب للكمبيوتر والشاشات الكبيرة</div>
             </button>
@@ -1063,9 +1064,9 @@
                 closeBtn: 'إغلاق',
                 downloadTitle: 'اختيار الجودة',
                 downloadDesc: 'اختر الجودة المناسبة:',
-                standard: 'قياسي (۷۰ م.ب)',
+                standard: 'قياسي (۷۰ ميغابايت)',  // ترجمه "مگابایت" به "ميغابايت"
                 standardSub: 'مناسب للجوال والتابلت',
-                hq: 'جودة عالية (۵۰۰ م.ب)',
+                hq: 'جودة عالية (۵۰۰ ميغابايت)',  // ترجمه "مگابایت" به "ميغابايت"
                 hqSub: 'مناسب للكمبيوتر والشاشات الكبيرة',
                 cancel: 'إلغاء',
                 ok: 'موافق',
@@ -1394,10 +1395,21 @@
             updatePages();
         }
 
+        // ================== تابع نمایش/مخفی کردن آیتم مدیریت حافظه ==================
+        function updateStorageVisibility() {
+            const storageToggle = document.getElementById('storageToggle');
+            if (isDownloaded) {
+                storageToggle.style.display = 'flex'; // یا 'flex' چون setting-item از flex استفاده می‌کند
+            } else {
+                storageToggle.style.display = 'none';
+                document.getElementById('deleteOptionContainer').style.display = 'none'; // اطمینان از مخفی بودن
+            }
+        }
+
         // ================== دانلود و کش ==================
         async function startDownload(quality) {
             closeOverlay('downloadOverlay');
-            let sizeText = quality === 'hq' ? '۵۰۰ مگابایت' : '۷۰ مگابایت';
+            let sizeText = quality === 'hq' ? (currentLang === 'fa' ? '۵۰۰ مگابایت' : '٥٠٠ ميغابايت') : (currentLang === 'fa' ? '۷۰ مگابایت' : '٧٠ ميغابايت');
             let msg = translations[currentLang].confirmDownloadMsg.replace('{size}', sizeText);
             let confirmed = await showDialogConfirm(msg, translations[currentLang].confirmDownloadTitle);
             if (!confirmed) return;
@@ -1449,6 +1461,7 @@
             if (btn) { btn.style.display = 'none'; btn.classList.add('done'); }
             if (prog) prog.style.display = 'none';
             isDownloaded = true;
+            updateStorageVisibility(); // نمایش گزینه مدیریت حافظه
         }
 
         function resetDownloadedUI() {
@@ -1460,6 +1473,7 @@
                 btn.classList.remove('done');
             }
             isDownloaded = false;
+            updateStorageVisibility(); // مخفی کردن گزینه مدیریت حافظه
             document.getElementById('deleteOptionContainer').style.display = 'none';
         }
 
@@ -1583,19 +1597,15 @@
             document.getElementById('installPwaBtn').style.display = 'none';
         });
 
-        // مدیریت حافظه: نمایش دکمه حذف فقط در صورت وجود فایل‌های آفلاین
+        // مدیریت حافظه: کلیک روی storageToggle برای نمایش/مخفی کردن دکمه حذف
         const storageToggle = document.getElementById('storageToggle');
         const deleteContainer = document.getElementById('deleteOptionContainer');
         storageToggle.addEventListener('click', () => {
-            if (isDownloaded) {
-                if (deleteContainer.style.display === 'none' || deleteContainer.style.display === '') {
-                    deleteContainer.style.display = 'block';
-                } else {
-                    deleteContainer.style.display = 'none';
-                }
+            // فقط زمانی که storage قابل مشاهده است (isDownloaded true) اجرا می‌شود
+            if (deleteContainer.style.display === 'none' || deleteContainer.style.display === '') {
+                deleteContainer.style.display = 'block';
             } else {
                 deleteContainer.style.display = 'none';
-                // (اختیاری) می‌توانید پیغامی نمایش دهید که فایلی موجود نیست
             }
         });
         document.getElementById('deleteOfflineBtn').addEventListener('click', deleteOfflineFiles);
@@ -1696,7 +1706,14 @@
             if (saved && !isNaN(parseInt(saved))) currentFile = parseInt(saved);
             updatePages();
             caches.open('quran-cache-v1').then(cache => {
-                cache.match('images/Quran003.jpg').then(res => { if (res) setDownloadedUI(); });
+                cache.match('images/Quran003.jpg').then(res => {
+                    if (res) {
+                        setDownloadedUI();
+                    } else {
+                        // اگر فایلی نبود، اطمینان از مخفی بودن storage
+                        updateStorageVisibility();
+                    }
+                });
             });
         })();
     </script>
