@@ -6,7 +6,7 @@
     <title>القرآن الكريم</title>
     <!-- PWA & manifest -->
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#f0f7ff" id="theme-color-meta">
+    <meta name="theme-color" content="#0f0c29" id="theme-color-meta">
     <link rel="apple-touch-icon" href="./icon-192.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -406,6 +406,24 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border: 2px solid rgba(255, 255, 255, 0.1);
             background-clip: content-box;
+        }
+
+        /* ==================== انیمیشن کلیک (لمس) برای همه تم‌ها ==================== */
+        .float-btn:active,
+        .splash-btn:active,
+        .juz-item:active,
+        .surah-item:active,
+        .tab-btn:active,
+        .theme-selector-btn:active,
+        .lang-btn:active,
+        .settings-btn-row:active,
+        .delete-option:active,
+        .close-btn:active,
+        .install-btn:active,
+        .nav-btn:active,
+        .dl-option:active {
+            transform: scale(0.95);
+            transition: transform 0.1s ease;
         }
 
         /* استایل‌های عمومی (بدون تغییر) */
@@ -1030,7 +1048,7 @@
         }
     </style>
 </head>
-<body class="theme-abi">
+<body class="theme-modern">
     <!-- اسپلش مودال -->
     <div class="overlay splash-overlay active" id="splashOverlay">
         <div class="overlay-backdrop"></div>
@@ -1084,12 +1102,12 @@
             <div class="setting-item">
                 <span class="setting-label">
                     <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v2h-2zm0 4h2v6h-2z"/></svg>
-                    <span id="themeLabel">السمة الرئيسية</span>
+                    <span id="themeLabel">السمة</span>
                 </span>
                 <span class="setting-value">
                     <button class="theme-selector-btn" id="themeZardBtn"><span>الأصفر</span></button>
-                    <button class="theme-selector-btn active" id="themeAbiBtn"><span>الأزرق</span></button>
-                    <button class="theme-selector-btn" id="themeModernBtn"><span>الحديثة</span></button>
+                    <button class="theme-selector-btn" id="themeAbiBtn"><span>الأزرق</span></button>
+                    <button class="theme-selector-btn active" id="themeModernBtn"><span>الحديثة</span></button>
                 </span>
             </div>
 
@@ -1278,7 +1296,7 @@
                 splashJuz: 'فهرست اجزاء و سوره‌ها',
                 splashLink: 'پیشنهادات و نظریات',
                 settingsTitle: 'تنظیمات',
-                themeLabel: 'تم اصلی',
+                themeLabel: 'تم',
                 languageLabel: 'زبان',
                 appearanceLabel: 'ظاهر',
                 backgroundLabel: 'پس‌زمینه',
@@ -1332,7 +1350,7 @@
                 splashJuz: 'قائمة الأجزاء والسور',
                 splashLink: 'اقتراحات وملاحظات',
                 settingsTitle: 'الإعدادات',
-                themeLabel: 'السمة الرئيسية',
+                themeLabel: 'السمة',
                 languageLabel: 'اللغة',
                 appearanceLabel: 'المظهر',
                 backgroundLabel: 'الخلفية',
@@ -1505,7 +1523,7 @@
         }
 
         // ================== تم اصلی ==================
-        let currentThemeStyle = localStorage.getItem('quran-theme-style') || 'abi';
+        let currentThemeStyle = localStorage.getItem('quran-theme-style') || 'modern';
         let currentThemeMode = localStorage.getItem('quran-theme-mode') || 'day';
 
         function applyTheme() {
@@ -1547,7 +1565,7 @@
 
         function toggleThemeMode() {
             if (currentThemeStyle === 'modern') {
-                // در تم مدرن، حالت شب/روز معنی ندارد، می‌توانیم نادیده بگیریم یا پیام بدهیم
+                // در تم مدرن، حالت شب/روز معنی ندارد
                 return;
             }
             if (currentThemeMode === 'day') setThemeMode('night');
