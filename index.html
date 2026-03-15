@@ -518,21 +518,23 @@
         .setting-label svg { width: 1.3rem; height: 1.3rem; fill: var(--accent); }
         .setting-value { display: flex; gap: 0.5rem; }
 
+        /* تنظیم دکمه‌های تم به صورت یکنواخت و فشرده */
         .theme-selector-btn, .lang-btn {
-            padding: 6px 12px;
+            padding: 6px 8px;
             border-radius: 20px;
             border: 1px solid var(--border-light);
             background: var(--card-bg);
             color: var(--text-primary);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             cursor: pointer;
             transition: all 0.2s;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             font-family: 'Vazirmatn', sans-serif;
-            min-width: 70px;
+            min-width: 60px;
             white-space: nowrap;
+            flex: 1 1 0; /* پخش مساوی فضا */
         }
         .theme-selector-btn.active, .lang-btn.active {
             background: var(--accent-soft);
@@ -976,7 +978,7 @@
             position: absolute;
             top: 0;
             height: 100%;
-            width: 40px;               /* افزایش عرض برای دسترسی آسان‌تر */
+            width: 40px;               /* عرض مناسب برای دسترسی آسان */
             background: transparent;
             color: var(--text-muted);
             cursor: pointer;
@@ -1567,6 +1569,7 @@
             const btn = document.getElementById('darkUiToggle');
             if (!btn) return;
             const t = translations[currentLang];
+            // در تم مدرن گزینه پس زمینه نمایش داده نشود
             if (currentThemeStyle === 'modern') {
                 btn.style.display = 'none';
                 return;
