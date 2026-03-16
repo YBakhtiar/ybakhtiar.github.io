@@ -69,27 +69,6 @@
             --scrollbar-track: rgba(79, 158, 255, 0.08);
         }
 
-        /* تم آبی - dark-ui */
-        body.theme-abi.dark-ui:not(.night-mode) {
-            --bg-primary: #1a2538;
-            --bg-secondary: #2c3a50;
-            --bg-tertiary: #3a4a64;
-            --bg-elevated: rgba(44, 58, 80, 0.92);
-            --text-primary: #eef2f8;
-            --text-secondary: #cbd5e8;
-            --text-muted: #9aafcc;
-            --border-light: rgba(255, 255, 255, 0.1);
-            --border-hover: rgba(255, 255, 255, 0.2);
-            --border-decorative: rgba(79, 158, 255, 0.2);
-            --accent: #4f9eff;
-            --accent-hover: #7bb3ff;
-            --accent-soft: rgba(79, 158, 255, 0.2);
-            --modal-bg: #2c3a50;
-            --card-bg: rgba(44, 58, 80, 0.88);
-            --scrollbar-thumb: #4f9eff;
-            --scrollbar-track: rgba(79, 158, 255, 0.08);
-        }
-
         /* تم زرد */
         body.theme-zard {
             --bg-primary: #FDF8F0;
@@ -136,33 +115,12 @@
             --scrollbar-track: rgba(230, 180, 34, 0.08);
         }
 
-        /* تم زرد - dark-ui */
-        body.theme-zard.dark-ui:not(.night-mode) {
-            --bg-primary: #2a231c;
-            --bg-secondary: #3a3128;
-            --bg-tertiary: #4a3f34;
-            --bg-elevated: rgba(58, 49, 40, 0.92);
-            --text-primary: #f0e8e0;
-            --text-secondary: #d0c0b0;
-            --text-muted: #a09080;
-            --border-light: rgba(255, 255, 255, 0.1);
-            --border-hover: rgba(255, 255, 255, 0.2);
-            --border-decorative: rgba(200, 169, 81, 0.2);
-            --accent: #e6b422;
-            --accent-hover: #ffcc33;
-            --accent-soft: rgba(230, 180, 34, 0.2);
-            --modal-bg: #3a3128;
-            --card-bg: rgba(58, 49, 40, 0.88);
-            --scrollbar-thumb: #e6b422;
-            --scrollbar-track: rgba(230, 180, 34, 0.08);
-        }
-
         /* فیلتر شب ثابت */
         body.night-mode {
             --image-filter: invert(0.9) brightness(1.1) contrast(1.05) hue-rotate(180deg);
         }
 
-        /* ==================== تم مدرن (جدید) ==================== */
+        /* ==================== تم مدرن ==================== */
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -207,7 +165,7 @@
             animation: gradientBG 15s ease infinite;
         }
 
-        /* تم مدرن - شب (تیره‌تر و شبانه) */
+        /* تم مدرن - شب */
         body.theme-modern.night-mode {
             --bg-primary: #050510;
             --bg-secondary: #1a1030;
@@ -978,7 +936,7 @@
             position: absolute;
             top: 0;
             height: 100%;
-            width: 40px;               /* عرض مناسب برای دسترسی آسان */
+            width: 40px;
             background: transparent;
             color: var(--text-muted);
             cursor: pointer;
@@ -987,7 +945,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            opacity: 0.1;               /* کمی قابل مشاهده بودن دائمی */
+            opacity: 0.1;
             transition: opacity 0.3s ease, color 0.3s ease, background 0.3s ease;
             font-size: 2rem;
         }
@@ -1067,7 +1025,7 @@
         </div>
     </div>
 
-    <!-- مودال تنظیمات -->
+    <!-- مودال تنظیمات (بدون گزینه پس‌زمینه) -->
     <div class="overlay settings-overlay" id="settingsOverlay">
         <div class="overlay-backdrop"></div>
         <div class="modal-card">
@@ -1106,16 +1064,6 @@
                 </span>
                 <span class="setting-value">
                     <button class="settings-btn-row accent" id="themeToggle"></button>
-                </span>
-            </div>
-
-            <div class="setting-item">
-                <span class="setting-label">
-                    <svg viewBox="0 0 24 24"><path d="M20 3H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4v2h8v-2h4c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H4V5h16v12z"/></svg>
-                    <span id="backgroundLabelSpan">الخلفية</span>
-                </span>
-                <span class="setting-value">
-                    <button class="settings-btn-row" id="darkUiToggle"></button>
                 </span>
             </div>
 
@@ -1276,7 +1224,6 @@
                 themeLabel: 'تم',
                 languageLabel: 'زبان',
                 appearanceLabel: 'ظاهر',
-                backgroundLabel: 'پس‌زمینه',
                 storageLabel: 'مدیریت حافظه',
                 deleteBtn: 'حذف فایل‌های آفلاین',
                 closeBtn: 'بستن',
@@ -1307,8 +1254,6 @@
                 themeModern: 'مدرن',
                 dayMode: 'حالت روز',
                 nightMode: 'حالت شب',
-                lightBg: 'پس‌زمینه روشن',
-                darkBg: 'پس‌زمینه تیره',
                 deleteSuccess: 'فایل‌های آفلاین حذف شدند.',
                 downloadError: 'خطا در دانلود!',
                 deleteError: 'خطا در حذف!',
@@ -1330,7 +1275,6 @@
                 themeLabel: 'السمة',
                 languageLabel: 'اللغة',
                 appearanceLabel: 'المظهر',
-                backgroundLabel: 'الخلفية',
                 storageLabel: 'إدارة التخزين',
                 deleteBtn: 'حذف الملفات المحفوظة',
                 closeBtn: 'إغلاق',
@@ -1361,8 +1305,6 @@
                 themeModern: 'الحديثة',
                 dayMode: 'وضع النهار',
                 nightMode: 'وضع الليل',
-                lightBg: 'خلفية فاتحة',
-                darkBg: 'خلفية داكنة',
                 deleteSuccess: 'تم حذف الملفات غير المتصلة.',
                 downloadError: 'خطأ في التحميل!',
                 deleteError: 'خطأ في الحذف!',
@@ -1396,7 +1338,6 @@
             rebuildSurahGrid();
             updateTitles();
             updateThemeToggleButton();
-            updateDarkUIToggleButton();
         }
 
         function applyTranslations() {
@@ -1409,7 +1350,6 @@
             document.getElementById('themeLabel').textContent = t.themeLabel;
             document.getElementById('languageLabel').textContent = t.languageLabel;
             document.getElementById('appearanceLabel').textContent = t.appearanceLabel;
-            document.getElementById('backgroundLabelSpan').textContent = t.backgroundLabel;
             document.getElementById('storageLabel').textContent = t.storageLabel;
             document.getElementById('deleteBtnText').textContent = t.deleteBtn;
             document.getElementById('closeBtnText').textContent = t.closeBtn;
@@ -1499,33 +1439,25 @@
             });
         }
 
-        // ================== تم اصلی ==================
+        // ================== تم اصلی (فقط روز/شب) ==================
         let currentThemeStyle = localStorage.getItem('quran-theme-style') || 'modern';
         let currentThemeMode = localStorage.getItem('quran-theme-mode') || 'day';
 
         function applyTheme() {
-            document.body.classList.remove('theme-zard', 'theme-abi', 'theme-modern', 'night-mode', 'dark-ui');
+            document.body.classList.remove('theme-zard', 'theme-abi', 'theme-modern', 'night-mode');
             document.body.classList.add(`theme-${currentThemeStyle}`);
             if (currentThemeMode === 'night') {
                 document.body.classList.add('night-mode');
-            } else if (currentThemeMode === 'dark-ui') {
-                document.body.classList.add('dark-ui');
             }
             const meta = document.getElementById('theme-color-meta');
             if (currentThemeStyle === 'abi') {
-                if (currentThemeMode === 'night') meta.setAttribute('content', '#0b1424');
-                else if (currentThemeMode === 'dark-ui') meta.setAttribute('content', '#1a2538');
-                else meta.setAttribute('content', '#f0f7ff');
+                meta.setAttribute('content', currentThemeMode === 'night' ? '#0b1424' : '#f0f7ff');
             } else if (currentThemeStyle === 'zard') {
-                if (currentThemeMode === 'night') meta.setAttribute('content', '#1a150f');
-                else if (currentThemeMode === 'dark-ui') meta.setAttribute('content', '#2a231c');
-                else meta.setAttribute('content', '#FDF8F0');
+                meta.setAttribute('content', currentThemeMode === 'night' ? '#1a150f' : '#FDF8F0');
             } else if (currentThemeStyle === 'modern') {
-                if (currentThemeMode === 'night') meta.setAttribute('content', '#050510');
-                else meta.setAttribute('content', '#0f0c29');
+                meta.setAttribute('content', currentThemeMode === 'night' ? '#050510' : '#0f0c29');
             }
             updateThemeToggleButton();
-            updateDarkUIToggleButton();
             updateThemeStyleButtons();
         }
 
@@ -1542,15 +1474,11 @@
         }
 
         function toggleThemeMode() {
-            if (currentThemeMode === 'day') setThemeMode('night');
-            else if (currentThemeMode === 'night') setThemeMode('day');
-            else setThemeMode('day');
-        }
-
-        function toggleDarkUI() {
-            if (currentThemeMode === 'night') return;
-            if (currentThemeMode === 'dark-ui') setThemeMode('day');
-            else setThemeMode('dark-ui');
+            if (currentThemeMode === 'day') {
+                setThemeMode('night');
+            } else {
+                setThemeMode('day');
+            }
         }
 
         function updateThemeToggleButton() {
@@ -1562,29 +1490,6 @@
                 btn.innerHTML = `<svg viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="5" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.78" y2="4.22"/></g></svg> ${t.dayMode}`;
             } else {
                 btn.innerHTML = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79"/></svg> ${t.nightMode}`;
-            }
-        }
-
-        function updateDarkUIToggleButton() {
-            const btn = document.getElementById('darkUiToggle');
-            if (!btn) return;
-            const t = translations[currentLang];
-            // در تم مدرن گزینه پس زمینه نمایش داده نشود
-            if (currentThemeStyle === 'modern') {
-                btn.style.display = 'none';
-                return;
-            }
-            if (currentThemeMode === 'night') {
-                btn.style.display = 'none';
-                return;
-            }
-            btn.style.display = 'flex';
-            if (currentThemeMode === 'dark-ui') {
-                btn.innerHTML = `<svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7z"/></svg> ${t.lightBg}`;
-                btn.classList.add('accent');
-            } else {
-                btn.innerHTML = `<svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7z"/></svg> ${t.darkBg}`;
-                btn.classList.remove('accent');
             }
         }
 
@@ -1857,7 +1762,6 @@
 
         // تنظیمات
         document.getElementById('themeToggle').addEventListener('click', toggleThemeMode);
-        document.getElementById('darkUiToggle').addEventListener('click', toggleDarkUI);
         document.getElementById('settingsClose').addEventListener('click', () => closeOverlay('settingsOverlay'));
         document.getElementById('themeZardBtn').addEventListener('click', () => setThemeStyle('zard'));
         document.getElementById('themeAbiBtn').addEventListener('click', () => setThemeStyle('abi'));
