@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>القرآن الكريم</title>
     <!-- PWA & manifest -->
-    <link rel="manifest" href="manifest.json?v=20250317">
+    <link rel="manifest" href="./manifest.json?v=20250316">
     <meta name="theme-color" content="#0f0c29" id="theme-color-meta">
     
     <!-- فاوآیکون‌های استاندارد -->
@@ -406,29 +406,11 @@
         .btn-download { bottom: 18px; right: 18px; }
         .btn-download.done { display: none; }
         .btn-fullscreen { bottom: 18px; left: 18px; }
-        /* دکمه چرخش */
-        .btn-rotate {
-            bottom: 18px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        @media (min-width: 769px) {
-            .btn-rotate {
-                display: none;
-            }
-        }
 
         @media (max-width: 768px) {
-            .quran-container { padding: 8px; gap: 0; }
-            .page-wrapper { max-width: 100%; width: 100%; height: auto; border-radius: 12px; }
-            .nav-btn { display: none !important; }
-            .btn-fullscreen { display: none !important; }
-            .float-btn { width: 38px; height: 38px; }
-            .float-btn svg { width: 16px; height: 16px; }
-            .juz-grid { grid-template-columns: repeat(2, 1fr); }
-            .surah-grid { grid-template-columns: repeat(2, 1fr); }
-            .btn-rotate {
-                display: flex;
+            .float-btn svg {
+                width: 16px;
+                height: 16px;
             }
         }
 
@@ -978,6 +960,17 @@
         .nav-btn svg { width: 28px; height: 28px; fill: currentColor; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); }
         .nav-right { right: 0; --grad-dir: left; background: linear-gradient(to left, rgba(0,0,0,0.1), transparent); }
         .nav-left { left: 0; --grad-dir: right; background: linear-gradient(to right, rgba(0,0,0,0.1), transparent); }
+
+        @media (max-width: 768px) {
+            .quran-container { padding: 8px; gap: 0; }
+            .page-wrapper { max-width: 100%; width: 100%; height: auto; border-radius: 12px; }
+            .nav-btn { display: none !important; }
+            .btn-fullscreen { display: none !important; }
+            .float-btn { width: 38px; height: 38px; }
+            .float-btn svg { width: 16px; height: 16px; }
+            .juz-grid { grid-template-columns: repeat(2, 1fr); }
+            .surah-grid { grid-template-columns: repeat(2, 1fr); }
+        }
     </style>
 </head>
 <body class="theme-modern">
@@ -1164,10 +1157,6 @@
     <button class="float-btn btn-fullscreen" id="btnFullscreen" title="تمام صفحه">
         <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
     </button>
-    <!-- دکمه چرخش دستی -->
-    <button class="float-btn btn-rotate" id="btnRotate" title="چرخش صفحه">
-        <svg viewBox="0 0 24 24"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
-    </button>
 
     <div class="progress-pill" id="progressPill">در حال دانلود...</div>
 
@@ -1196,7 +1185,6 @@
         let currentFile = 3;
         let isDownloaded = false;
         let objectUrls = { right: null, left: null };
-        let isLandscape = false; // وضعیت دستی چرخش
 
         // PWA
         let deferredPrompt = null;
@@ -1531,14 +1519,11 @@
             const rightW = document.getElementById('rightWrapper');
             const leftW = document.getElementById('leftWrapper');
 
-            // حالت موبایل: اگر landscape فعال باشد، دو صفحه نشان بده
-            if (isMobile && !isLandscape) {
-                // عمودی موبایل: یک صفحه
+            if (isMobile) {
                 loadPageImage('rightPage', currentFile, 'right');
                 leftW.style.display = 'none';
                 rightW.style.display = 'flex';
             } else {
-                // افقی (موبایل با landscape) یا دسکتاپ: دو صفحه
                 let rightFile = (currentFile % 2 !== 0) ? currentFile : currentFile - 1;
                 let leftFile = rightFile + 1;
                 loadPageImage('rightPage', rightFile, 'right');
@@ -1583,17 +1568,14 @@
         }
 
         function nextPage() {
-            let step = 1;
-            // اگر در حالت دو صفحه (چه دسکتاپ چه موبایل landscape)، گام 2
-            if (window.innerWidth > 768 || isLandscape) step = 2;
+            let step = window.innerWidth <= 768 ? 1 : 2;
             if (currentFile + step <= totalFiles) currentFile += step;
             else if (currentFile < totalFiles) currentFile++;
             else return;
             updatePages();
         }
         function prevPage() {
-            let step = 1;
-            if (window.innerWidth > 768 || isLandscape) step = 2;
+            let step = window.innerWidth <= 768 ? 1 : 2;
             if (currentFile - step >= 1) currentFile -= step;
             else if (currentFile > 1) currentFile--;
             else return;
@@ -1724,38 +1706,6 @@
             else if (document.exitFullscreen) document.exitFullscreen();
         }
 
-        // ================== دکمه چرخش دستی ==================
-        document.getElementById('btnRotate').addEventListener('click', async () => {
-            if (!screen.orientation || !screen.orientation.lock) {
-                alert('مرورگر شما از قفل چرخش پشتیبانی نمی‌کند');
-                return;
-            }
-            try {
-                if (isLandscape) {
-                    await screen.orientation.lock('portrait');
-                    isLandscape = false;
-                } else {
-                    await screen.orientation.lock('landscape');
-                    isLandscape = true;
-                }
-                updatePages(); // بلافاصله صفحه را به‌روز کن
-            } catch (err) {
-                console.log('Orientation lock failed:', err);
-            }
-        });
-
-        // به‌روزرسانی isLandscape بر اساس orientation فعلی (در صورت تغییر توسط سیستم)
-        if (screen.orientation) {
-            screen.orientation.addEventListener('change', () => {
-                if (screen.orientation.type.includes('landscape')) {
-                    isLandscape = true;
-                } else {
-                    isLandscape = false;
-                }
-                updatePages();
-            });
-        }
-
         // ================== دکمه برگشت سیستم ==================
         history.pushState(null, null, location.href); // حالت اولیه
         window.addEventListener('popstate', function(event) {
@@ -1790,7 +1740,7 @@
                 btn.textContent = translations[currentLang].juzPrefix + formatNumber(i);
                 btn.onclick = () => {
                     let target = startFile;
-                    if ((window.innerWidth > 768 || isLandscape) && target % 2 === 0) target--;
+                    if (window.innerWidth > 768 && target % 2 === 0) target--;
                     currentFile = target;
                     updatePages();
                     closeOverlay('juzOverlay');
@@ -1823,7 +1773,7 @@
                 btn.textContent = `${surahNumber}. ${name}`;
                 btn.onclick = () => {
                     let target = file;
-                    if ((window.innerWidth > 768 || isLandscape) && target % 2 === 0) target--;
+                    if (window.innerWidth > 768 && target % 2 === 0) target--;
                     currentFile = target;
                     updatePages();
                     closeOverlay('juzOverlay');
