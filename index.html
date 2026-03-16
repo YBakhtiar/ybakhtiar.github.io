@@ -283,16 +283,14 @@
         }
 
         body.theme-modern .theme-selector-btn,
-        body.theme-modern .lang-btn,
-        body.theme-modern .settings-btn-row {
+        body.theme-modern .lang-btn {
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
             color: white;
         }
 
         body.theme-modern .theme-selector-btn.active,
-        body.theme-modern .lang-btn.active,
-        body.theme-modern .settings-btn-row.accent {
+        body.theme-modern .lang-btn.active {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-color: rgba(255, 255, 255, 0.3);
             color: white;
@@ -483,29 +481,6 @@
         .theme-selector-btn.active, .lang-btn.active {
             background: var(--accent-soft);
             border-color: var(--accent);
-            color: var(--accent);
-        }
-
-        .settings-btn-row {
-            width: 100%;
-            padding: 6px 12px;
-            border-radius: 16px;
-            border: 1px solid var(--border-light);
-            background: var(--card-bg);
-            color: var(--text-primary);
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            font-family: 'Vazirmatn', sans-serif;
-            min-width: 100px;
-        }
-        .settings-btn-row.accent {
-            border-color: var(--accent);
-            background: var(--accent-soft);
             color: var(--accent);
         }
 
@@ -802,6 +777,72 @@
         .dl-option .dl-main svg { width: 24px; height: 24px; fill: var(--accent); }
         .dl-option .dl-sub { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
 
+        /* بخش راهنمای نصب */
+        .install-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-light);
+        }
+        .install-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 14px;
+        }
+        .install-title svg { width: 18px; height: 18px; fill: currentColor; }
+        .guide-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 12px;
+            text-align: justify;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .guide-item svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--accent);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .guide-intro {
+            text-align: justify;
+            background: var(--bg-tertiary);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 16px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            border: 1px solid var(--border-light);
+        }
+        .install-btn {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 20px;
+            border: 1px solid var(--accent);
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 16px 0 8px;
+        }
+        .install-btn svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
+        .install-btn:hover { filter: brightness(1.1); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
         .progress-pill {
             position: fixed;
             bottom: 72px;
@@ -961,7 +1002,7 @@
         </div>
     </div>
 
-    <!-- مودال تنظیمات (با سه تم اصلی) -->
+    <!-- مودال تنظیمات با دو دکمه روز/شب -->
     <div class="overlay settings-overlay" id="settingsOverlay">
         <div class="overlay-backdrop"></div>
         <div class="modal-card">
@@ -999,7 +1040,8 @@
                     <span id="appearanceLabel">ظاهر</span>
                 </span>
                 <span class="setting-value">
-                    <button class="settings-btn-row accent" id="themeToggle"></button>
+                    <button class="theme-selector-btn" id="themeDayBtn"><span>روز</span></button>
+                    <button class="theme-selector-btn" id="themeNightBtn"><span>شب</span></button>
                 </span>
             </div>
 
@@ -1024,15 +1066,43 @@
         </div>
     </div>
 
-    <!-- مودال دانلود -->
+    <!-- مودال دانلود با راهنمای نصب کامل -->
     <div class="overlay download-overlay" id="downloadOverlay">
         <div class="overlay-backdrop"></div>
         <div class="modal-card">
             <div class="modal-header">
                 <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-                <span id="downloadTitle">انتخاب کیفیت</span>
+                <span id="downloadTitle">راهنمای نصب و دانلود آفلاین</span>
             </div>
-            <p style="color:var(--text-muted);font-size:13px;margin-bottom:16px;" id="downloadDesc">کیفیت مناسب خود را انتخاب کنید:</p>
+
+            <div class="guide-intro" id="offlineGuideIntro"></div>
+
+            <div class="install-section" id="installSection">
+                <div class="install-title">
+                    <svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+                    <span id="installTitle">راهنمای نصب</span>
+                </div>
+                
+                <div class="guide-item">
+                    <svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+                    <span id="guideAndroid">اندروید: روی دکمه نصب اپلیکیشن کلیک نمایید یا از قسمت منوی مرورگر خود افزودن به صفحه اصلی را انتخاب کنید</span>
+                </div>
+                <div class="guide-item">
+                    <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83.76-1.75 1.32-2.86 1.32-1.11 0-1.47-.42-2.86-.42-1.39 0-1.9.42-2.86.42-1.11 0-2.03-.56-2.86-1.32C4.5 16.5 3.76 12.8 5.21 10.4c.99-1.65 2.56-2.61 4.18-2.61 1.3 0 2.21.56 3.19.56.98 0 2.21-.56 3.19-.56 1.62 0 3.19.96 4.18 2.61 1.45 2.4.71 6.1-1.23 8.1zM15 4.5c.83.76 1.23 1.81 1.23 2.87 0 .21-.02.42-.05.63-1.01-.06-2.03-.54-2.73-1.26-.7-.72-1.09-1.67-1.09-2.65 0-.21.02-.42.05-.62.46.01.98.18 1.4.45.45.27.81.63 1.14 1.04 0 0 .02.03.03.04z"/></svg>
+                    <span id="guideIos">آیفون/آیپد: گزینه Share را بزنید بعد گزینه Add to Home Screen.</span>
+                </div>
+                <div class="guide-item">
+                    <svg viewBox="0 0 24 24"><path d="M20 18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>
+                    <span id="guideDesktop">دسکتاپ: روی دکمه نصب اپلیکیشن یا روی آیکون نصب در نوار آدرس کلیک نمایید</span>
+                </div>
+
+                <button class="install-btn" id="installPwaBtn" style="display: none;">
+                    <svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+                    <span id="installBtnText">نصب اپلیکیشن</span>
+                </button>
+            </div>
+
+            <p style="color:var(--text-muted);font-size:13px;margin:16px 0 8px;" id="downloadDesc">کیفیت مناسب خود را انتخاب کنید:</p>
             <button class="dl-option" id="dlStandard">
                 <div class="dl-main">
                     <svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
@@ -1047,6 +1117,7 @@
                 </div>
                 <div class="dl-sub" id="hqSub">مناسب کامپیوتر و صفحات بزرگ</div>
             </button>
+
             <button class="close-btn" id="downloadClose"><span id="cancelText">لغو</span></button>
         </div>
     </div>
@@ -1106,6 +1177,9 @@
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
+            if (!isStandalone) {
+                document.getElementById('installPwaBtn').style.display = 'flex';
+            }
         });
 
         // ================== ترجمه ==================
@@ -1123,7 +1197,7 @@
                 storageLabel: 'مدیریت حافظه',
                 deleteBtn: 'حذف فایل‌های آفلاین',
                 closeBtn: 'بستن',
-                downloadTitle: 'انتخاب کیفیت',
+                downloadTitle: 'راهنمای نصب و دانلود آفلاین',
                 downloadDesc: 'کیفیت مناسب خود را انتخاب کنید:',
                 standard: 'استاندارد (۷۰ مگابایت)',
                 standardSub: 'مناسب موبایل و تبلت',
@@ -1147,12 +1221,20 @@
                 themeZard: 'زرد',
                 themeAbi: 'آبی',
                 themeModern: 'مدرن',
-                dayMode: 'حالت روز',
-                nightMode: 'حالت شب',
+                dayMode: 'روز',
+                nightMode: 'شب',
                 downloadSuccess: 'دانلود با موفقیت انجام شد!',
                 deleteSuccess: 'فایل‌های آفلاین حذف شدند.',
                 downloadError: 'خطا در دانلود!',
                 deleteError: 'خطا در حذف!',
+                installTitle: 'راهنمای نصب',
+                installBtn: 'نصب اپلیکیشن',
+                guideAndroid: 'اندروید: روی دکمه نصب اپلیکیشن کلیک نمایید یا از قسمت منوی مرورگر خود افزودن به صفحه اصلی را انتخاب کنید',
+                guideIos: 'آیفون/آیپد: گزینه Share را بزنید بعد گزینه Add to Home Screen.',
+                guideDesktop: 'دسکتاپ: روی دکمه نصب اپلیکیشن یا روی آیکون نصب در نوار آدرس کلیک نمایید',
+                offlineGuideIntro: 'برای استفاده آفلاین از برنامه، ابتدا آن را نصب کرده و به صفحه اصلی اضافه کنید. سپس از طریق صفحه اصلی برنامه را باز کرده و فایل‌های آفلاین را دانلود نمایید. پس از آن می‌توانید در مراحل بعدی بدون نیاز به اینترنت از قرآن استفاده کنید.',
+                downloading: 'در حال دانلود...',
+                progress: 'پیشرفت: {current} از {total}'
             },
             ar: {
                 splashSubtitle: 'مرحباً بكم في تطبيق القرآن الكريم',
@@ -1167,7 +1249,7 @@
                 storageLabel: 'إدارة التخزين',
                 deleteBtn: 'حذف الملفات المحفوظة',
                 closeBtn: 'إغلاق',
-                downloadTitle: 'اختيار الجودة',
+                downloadTitle: 'دليل التثبيت والتنزيل دون اتصال',
                 downloadDesc: 'اختر الجودة المناسبة:',
                 standard: 'قياسي (۷۰ م.ب)',
                 standardSub: 'مناسب للجوال والتابلت',
@@ -1191,12 +1273,20 @@
                 themeZard: 'الأصفر',
                 themeAbi: 'الأزرق',
                 themeModern: 'الحديثة',
-                dayMode: 'وضع النهار',
-                nightMode: 'وضع الليل',
+                dayMode: 'النهار',
+                nightMode: 'الليل',
                 downloadSuccess: 'تم التحميل بنجاح!',
                 deleteSuccess: 'تم حذف الملفات غير المتصلة.',
                 downloadError: 'خطأ في التحميل!',
                 deleteError: 'خطأ في الحذف!',
+                installTitle: 'دليل التثبيت',
+                installBtn: 'تثبيت التطبيق',
+                guideAndroid: 'أندرويد: انقر على زر تثبيت التطبيق أو اختر "إضافة إلى الشاشة الرئيسية" من قائمة المتصفح',
+                guideIos: 'آيفون/آيباد: اضغط على زر المشاركة ثم اختر "Add to Home Screen".',
+                guideDesktop: 'سطح المكتب: انقر على زر تثبيت التطبيق أو على أيقونة التثبيت في شريط العنوان',
+                offlineGuideIntro: 'لاستخدام التطبيق دون اتصال، قم أولاً بتثبيته وإضافته إلى الشاشة الرئيسية. ثم افتح التطبيق من الشاشة الرئيسية وقم بتنزيل الملفات غير المتصلة بالإنترنت. بعد ذلك يمكنك استخدام القرآن في المرات اللاحقة بدون الحاجة إلى الإنترنت.',
+                downloading: 'جاري التحميل...',
+                progress: 'التقدم: {current} من {total}'
             }
         };
 
@@ -1218,7 +1308,7 @@
             updateLangButtons();
             rebuildSurahGrid();
             updateTitles();
-            updateThemeToggleButton();
+            updateThemeModeButtons();
         }
 
         function applyTranslations() {
@@ -1244,6 +1334,16 @@
             document.getElementById('cancelText').textContent = t.cancel;
             document.getElementById('tabJuzBtn').textContent = t.tabJuz;
             document.getElementById('tabSurahBtn').textContent = t.tabSurah;
+            // راهنمای نصب
+            document.getElementById('offlineGuideIntro').textContent = t.offlineGuideIntro;
+            document.getElementById('installTitle').textContent = t.installTitle;
+            document.getElementById('installBtnText').textContent = t.installBtn;
+            document.getElementById('guideAndroid').textContent = t.guideAndroid;
+            document.getElementById('guideIos').textContent = t.guideIos;
+            document.getElementById('guideDesktop').textContent = t.guideDesktop;
+            // دکمه‌های روز/شب
+            document.querySelector('#themeDayBtn span').textContent = t.dayMode;
+            document.querySelector('#themeNightBtn span').textContent = t.nightMode;
         }
 
         function updateLangButtons() {
@@ -1342,8 +1442,8 @@
             } else if (currentThemeStyle === 'modern') {
                 meta.setAttribute('content', currentThemeMode === 'night' ? '#050510' : '#0f0c29');
             }
-            updateThemeToggleButton();
             updateThemeStyleButtons();
+            updateThemeModeButtons();
         }
 
         function setThemeStyle(style) {
@@ -1358,30 +1458,18 @@
             applyTheme();
         }
 
-        function toggleThemeMode() {
-            if (currentThemeMode === 'day') {
-                setThemeMode('night');
-            } else {
-                setThemeMode('day');
-            }
-        }
-
-        function updateThemeToggleButton() {
-            const btn = document.getElementById('themeToggle');
-            if (!btn) return;
-            const t = translations[currentLang];
-            btn.style.display = 'flex';
-            if (currentThemeMode === 'night') {
-                btn.innerHTML = `<svg viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="5" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.78" y2="4.22"/></g></svg> ${t.dayMode}`;
-            } else {
-                btn.innerHTML = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79"/></svg> ${t.nightMode}`;
-            }
-        }
-
         function updateThemeStyleButtons() {
             document.getElementById('themeZardBtn').classList.toggle('active', currentThemeStyle === 'zard');
             document.getElementById('themeAbiBtn').classList.toggle('active', currentThemeStyle === 'abi');
             document.getElementById('themeModernBtn').classList.toggle('active', currentThemeStyle === 'modern');
+        }
+
+        function updateThemeModeButtons() {
+            const dayBtn = document.getElementById('themeDayBtn');
+            const nightBtn = document.getElementById('themeNightBtn');
+            if (!dayBtn || !nightBtn) return;
+            dayBtn.classList.toggle('active', currentThemeMode === 'day');
+            nightBtn.classList.toggle('active', currentThemeMode === 'night');
         }
 
         // ================== توابع کمکی ==================
@@ -1503,7 +1591,7 @@
             dlBtn.style.pointerEvents = 'none';
             dlBtn.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="currentColor"/></svg>';
             progress.style.display = 'block';
-            progress.textContent = translations[currentLang].downloading || 'در حال دانلود...';
+            progress.textContent = translations[currentLang].downloading;
 
             try {
                 const cache = await caches.open('quran-cache-v1');
@@ -1524,9 +1612,9 @@
                     }
                     await Promise.all(promises);
                     downloaded += batch;
-                    progress.textContent = translations[currentLang].progress 
-                        ? translations[currentLang].progress.replace('{current}', formatNumber(Math.min(downloaded, totalFiles-2))).replace('{total}', formatNumber(totalFiles-2))
-                        : 'پیشرفت: ' + formatNumber(Math.min(downloaded, totalFiles-2)) + ' از ' + formatNumber(totalFiles-2);
+                    progress.textContent = translations[currentLang].progress
+                        .replace('{current}', formatNumber(Math.min(downloaded, totalFiles-2)))
+                        .replace('{total}', formatNumber(totalFiles-2));
                 }
                 setDownloadedUI();
                 await showDialogAlert(translations[currentLang].downloadSuccess, translations[currentLang].confirmDownloadTitle);
@@ -1566,7 +1654,7 @@
             if (!confirmed) return;
             const prog = document.getElementById('progressPill');
             prog.style.display = 'block';
-            prog.textContent = translations[currentLang].downloading || 'در حال حذف...';
+            prog.textContent = translations[currentLang].downloading;
             try {
                 await caches.delete('quran-cache-v1');
                 resetDownloadedUI();
@@ -1655,16 +1743,31 @@
         document.getElementById('splashJuzList').addEventListener('click', () => { closeOverlay('splashOverlay'); openOverlay('juzOverlay'); });
         document.getElementById('juzContinueBtn').addEventListener('click', () => closeOverlay('juzOverlay'));
 
-        // تنظیمات
-        document.getElementById('themeToggle').addEventListener('click', toggleThemeMode);
-        document.getElementById('settingsClose').addEventListener('click', () => closeOverlay('settingsOverlay'));
+        // تنظیمات - تم اصلی
         document.getElementById('themeZardBtn').addEventListener('click', () => setThemeStyle('zard'));
         document.getElementById('themeAbiBtn').addEventListener('click', () => setThemeStyle('abi'));
         document.getElementById('themeModernBtn').addEventListener('click', () => setThemeStyle('modern'));
 
+        // تنظیمات - دکمه‌های روز/شب
+        document.getElementById('themeDayBtn').addEventListener('click', () => setThemeMode('day'));
+        document.getElementById('themeNightBtn').addEventListener('click', () => setThemeMode('night'));
+
         // زبان
         document.getElementById('langFa').addEventListener('click', () => setLanguage('fa'));
         document.getElementById('langAr').addEventListener('click', () => setLanguage('ar'));
+
+        // بستن تنظیمات
+        document.getElementById('settingsClose').addEventListener('click', () => closeOverlay('settingsOverlay'));
+
+        // نصب PWA
+        document.getElementById('installPwaBtn').addEventListener('click', async () => {
+            if (!deferredPrompt) return;
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            console.log('User response to install prompt:', outcome);
+            deferredPrompt = null;
+            document.getElementById('installPwaBtn').style.display = 'none';
+        });
 
         // دانلود
         document.getElementById('dlStandard').addEventListener('click', () => startDownload('standard'));
