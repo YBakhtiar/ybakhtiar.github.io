@@ -1443,6 +1443,15 @@
         let currentThemeStyle = localStorage.getItem('quran-theme-style') || 'modern';
         let currentThemeMode = localStorage.getItem('quran-theme-mode') || 'day';
 
+        // ** رفع مشکل dark-ui قدیمی **
+        if (currentThemeMode === 'dark-ui') {
+            currentThemeMode = 'night';
+            localStorage.setItem('quran-theme-mode', 'night');
+        } else if (!['day', 'night'].includes(currentThemeMode)) {
+            currentThemeMode = 'day';
+            localStorage.setItem('quran-theme-mode', 'day');
+        }
+
         function applyTheme() {
             document.body.classList.remove('theme-zard', 'theme-abi', 'theme-modern', 'night-mode');
             document.body.classList.add(`theme-${currentThemeStyle}`);
@@ -1468,6 +1477,7 @@
         }
 
         function setThemeMode(mode) {
+            if (!['day', 'night'].includes(mode)) mode = 'day';
             currentThemeMode = mode;
             localStorage.setItem('quran-theme-mode', mode);
             applyTheme();
