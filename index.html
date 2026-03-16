@@ -6,7 +6,7 @@
     <title>القرآن الكريم</title>
     <!-- PWA & manifest -->
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#FDF8F0" id="theme-color-meta">
+    <meta name="theme-color" content="#0f0c29" id="theme-color-meta">
     <link rel="apple-touch-icon" href="./icon-192.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -473,10 +473,16 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            gap: 4px;
             font-family: 'Vazirmatn', sans-serif;
             min-width: 60px;
             white-space: nowrap;
             flex: 1 1 0;
+        }
+        .theme-selector-btn svg, .lang-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
         }
         .theme-selector-btn.active, .lang-btn.active {
             background: var(--accent-soft);
@@ -956,7 +962,7 @@
         }
     </style>
 </head>
-<body class="theme-zard">
+<body class="theme-modern">
     <!-- اسپلش مودال -->
     <div class="overlay splash-overlay active" id="splashOverlay">
         <div class="overlay-backdrop"></div>
@@ -1002,7 +1008,7 @@
         </div>
     </div>
 
-    <!-- مودال تنظیمات با دو دکمه روز/شب -->
+    <!-- مودال تنظیمات با ترتیب جدید -->
     <div class="overlay settings-overlay" id="settingsOverlay">
         <div class="overlay-backdrop"></div>
         <div class="modal-card">
@@ -1011,10 +1017,11 @@
                 <span id="settingsTitle">تنظیمات</span>
             </div>
 
+            <!-- اول: تم -->
             <div class="setting-item">
                 <span class="setting-label">
                     <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                    <span id="themeLabel">تم اصلی</span>
+                    <span id="themeLabel">تم</span>
                 </span>
                 <span class="setting-value">
                     <button class="theme-selector-btn" id="themeZardBtn"><span>زرد</span></button>
@@ -1023,6 +1030,25 @@
                 </span>
             </div>
 
+            <!-- دوم: ظاهر (روز/شب) با آیکون -->
+            <div class="setting-item">
+                <span class="setting-label">
+                    <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7z"/></svg>
+                    <span id="appearanceLabel">ظاهر</span>
+                </span>
+                <span class="setting-value">
+                    <button class="theme-selector-btn" id="themeDayBtn">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="5"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.78" y2="4.22"/></g></svg>
+                        <span id="themeDayText">روز</span>
+                    </button>
+                    <button class="theme-selector-btn" id="themeNightBtn">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79"/></svg>
+                        <span id="themeNightText">شب</span>
+                    </button>
+                </span>
+            </div>
+
+            <!-- سوم: زبان -->
             <div class="setting-item">
                 <span class="setting-label">
                     <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
@@ -1031,17 +1057,6 @@
                 <span class="setting-value">
                     <button class="lang-btn" id="langFa"><span>فارسی</span></button>
                     <button class="lang-btn" id="langAr"><span>العربية</span></button>
-                </span>
-            </div>
-
-            <div class="setting-item">
-                <span class="setting-label">
-                    <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7z"/></svg>
-                    <span id="appearanceLabel">ظاهر</span>
-                </span>
-                <span class="setting-value">
-                    <button class="theme-selector-btn" id="themeDayBtn"><span>روز</span></button>
-                    <button class="theme-selector-btn" id="themeNightBtn"><span>شب</span></button>
                 </span>
             </div>
 
@@ -1191,7 +1206,7 @@
                 splashLink: 'پیشنهادات و نظریات',
                 juzContinue: 'ادامه تلاوت',
                 settingsTitle: 'تنظیمات',
-                themeLabel: 'تم اصلی',
+                themeLabel: 'تم',
                 languageLabel: 'زبان',
                 appearanceLabel: 'ظاهر',
                 storageLabel: 'مدیریت حافظه',
@@ -1243,7 +1258,7 @@
                 splashLink: 'اقتراحات وملاحظات',
                 juzContinue: 'متابعة التلاوة',
                 settingsTitle: 'الإعدادات',
-                themeLabel: 'السمة الرئيسية',
+                themeLabel: 'السمة',
                 languageLabel: 'اللغة',
                 appearanceLabel: 'المظهر',
                 storageLabel: 'إدارة التخزين',
@@ -1290,9 +1305,20 @@
             }
         };
 
-        let currentLang = localStorage.getItem('quran-language') || 'fa';
-        if (!['fa', 'ar'].includes(currentLang)) currentLang = 'fa';
+        let currentLang = localStorage.getItem('quran-language') || 'fa'; // پیش‌فرض فارسی
+        let currentThemeStyle = localStorage.getItem('quran-theme-style') || 'modern'; // پیش‌فرض مدرن
+        let currentThemeMode = localStorage.getItem('quran-theme-mode') || 'day'; // پیش‌فرض روز
 
+        // تبدیل مقدار قدیمی dark-ui به night
+        if (currentThemeMode === 'dark-ui') {
+            currentThemeMode = 'night';
+            localStorage.setItem('quran-theme-mode', 'night');
+        } else if (!['day', 'night'].includes(currentThemeMode)) {
+            currentThemeMode = 'day';
+            localStorage.setItem('quran-theme-mode', 'day');
+        }
+
+        // ================== توابع ==================
         function formatNumber(num) {
             if (currentLang === 'fa') {
                 return num.toString().replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
@@ -1308,7 +1334,7 @@
             updateLangButtons();
             rebuildSurahGrid();
             updateTitles();
-            updateThemeModeButtons();
+            updateThemeModeButtons(); // برای به‌روزرسانی متن دکمه‌های روز/شب
         }
 
         function applyTranslations() {
@@ -1342,8 +1368,8 @@
             document.getElementById('guideIos').textContent = t.guideIos;
             document.getElementById('guideDesktop').textContent = t.guideDesktop;
             // دکمه‌های روز/شب
-            document.querySelector('#themeDayBtn span').textContent = t.dayMode;
-            document.querySelector('#themeNightBtn span').textContent = t.nightMode;
+            document.getElementById('themeDayText').textContent = t.dayMode;
+            document.getElementById('themeNightText').textContent = t.nightMode;
         }
 
         function updateLangButtons() {
@@ -1415,19 +1441,7 @@
             });
         }
 
-        // ================== تم اصلی (فقط روز/شب) ==================
-        let currentThemeStyle = localStorage.getItem('quran-theme-style') || 'zard';
-        let currentThemeMode = localStorage.getItem('quran-theme-mode') || 'day';
-
-        // تبدیل مقدار قدیمی dark-ui به night
-        if (currentThemeMode === 'dark-ui') {
-            currentThemeMode = 'night';
-            localStorage.setItem('quran-theme-mode', 'night');
-        } else if (!['day', 'night'].includes(currentThemeMode)) {
-            currentThemeMode = 'day';
-            localStorage.setItem('quran-theme-mode', 'day');
-        }
-
+        // ================== تم ==================
         function applyTheme() {
             document.body.classList.remove('theme-zard', 'theme-abi', 'theme-modern', 'night-mode');
             document.body.classList.add(`theme-${currentThemeStyle}`);
@@ -1471,9 +1485,6 @@
             dayBtn.classList.toggle('active', currentThemeMode === 'day');
             nightBtn.classList.toggle('active', currentThemeMode === 'night');
         }
-
-        // ================== توابع کمکی ==================
-        function getPageFromFile(fileNumber) { return fileNumber - 2; }
 
         // ================== مدیریت صفحات و کش ==================
         async function loadPageImage(imgId, fileNumber, side) {
@@ -1567,7 +1578,7 @@
             updatePages();
         }
 
-        // ================== تابع نمایش/مخفی کردن آیتم مدیریت حافظه ==================
+        // ================== مدیریت حافظه ==================
         function updateStorageVisibility() {
             const storageToggle = document.getElementById('storageToggle');
             if (isDownloaded) {
@@ -1578,7 +1589,6 @@
             }
         }
 
-        // ================== دانلود و کش ==================
         async function startDownload(quality) {
             closeOverlay('downloadOverlay');
             let sizeText = quality === 'hq' ? (currentLang === 'fa' ? '۵۰۰ مگابایت' : '٥٠٠ ميغابايت') : (currentLang === 'fa' ? '۷۰ مگابایت' : '٧٠ ميغابايت');
@@ -1871,6 +1881,12 @@
 
         window.addEventListener('resize', updatePages);
         window.addEventListener('orientationchange', () => setTimeout(updatePages, 50));
+
+        // ================== جلوگیری از بسته شدن با دکمه برگشت ==================
+        history.pushState(null, null, location.href);
+        window.addEventListener('popstate', function(event) {
+            history.pushState(null, null, location.href);
+        });
 
         // ================== مقداردهی اولیه ==================
         (function init() {
