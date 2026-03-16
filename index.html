@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>القرآن الكريم</title>
     <!-- PWA & manifest -->
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="manifest.json?v=20250316">
     <meta name="theme-color" content="#0f0c29" id="theme-color-meta">
     <link rel="apple-touch-icon" href="./icon-192.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -387,13 +387,41 @@
             transform: translateY(-2px);
             box-shadow: var(--shadow-md), 0 0 0 4px var(--accent-soft);
         }
-        .float-btn svg { width: 20px; height: 20px; fill: currentColor; }
+        .float-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
 
         .btn-menu { top: 18px; right: 18px; }
         .btn-settings { top: 18px; left: 18px; }
         .btn-download { bottom: 18px; right: 18px; }
         .btn-download.done { display: none; }
         .btn-fullscreen { bottom: 18px; left: 18px; }
+
+        @media (max-width: 768px) {
+            .float-btn svg {
+                width: 16px;
+                height: 16px;
+            }
+        }
+
+        /* آیکون‌های داخلی */
+        .theme-selector-btn svg,
+        .lang-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .dl-option .dl-main svg,
+        .install-btn svg,
+        .guide-item svg,
+        .delete-option svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
 
         /* مودال‌ها */
         .overlay {
@@ -478,11 +506,6 @@
             min-width: 60px;
             white-space: nowrap;
             flex: 1 1 0;
-        }
-        .theme-selector-btn svg, .lang-btn svg {
-            width: 16px;
-            height: 16px;
-            fill: currentColor;
         }
         .theme-selector-btn.active, .lang-btn.active {
             background: var(--accent-soft);
@@ -984,7 +1007,7 @@
         </div>
     </div>
 
-    <!-- مودال تنظیمات با ترتیب جدید و مدیریت حافظه همیشه قابل مشاهده -->
+    <!-- مودال تنظیمات -->
     <div class="overlay settings-overlay" id="settingsOverlay">
         <div class="overlay-backdrop"></div>
         <div class="modal-card">
@@ -1036,7 +1059,7 @@
                 </span>
             </div>
 
-            <!-- آیتم مدیریت حافظه (همیشه قابل مشاهده) -->
+            <!-- آیتم مدیریت حافظه -->
             <div class="setting-item storage-toggle" id="storageToggle">
                 <span class="setting-label">
                     <svg viewBox="0 0 24 24"><path d="M20 8h-2.81c-.45-.78-1.07-1.45-1.82-1.96L17 4.41 15.59 3l-2.17 2.17C12.96 5.06 12.49 5 12 5s-.96.06-1.41.17L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-6 8h-4v-2h4v2zm0-4h-4v-2h4v2z"/></svg>
@@ -1158,6 +1181,15 @@
         // PWA
         let deferredPrompt = null;
         const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+
+        // ========== قفل orientation برای PWA ==========
+        if (isStandalone) {
+            if (screen.orientation && screen.orientation.lock) {
+                screen.orientation.lock('portrait').catch(err => {
+                    console.log('Orientation lock failed, using fallback');
+                });
+            }
+        }
 
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
@@ -1553,7 +1585,13 @@
 
         // ================== مدیریت حافظه ==================
         function updateStorageVisibility() {
-            // این تابع دیگر استفاده نمی‌شود چون آیتم همیشه نمایش داده می‌شود
+            const storageToggle = document.getElementById('storageToggle');
+            if (isDownloaded) {
+                storageToggle.style.display = 'flex';
+            } else {
+                storageToggle.style.display = 'none';
+                document.getElementById('deleteOptionContainer').style.display = 'none';
+            }
         }
 
         async function startDownload(quality) {
@@ -1610,6 +1648,7 @@
             if (btn) { btn.style.display = 'none'; btn.classList.add('done'); }
             if (prog) prog.style.display = 'none';
             isDownloaded = true;
+            updateStorageVisibility();
         }
 
         function resetDownloadedUI() {
@@ -1621,6 +1660,8 @@
                 btn.classList.remove('done');
             }
             isDownloaded = false;
+            updateStorageVisibility();
+            document.getElementById('deleteOptionContainer').style.display = 'none';
         }
 
         async function deleteOfflineFiles() {
@@ -1894,6 +1935,8 @@
                 cache.match('images/Quran003.jpg').then(res => {
                     if (res) {
                         setDownloadedUI();
+                    } else {
+                        updateStorageVisibility();
                     }
                 });
             });
