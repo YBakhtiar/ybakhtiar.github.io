@@ -5,12 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>القرآن الكريم</title>
     <!-- PWA & manifest -->
-    <link rel="manifest" href="manifest.json?v=20250316">
+    <link rel="manifest" href="./manifest.json?v=20250316">
     <meta name="theme-color" content="#0f0c29" id="theme-color-meta">
-    <link rel="apple-touch-icon" href="./icon-192.png">
+    
+    <!-- فاوآیکون‌های استاندارد -->
+    <link rel="icon" type="image/png" sizes="48x48" href="./icons/maskable_icon_x48.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="./icons/maskable_icon_x96.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./icons/maskable_icon_x192.png">
+    
+    <!-- برای دستگاه‌های اپل -->
+    <link rel="apple-touch-icon" href="./icons/maskable_icon_x192.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="القرآن">
+    
     <!-- فونت‌ها -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1181,15 +1189,6 @@
         // PWA
         let deferredPrompt = null;
         const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
-
-        // ========== قفل orientation برای PWA ==========
-        if (isStandalone) {
-            if (screen.orientation && screen.orientation.lock) {
-                screen.orientation.lock('portrait').catch(err => {
-                    console.log('Orientation lock failed, using fallback');
-                });
-            }
-        }
 
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
