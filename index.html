@@ -6,7 +6,7 @@
     <title>القرآن الكريم</title>
     <!-- PWA & manifest -->
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#0f0c29" id="theme-color-meta">
+    <meta name="theme-color" content="#FDF8F0" id="theme-color-meta">
     <link rel="apple-touch-icon" href="./icon-192.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -18,6 +18,58 @@
     <style>
         /* ==================== تم‌های اصلی ==================== */
         :root {
+            --bg-primary: #FDF8F0;
+            --bg-secondary: #FFFFFF;
+            --bg-tertiary: #F0EAE0;
+            --bg-elevated: rgba(255, 255, 255, 0.88);
+            --text-primary: #2D1F14;
+            --text-secondary: #5A4030;
+            --text-muted: #8C7A65;
+            --border-light: rgba(160, 130, 90, 0.15);
+            --border-hover: rgba(160, 130, 90, 0.3);
+            --border-decorative: rgba(200, 169, 81, 0.25);
+            --accent: #B8860B;
+            --accent-hover: #D4A017;
+            --accent-soft: rgba(184, 134, 11, 0.1);
+            --danger: #C0392B;
+            --danger-soft: rgba(192, 57, 43, 0.1);
+            --success: #27AE60;
+            --modal-bg: #FFFFFF;
+            --card-bg: rgba(255, 255, 255, 0.82);
+            --shadow-soft: 0 2px 12px rgba(80, 50, 20, 0.08);
+            --shadow-md: 0 8px 24px rgba(80, 50, 20, 0.12);
+            --shadow-lg: 0 16px 40px rgba(80, 50, 20, 0.16);
+            --shadow-page: 0 8px 32px rgba(80, 50, 20, 0.2);
+            --scrollbar-thumb: #B8860B;
+            --scrollbar-track: rgba(184, 134, 11, 0.08);
+        }
+
+        /* تم زرد - شب */
+        body.theme-zard.night-mode {
+            --bg-primary: #0F1923;
+            --bg-secondary: #1A2B3E;
+            --bg-tertiary: #243548;
+            --bg-elevated: rgba(26, 43, 62, 0.92);
+            --text-primary: #E8DED0;
+            --text-secondary: #C8B89A;
+            --text-muted: #8A7A60;
+            --border-light: rgba(200, 180, 140, 0.12);
+            --border-hover: rgba(200, 180, 140, 0.25);
+            --border-decorative: rgba(212, 175, 55, 0.25);
+            --accent: #D4AF37;
+            --accent-hover: #E8C84A;
+            --accent-soft: rgba(212, 175, 55, 0.12);
+            --danger: #E74C3C;
+            --danger-soft: rgba(231, 76, 60, 0.15);
+            --success: #2ECC71;
+            --modal-bg: #1A2B3E;
+            --card-bg: rgba(26, 43, 62, 0.88);
+            --scrollbar-thumb: #D4AF37;
+            --scrollbar-track: rgba(212, 175, 55, 0.08);
+        }
+
+        /* تم آبی */
+        body.theme-abi {
             --bg-primary: #f0f7ff;
             --bg-secondary: #ffffff;
             --bg-tertiary: #e6f0fa;
@@ -36,11 +88,6 @@
             --success: #28a745;
             --modal-bg: #ffffff;
             --card-bg: rgba(255, 255, 255, 0.82);
-            --pattern-opacity: 0.03;
-            --shadow-soft: 0 2px 12px rgba(80, 50, 20, 0.08);
-            --shadow-md: 0 8px 24px rgba(80, 50, 20, 0.12);
-            --shadow-lg: 0 16px 40px rgba(80, 50, 20, 0.16);
-            --shadow-page: 0 8px 32px rgba(80, 50, 20, 0.2);
             --scrollbar-thumb: #2b6ed9;
             --scrollbar-track: rgba(43, 110, 217, 0.08);
         }
@@ -67,57 +114,6 @@
             --card-bg: rgba(31, 42, 64, 0.88);
             --scrollbar-thumb: #4f9eff;
             --scrollbar-track: rgba(79, 158, 255, 0.08);
-        }
-
-        /* تم زرد */
-        body.theme-zard {
-            --bg-primary: #FDF8F0;
-            --bg-secondary: #FFFFFF;
-            --bg-tertiary: #F0EAE0;
-            --bg-elevated: rgba(255, 255, 255, 0.88);
-            --text-primary: #2D1F14;
-            --text-secondary: #5A4030;
-            --text-muted: #8C7A65;
-            --border-light: rgba(160, 130, 90, 0.15);
-            --border-hover: rgba(160, 130, 90, 0.3);
-            --border-decorative: rgba(200, 169, 81, 0.25);
-            --accent: #B8860B;
-            --accent-hover: #D4A017;
-            --accent-soft: rgba(184, 134, 11, 0.1);
-            --danger: #C0392B;
-            --danger-soft: rgba(192, 57, 43, 0.1);
-            --modal-bg: #FFFFFF;
-            --card-bg: rgba(255, 255, 255, 0.82);
-            --scrollbar-thumb: #B8860B;
-            --scrollbar-track: rgba(184, 134, 11, 0.08);
-        }
-
-        /* تم زرد - شب */
-        body.theme-zard.night-mode {
-            --bg-primary: #1a150f;
-            --bg-secondary: #2a231c;
-            --bg-tertiary: #3a3128;
-            --bg-elevated: rgba(42, 35, 28, 0.92);
-            --text-primary: #f0e8e0;
-            --text-secondary: #d0c0b0;
-            --text-muted: #a09080;
-            --border-light: rgba(255, 255, 255, 0.1);
-            --border-hover: rgba(255, 255, 255, 0.2);
-            --border-decorative: rgba(200, 169, 81, 0.25);
-            --accent: #e6b422;
-            --accent-hover: #ffcc33;
-            --accent-soft: rgba(230, 180, 34, 0.2);
-            --danger: #ff7f7f;
-            --danger-soft: rgba(255, 127, 127, 0.15);
-            --modal-bg: #2a231c;
-            --card-bg: rgba(42, 35, 28, 0.88);
-            --scrollbar-thumb: #e6b422;
-            --scrollbar-track: rgba(230, 180, 34, 0.08);
-        }
-
-        /* فیلتر شب ثابت */
-        body.night-mode {
-            --image-filter: invert(0.9) brightness(1.1) contrast(1.05) hue-rotate(180deg);
         }
 
         /* ==================== تم مدرن ==================== */
@@ -152,7 +148,6 @@
             --success: #4caf50;
             --modal-bg: rgba(255, 255, 255, 0.1);
             --card-bg: rgba(255, 255, 255, 0.05);
-            --pattern-opacity: 0;
             --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.2);
             --shadow-md: 0 12px 40px rgba(0, 0, 0, 0.3);
             --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.4);
@@ -343,42 +338,33 @@
             color: white;
         }
 
+        /* فیلتر شب برای تصاویر */
+        body.night-mode {
+            --image-filter: invert(0.9) brightness(1.1) contrast(1.05) hue-rotate(180deg);
+        }
+
         /* ==================== استایل‌های عمومی ==================== */
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
+            background: var(--bg-primary);
             font-family: 'Vazirmatn', Tahoma, sans-serif;
+            color: var(--text-primary);
             display: flex;
             height: 100vh;
             overflow: hidden;
-            overscroll-behavior-y: contain;
             touch-action: none;
             transition: background-color 0.4s ease, color 0.4s ease;
             line-height: 1.5;
         }
 
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 0;
-            opacity: var(--pattern-opacity);
-            background-image: radial-gradient(var(--accent) 0.6px, transparent 0.6px);
-            background-size: 22px 22px;
-            transition: opacity 0.4s;
-        }
-
+        /* اسکرول‌بار */
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: var(--scrollbar-track); border-radius: 12px; margin: 4px; }
         ::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 12px; border: 1px solid transparent; background-clip: content-box; min-height: 40px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--accent-hover); }
 
-        .modern-scroll::-webkit-scrollbar { width: 5px; height: 5px; }
-        .modern-scroll::-webkit-scrollbar-track { background: var(--bg-tertiary); border-radius: 20px; margin: 8px 2px; }
-        .modern-scroll::-webkit-scrollbar-thumb { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%); border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.15); }
-        .modern-scroll { scrollbar-width: thin; scrollbar-color: var(--accent) var(--bg-tertiary); }
-
+        /* دکمه‌های شناور */
         .float-btn {
             position: fixed;
             z-index: 100;
@@ -411,6 +397,7 @@
         .btn-download.done { display: none; }
         .btn-fullscreen { bottom: 18px; left: 18px; }
 
+        /* مودال‌ها */
         .overlay {
             position: fixed;
             inset: 0;
@@ -476,7 +463,6 @@
         .setting-label svg { width: 1.3rem; height: 1.3rem; fill: var(--accent); }
         .setting-value { display: flex; gap: 0.5rem; }
 
-        /* تنظیم دکمه‌های تم به صورت یکنواخت و فشرده */
         .theme-selector-btn, .lang-btn {
             padding: 6px 8px;
             border-radius: 20px;
@@ -492,7 +478,7 @@
             font-family: 'Vazirmatn', sans-serif;
             min-width: 60px;
             white-space: nowrap;
-            flex: 1 1 0; /* پخش مساوی فضا */
+            flex: 1 1 0;
         }
         .theme-selector-btn.active, .lang-btn.active {
             background: var(--accent-soft);
@@ -561,6 +547,7 @@
         @keyframes overlayIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes cardIn { from { opacity: 0; transform: translateY(16px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
 
+        /* دیالوگ سفارشی */
         .dialog-overlay {
             position: fixed;
             inset: 0;
@@ -608,6 +595,7 @@
         .dialog-btn-cancel { background: transparent; color: var(--text-muted); border-color: var(--border-light); }
         .dialog-btn-cancel:hover { background: var(--bg-tertiary); }
 
+        /* اسپلش */
         .splash-overlay { z-index: 3000; background: var(--bg-primary); }
         .splash-overlay .overlay-backdrop { background: transparent; backdrop-filter: none; }
         .splash-card {
@@ -633,7 +621,7 @@
             font-family: 'Amiri', serif;
             font-size: 46px;
             font-weight: 700;
-            background: linear-gradient(135deg, var(--accent), #2b6ed9, var(--accent-hover));
+            background: linear-gradient(135deg, var(--accent), #8B6914, var(--accent-hover));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -683,6 +671,7 @@
         .splash-link a:hover { color: var(--accent); }
         .splash-link svg { width: 15px; height: 15px; fill: currentColor; }
 
+        /* JUZ/Surah overlay */
         .juz-overlay { z-index: 2500; }
         .juz-card {
             position: relative;
@@ -701,6 +690,26 @@
             flex-direction: column;
             animation: cardIn 0.3s ease;
         }
+        .juz-continue-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px;
+            border-radius: 16px;
+            border: 1px solid var(--accent);
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s;
+            margin-bottom: 18px;
+            flex-shrink: 0;
+        }
+        .juz-continue-btn svg { width: 18px; height: 18px; fill: currentColor; }
+        .juz-continue-btn:hover { filter: brightness(1.1); transform: translateY(-2px); box-shadow: var(--shadow-md); }
 
         .tab-bar {
             display: flex;
@@ -730,8 +739,8 @@
             padding: 4px;
         }
         @media (max-width: 768px) {
-            .modern-scroll { scrollbar-width: none; -ms-overflow-style: none; }
-            .modern-scroll::-webkit-scrollbar { display: none; }
+            .tab-content { scrollbar-width: none; -ms-overflow-style: none; }
+            .tab-content::-webkit-scrollbar { display: none; }
         }
 
         .juz-grid, .surah-grid {
@@ -762,6 +771,7 @@
             box-shadow: var(--shadow-soft);
         }
 
+        /* دکمه‌های دانلود */
         .dl-option {
             width: 100%;
             padding: 18px;
@@ -792,74 +802,6 @@
         .dl-option .dl-main svg { width: 24px; height: 24px; fill: var(--accent); }
         .dl-option .dl-sub { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
 
-        .install-section {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border-light);
-        }
-        .install-title {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 14px;
-        }
-        .install-title svg { width: 18px; height: 18px; fill: currentColor; }
-
-        .guide-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            margin-bottom: 12px;
-            text-align: justify;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-        .guide-item svg {
-            width: 20px;
-            height: 20px;
-            fill: var(--accent);
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        .guide-intro {
-            text-align: justify;
-            background: var(--bg-tertiary);
-            border-radius: 16px;
-            padding: 16px;
-            margin-bottom: 16px;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            border: 1px solid var(--border-light);
-        }
-
-        .install-btn {
-            width: 100%;
-            padding: 12px 16px;
-            border-radius: 20px;
-            border: 1px solid var(--accent);
-            background: var(--accent-soft);
-            color: var(--accent);
-            font-family: inherit;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.25s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin: 16px 0 8px;
-        }
-        .install-btn svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
-        .install-btn:hover { filter: brightness(1.1); transform: translateY(-2px); box-shadow: var(--shadow-md); }
-
         .progress-pill {
             position: fixed;
             bottom: 72px;
@@ -876,6 +818,7 @@
             z-index: 150;
         }
 
+        /* محتوای اصلی */
         .main-content {
             position: relative;
             flex-grow: 1;
@@ -887,6 +830,7 @@
             overflow: hidden;
             z-index: 1;
         }
+
         .quran-container {
             display: flex;
             justify-content: center;
@@ -897,6 +841,7 @@
             padding: 0 56px;
             transition: none;
         }
+
         .page-wrapper {
             display: flex;
             justify-content: center;
@@ -919,6 +864,7 @@
             border-radius: inherit;
             box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.04);
         }
+
         .page {
             height: 100%;
             width: 100%;
@@ -931,7 +877,6 @@
             -webkit-user-drag: none;
         }
 
-        /* ==================== دکمه‌های ناوبری بهبود یافته ==================== */
         .nav-btn {
             position: absolute;
             top: 0;
@@ -954,22 +899,9 @@
             background: linear-gradient(to var(--grad-dir, left), var(--bg-elevated), transparent);
             color: var(--accent);
         }
-        .nav-btn svg { 
-            width: 28px; 
-            height: 28px; 
-            fill: currentColor; 
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
-        }
-        .nav-right { 
-            right: 0; 
-            --grad-dir: left; 
-            background: linear-gradient(to left, rgba(0,0,0,0.1), transparent);
-        }
-        .nav-left { 
-            left: 0; 
-            --grad-dir: right; 
-            background: linear-gradient(to right, rgba(0,0,0,0.1), transparent);
-        }
+        .nav-btn svg { width: 28px; height: 28px; fill: currentColor; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); }
+        .nav-right { right: 0; --grad-dir: left; background: linear-gradient(to left, rgba(0,0,0,0.1), transparent); }
+        .nav-left { left: 0; --grad-dir: right; background: linear-gradient(to right, rgba(0,0,0,0.1), transparent); }
 
         @media (max-width: 768px) {
             .quran-container { padding: 8px; gap: 0; }
@@ -983,26 +915,26 @@
         }
     </style>
 </head>
-<body class="theme-modern">
+<body class="theme-zard">
     <!-- اسپلش مودال -->
     <div class="overlay splash-overlay active" id="splashOverlay">
         <div class="overlay-backdrop"></div>
         <div class="splash-card">
             <div class="splash-title">القرآن الكريم</div>
             <div class="splash-divider">◆</div>
-            <div class="splash-subtitle" id="splashSubtitle">مرحباً بكم في تطبيق القرآن الكريم</div>
+            <div class="splash-subtitle" id="splashSubtitle">به نرم‌افزار قرآن کریم خوش آمدید</div>
             <button class="splash-btn splash-btn-primary" id="splashContinue">
                 <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                <span id="splashContinueText">متابعة القراءة</span>
+                <span id="splashContinueText">ادامه مطالعه</span>
             </button>
             <button class="splash-btn" id="splashJuzList">
                 <svg viewBox="0 0 24 24"><path d="M4 6h16v2H4V6zm0 4h16v2H4v-2zm0 4h16v2H4v-2zm0 4h10v2H4v-2z"/></svg>
-                <span id="splashJuzText">قائمة الأجزاء والسور</span>
+                <span id="splashJuzText">فهرست اجزاء و سوره‌ها</span>
             </button>
             <div class="splash-link">
                 <a href="https://t.me/YBAKHTIAR" target="_blank">
                     <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.05-.2-.06-.06-.15-.04-.22-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.4-1.08.39-.36-.1-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.37.74-.56 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .24z"/></svg>
-                    <span id="splashLinkText">اقتراحات وملاحظات</span>
+                    <span id="splashLinkText">پیشنهادات و نظریات</span>
                 </a>
             </div>
         </div>
@@ -1012,55 +944,59 @@
     <div class="overlay juz-overlay" id="juzOverlay">
         <div class="overlay-backdrop"></div>
         <div class="juz-card">
+            <button class="juz-continue-btn" id="juzContinueBtn">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <span id="juzContinueText">ادامه تلاوت</span>
+            </button>
             <div class="tab-bar">
-                <button class="tab-btn active" id="tabJuzBtn">الأجزاء</button>
-                <button class="tab-btn" id="tabSurahBtn">السور</button>
+                <button class="tab-btn active" id="tabJuzBtn">اجزاء</button>
+                <button class="tab-btn" id="tabSurahBtn">سوره‌ها</button>
             </div>
-            <div class="tab-content modern-scroll" id="juzTabContent">
+            <div class="tab-content" id="juzTabContent">
                 <div class="juz-grid" id="juzGrid"></div>
             </div>
-            <div class="tab-content modern-scroll" id="surahTabContent" style="display: none;">
+            <div class="tab-content" id="surahTabContent" style="display: none;">
                 <div class="surah-grid" id="surahGrid"></div>
             </div>
         </div>
     </div>
 
-    <!-- مودال تنظیمات (بدون گزینه پس‌زمینه) -->
+    <!-- مودال تنظیمات (با سه تم اصلی) -->
     <div class="overlay settings-overlay" id="settingsOverlay">
         <div class="overlay-backdrop"></div>
         <div class="modal-card">
             <div class="modal-header">
                 <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94 0 .31.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.57 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
-                <span id="settingsTitle">الإعدادات</span>
+                <span id="settingsTitle">تنظیمات</span>
             </div>
 
             <div class="setting-item">
                 <span class="setting-label">
                     <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                    <span id="themeLabel">السمة</span>
+                    <span id="themeLabel">تم اصلی</span>
                 </span>
                 <span class="setting-value">
-                    <button class="theme-selector-btn" id="themeZardBtn"><span>الأصفر</span></button>
-                    <button class="theme-selector-btn" id="themeAbiBtn"><span>الأزرق</span></button>
-                    <button class="theme-selector-btn active" id="themeModernBtn"><span>الحديثة</span></button>
+                    <button class="theme-selector-btn" id="themeZardBtn"><span>زرد</span></button>
+                    <button class="theme-selector-btn" id="themeAbiBtn"><span>آبی</span></button>
+                    <button class="theme-selector-btn" id="themeModernBtn"><span>مدرن</span></button>
                 </span>
             </div>
 
             <div class="setting-item">
                 <span class="setting-label">
                     <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                    <span id="languageLabel">اللغة</span>
+                    <span id="languageLabel">زبان</span>
                 </span>
                 <span class="setting-value">
                     <button class="lang-btn" id="langFa"><span>فارسی</span></button>
-                    <button class="lang-btn active" id="langAr"><span>العربية</span></button>
+                    <button class="lang-btn" id="langAr"><span>العربية</span></button>
                 </span>
             </div>
 
             <div class="setting-item">
                 <span class="setting-label">
                     <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7z"/></svg>
-                    <span id="appearanceLabel">المظهر</span>
+                    <span id="appearanceLabel">ظاهر</span>
                 </span>
                 <span class="setting-value">
                     <button class="settings-btn-row accent" id="themeToggle"></button>
@@ -1071,7 +1007,7 @@
             <div class="setting-item storage-toggle" id="storageToggle" style="display: none;">
                 <span class="setting-label">
                     <svg viewBox="0 0 24 24"><path d="M20 8h-2.81c-.45-.78-1.07-1.45-1.82-1.96L17 4.41 15.59 3l-2.17 2.17C12.96 5.06 12.49 5 12 5s-.96.06-1.41.17L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-6 8h-4v-2h4v2zm0-4h-4v-2h4v2z"/></svg>
-                    <span id="storageLabel">إدارة التخزين</span>
+                    <span id="storageLabel">مدیریت حافظه</span>
                 </span>
                 <span class="setting-value">
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="var(--text-muted)"><path d="M7 10l5 5 5-5H7z"/></svg>
@@ -1080,51 +1016,23 @@
             <div id="deleteOptionContainer" style="display: none; margin-top: 10px;">
                 <div class="delete-option" id="deleteOfflineBtn">
                     <svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
-                    <span id="deleteBtnText">حذف الملفات المحفوظة</span>
+                    <span id="deleteBtnText">حذف فایل‌های آفلاین</span>
                 </div>
             </div>
 
-            <button class="close-btn" id="settingsClose"><span id="closeBtnText">إغلاق</span></button>
+            <button class="close-btn" id="settingsClose"><span id="closeBtnText">بستن</span></button>
         </div>
     </div>
 
-    <!-- مودال دانلود + نصب PWA -->
+    <!-- مودال دانلود -->
     <div class="overlay download-overlay" id="downloadOverlay">
         <div class="overlay-backdrop"></div>
         <div class="modal-card">
             <div class="modal-header">
                 <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-                <span id="downloadTitle">راهنمای نصب و دانلود آفلاین</span>
+                <span id="downloadTitle">انتخاب کیفیت</span>
             </div>
-
-            <div class="guide-intro" id="offlineGuideIntro"></div>
-
-            <div class="install-section" id="installSection">
-                <div class="install-title">
-                    <svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
-                    <span id="installTitle">راهنمای نصب</span>
-                </div>
-                
-                <div class="guide-item">
-                    <svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
-                    <span id="guideAndroid">اندروید: روی دکمه نصب اپلیکیشن کلیک نمایید یا از قسمت منوی مرورگر خود افزودن به صفحه اصلی را انتخاب کنید</span>
-                </div>
-                <div class="guide-item">
-                    <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83.76-1.75 1.32-2.86 1.32-1.11 0-1.47-.42-2.86-.42-1.39 0-1.9.42-2.86.42-1.11 0-2.03-.56-2.86-1.32C4.5 16.5 3.76 12.8 5.21 10.4c.99-1.65 2.56-2.61 4.18-2.61 1.3 0 2.21.56 3.19.56.98 0 2.21-.56 3.19-.56 1.62 0 3.19.96 4.18 2.61 1.45 2.4.71 6.1-1.23 8.1zM15 4.5c.83.76 1.23 1.81 1.23 2.87 0 .21-.02.42-.05.63-1.01-.06-2.03-.54-2.73-1.26-.7-.72-1.09-1.67-1.09-2.65 0-.21.02-.42.05-.62.46.01.98.18 1.4.45.45.27.81.63 1.14 1.04 0 0 .02.03.03.04z"/></svg>
-                    <span id="guideIos">آیفون/آیپد: گزینه Share را بزنید بعد گزینه Add to Home Screen.</span>
-                </div>
-                <div class="guide-item">
-                    <svg viewBox="0 0 24 24"><path d="M20 18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>
-                    <span id="guideDesktop">دسکتاپ: روی دکمه نصب اپلیکیشن یا روی آیکون نصب در نوار آدرس کلیک نمایید</span>
-                </div>
-
-                <button class="install-btn" id="installPwaBtn" style="display: none;">
-                    <svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
-                    <span id="installBtnText">نصب اپلیکیشن</span>
-                </button>
-            </div>
-
-            <p style="color:var(--text-muted);font-size:13px;margin:16px 0 8px;" id="downloadDesc">کیفیت مناسب خود را انتخاب کنید:</p>
+            <p style="color:var(--text-muted);font-size:13px;margin-bottom:16px;" id="downloadDesc">کیفیت مناسب خود را انتخاب کنید:</p>
             <button class="dl-option" id="dlStandard">
                 <div class="dl-main">
                     <svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
@@ -1139,41 +1047,40 @@
                 </div>
                 <div class="dl-sub" id="hqSub">مناسب کامپیوتر و صفحات بزرگ</div>
             </button>
-
             <button class="close-btn" id="downloadClose"><span id="cancelText">لغو</span></button>
         </div>
     </div>
 
     <!-- دکمه‌های شناور -->
-    <button class="float-btn btn-menu" id="btnMenu" title="قائمة الأجزاء والسور">
+    <button class="float-btn btn-menu" id="btnMenu" title="فهرست اجزاء و سوره‌ها">
         <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
     </button>
-    <button class="float-btn btn-settings" id="btnSettings" title="الإعدادات">
+    <button class="float-btn btn-settings" id="btnSettings" title="تنظیمات">
         <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94 0 .31.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.57 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
     </button>
-    <button class="float-btn btn-download" id="btnDownload" title="تحميل دون اتصال">
+    <button class="float-btn btn-download" id="btnDownload" title="دانلود آفلاین">
         <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
     </button>
-    <button class="float-btn btn-fullscreen" id="btnFullscreen" title="ملء الشاشة">
+    <button class="float-btn btn-fullscreen" id="btnFullscreen" title="تمام صفحه">
         <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
     </button>
 
-    <div class="progress-pill" id="progressPill"></div>
+    <div class="progress-pill" id="progressPill">در حال دانلود...</div>
 
-    <!-- محتوای اصلی با دکمه‌های ناوبری بهبود یافته -->
+    <!-- محتوای اصلی -->
     <div class="main-content" id="swipeArea">
-        <button class="nav-btn nav-right" id="navRight" title="الصفحة السابقة">
+        <button class="nav-btn nav-right" id="navRight" title="صفحه قبل">
             <svg viewBox="0 0 24 24"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>
         </button>
         <div class="quran-container" id="quranContainer">
             <div class="page-wrapper" id="rightWrapper">
-                <img id="rightPage" class="page" alt="صفحة" draggable="false">
+                <img id="rightPage" class="page" alt="صفحه" draggable="false">
             </div>
             <div class="page-wrapper" id="leftWrapper">
-                <img id="leftPage" class="page" alt="صفحة" draggable="false">
+                <img id="leftPage" class="page" alt="صفحه" draggable="false">
             </div>
         </div>
-        <button class="nav-btn nav-left" id="navLeft" title="الصفحة التالية">
+        <button class="nav-btn nav-left" id="navLeft" title="صفحه بعد">
             <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
         </button>
     </div>
@@ -1190,15 +1097,6 @@
         let deferredPrompt = null;
         const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
 
-        // zoom & pan
-        let currentScale = 1;
-        let translateX = 0, translateY = 0;
-        let lastTranslateX = 0, lastTranslateY = 0;
-        let initialPinchDistance = null;
-        let isPanning = false;
-        let lastTapTime = 0;
-        let hasMoved = false;
-
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('sw.js').catch(err => console.log('SW reg error:', err));
@@ -1208,26 +1106,24 @@
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
-            if (!isStandalone) {
-                document.getElementById('installPwaBtn').style.display = 'flex';
-            }
         });
 
-        // ================== ترجمه (فارسی و عربی) ==================
+        // ================== ترجمه ==================
         const translations = {
             fa: {
                 splashSubtitle: 'به نرم‌افزار قرآن کریم خوش آمدید',
                 splashContinue: 'ادامه مطالعه',
                 splashJuz: 'فهرست اجزاء و سوره‌ها',
                 splashLink: 'پیشنهادات و نظریات',
+                juzContinue: 'ادامه تلاوت',
                 settingsTitle: 'تنظیمات',
-                themeLabel: 'تم',
+                themeLabel: 'تم اصلی',
                 languageLabel: 'زبان',
                 appearanceLabel: 'ظاهر',
                 storageLabel: 'مدیریت حافظه',
                 deleteBtn: 'حذف فایل‌های آفلاین',
                 closeBtn: 'بستن',
-                downloadTitle: 'راهنمای نصب و دانلود آفلاین',
+                downloadTitle: 'انتخاب کیفیت',
                 downloadDesc: 'کیفیت مناسب خود را انتخاب کنید:',
                 standard: 'استاندارد (۷۰ مگابایت)',
                 standardSub: 'مناسب موبایل و تبلت',
@@ -1236,10 +1132,9 @@
                 cancel: 'لغو',
                 ok: 'باشه',
                 confirmDeleteTitle: 'تأیید',
-                confirmDeleteMsg: 'تمام فایل‌های دانلود شده حذف می‌شوند. اگر فایل‌های آفلاین را حذف کنید، دیگر نمی‌توانید از برنامه به صورت آفلاین استفاده کنید و برای استفاده مجدد باید آن‌ها را دوباره دانلود کنید. ادامه می‌دهید؟',
+                confirmDeleteMsg: 'تمام فایل‌های دانلود شده حذف میشوند. ادامه می‌دهید؟',
                 confirmDownloadTitle: 'دانلود آفلاین',
                 confirmDownloadMsg: 'فایل‌های آفلاین حدود {size} حجم دارد. ادامه می‌دهید؟',
-                downloadSuccessMsg: 'دانلود فایل‌ها با موفقیت انجام شد. اکنون می‌توانید از برنامه به صورت کاملاً آفلاین و بدون اینترنت استفاده کنید.',
                 page: 'صفحه',
                 tabJuz: 'اجزاء',
                 tabSurah: 'سوره‌ها',
@@ -1254,43 +1149,36 @@
                 themeModern: 'مدرن',
                 dayMode: 'حالت روز',
                 nightMode: 'حالت شب',
+                downloadSuccess: 'دانلود با موفقیت انجام شد!',
                 deleteSuccess: 'فایل‌های آفلاین حذف شدند.',
                 downloadError: 'خطا در دانلود!',
                 deleteError: 'خطا در حذف!',
-                installTitle: 'راهنمای نصب',
-                installBtn: 'نصب اپلیکیشن',
-                guideAndroid: 'اندروید: روی دکمه نصب اپلیکیشن کلیک نمایید یا از قسمت منوی مرورگر خود افزودن به صفحه اصلی را انتخاب کنید',
-                guideIos: 'آیفون/آیپد: گزینه Share را بزنید بعد گزینه Add to Home Screen.',
-                guideDesktop: 'دسکتاپ: روی دکمه نصب اپلیکیشن یا روی آیکون نصب در نوار آدرس کلیک نمایید',
-                offlineGuideIntro: 'برای استفاده آفلاین از برنامه، ابتدا آن را نصب کرده و به صفحه اصلی اضافه کنید. سپس از طریق صفحه اصلی برنامه را باز کرده و فایل‌های آفلاین را دانلود نمایید. پس از آن می‌توانید در مراحل بعدی بدون نیاز به اینترنت از قرآن استفاده کنید.',
-                downloading: 'در حال دانلود...',
-                progress: 'پیشرفت: {current} از {total}'
             },
             ar: {
                 splashSubtitle: 'مرحباً بكم في تطبيق القرآن الكريم',
                 splashContinue: 'متابعة القراءة',
                 splashJuz: 'قائمة الأجزاء والسور',
                 splashLink: 'اقتراحات وملاحظات',
+                juzContinue: 'متابعة التلاوة',
                 settingsTitle: 'الإعدادات',
-                themeLabel: 'السمة',
+                themeLabel: 'السمة الرئيسية',
                 languageLabel: 'اللغة',
                 appearanceLabel: 'المظهر',
                 storageLabel: 'إدارة التخزين',
                 deleteBtn: 'حذف الملفات المحفوظة',
                 closeBtn: 'إغلاق',
-                downloadTitle: 'دليل التثبيت والتنزيل دون اتصال',
+                downloadTitle: 'اختيار الجودة',
                 downloadDesc: 'اختر الجودة المناسبة:',
-                standard: 'قياسي (۷۰ ميغابايت)',
+                standard: 'قياسي (۷۰ م.ب)',
                 standardSub: 'مناسب للجوال والتابلت',
-                hq: 'جودة عالية (۵۰۰ ميغابايت)',
+                hq: 'جودة عالية (۵۰۰ م.ب)',
                 hqSub: 'مناسب للكمبيوتر والشاشات الكبيرة',
                 cancel: 'إلغاء',
                 ok: 'موافق',
                 confirmDeleteTitle: 'تأكيد',
-                confirmDeleteMsg: 'سيتم حذف جميع الملفات التي تم تنزيلها. إذا قمت بحذف الملفات غير المتصلة بالإنترنت، فلن تتمكن من استخدام التطبيق دون اتصال، وسيتعين عليك تنزيلها مرة أخرى لاستخدامها. هل تريد المتابعة؟',
+                confirmDeleteMsg: 'سيتم حذف جميع الملفات التي تم تنزيلها. هل تريد المتابعة؟',
                 confirmDownloadTitle: 'تنزيل للاستخدام دون اتصال',
                 confirmDownloadMsg: 'الملفات غير المتصلة بالإنترنت بحجم {size}. هل تريد المتابعة؟',
-                downloadSuccessMsg: 'تم تنزيل الملفات بنجاح. يمكنك الآن استخدام التطبيق بشكل كامل دون اتصال بالإنترنت.',
                 page: 'صفحة',
                 tabJuz: 'الأجزاء',
                 tabSurah: 'السور',
@@ -1305,22 +1193,15 @@
                 themeModern: 'الحديثة',
                 dayMode: 'وضع النهار',
                 nightMode: 'وضع الليل',
+                downloadSuccess: 'تم التحميل بنجاح!',
                 deleteSuccess: 'تم حذف الملفات غير المتصلة.',
                 downloadError: 'خطأ في التحميل!',
                 deleteError: 'خطأ في الحذف!',
-                installTitle: 'دليل التثبيت',
-                installBtn: 'تثبيت التطبيق',
-                guideAndroid: 'أندرويد: انقر على زر تثبيت التطبيق أو اختر "إضافة إلى الشاشة الرئيسية" من قائمة المتصفح',
-                guideIos: 'آيفون/آيباد: اضغط على زر المشاركة ثم اختر "Add to Home Screen".',
-                guideDesktop: 'سطح المكتب: انقر على زر تثبيت التطبيق أو على أيقونة التثبيت في شريط العنوان',
-                offlineGuideIntro: 'لاستخدام التطبيق دون اتصال، قم أولاً بتثبيته وإضافته إلى الشاشة الرئيسية. ثم افتح التطبيق من الشاشة الرئيسية وقم بتنزيل الملفات غير المتصلة بالإنترنت. بعد ذلك يمكنك استخدام القرآن في المرات اللاحقة بدون الحاجة إلى الإنترنت.',
-                downloading: 'جاري التحميل...',
-                progress: 'التقدم: {current} من {total}'
             }
         };
 
-        let currentLang = localStorage.getItem('quran-language') || 'ar';
-        if (!['fa', 'ar'].includes(currentLang)) currentLang = 'ar';
+        let currentLang = localStorage.getItem('quran-language') || 'fa';
+        if (!['fa', 'ar'].includes(currentLang)) currentLang = 'fa';
 
         function formatNumber(num) {
             if (currentLang === 'fa') {
@@ -1346,6 +1227,7 @@
             document.getElementById('splashContinueText').textContent = t.splashContinue;
             document.getElementById('splashJuzText').textContent = t.splashJuz;
             document.getElementById('splashLinkText').textContent = t.splashLink;
+            document.getElementById('juzContinueText').textContent = t.juzContinue;
             document.getElementById('settingsTitle').textContent = t.settingsTitle;
             document.getElementById('themeLabel').textContent = t.themeLabel;
             document.getElementById('languageLabel').textContent = t.languageLabel;
@@ -1362,12 +1244,6 @@
             document.getElementById('cancelText').textContent = t.cancel;
             document.getElementById('tabJuzBtn').textContent = t.tabJuz;
             document.getElementById('tabSurahBtn').textContent = t.tabSurah;
-            document.getElementById('installTitle').textContent = t.installTitle;
-            document.getElementById('installBtnText').textContent = t.installBtn;
-            document.getElementById('guideAndroid').textContent = t.guideAndroid;
-            document.getElementById('guideIos').textContent = t.guideIos;
-            document.getElementById('guideDesktop').textContent = t.guideDesktop;
-            document.getElementById('offlineGuideIntro').textContent = t.offlineGuideIntro;
         }
 
         function updateLangButtons() {
@@ -1440,10 +1316,10 @@
         }
 
         // ================== تم اصلی (فقط روز/شب) ==================
-        let currentThemeStyle = localStorage.getItem('quran-theme-style') || 'modern';
+        let currentThemeStyle = localStorage.getItem('quran-theme-style') || 'zard';
         let currentThemeMode = localStorage.getItem('quran-theme-mode') || 'day';
 
-        // ** رفع مشکل dark-ui قدیمی **
+        // تبدیل مقدار قدیمی dark-ui به night
         if (currentThemeMode === 'dark-ui') {
             currentThemeMode = 'night';
             localStorage.setItem('quran-theme-mode', 'night');
@@ -1462,7 +1338,7 @@
             if (currentThemeStyle === 'abi') {
                 meta.setAttribute('content', currentThemeMode === 'night' ? '#0b1424' : '#f0f7ff');
             } else if (currentThemeStyle === 'zard') {
-                meta.setAttribute('content', currentThemeMode === 'night' ? '#1a150f' : '#FDF8F0');
+                meta.setAttribute('content', currentThemeMode === 'night' ? '#0F1923' : '#FDF8F0');
             } else if (currentThemeStyle === 'modern') {
                 meta.setAttribute('content', currentThemeMode === 'night' ? '#050510' : '#0f0c29');
             }
@@ -1477,7 +1353,6 @@
         }
 
         function setThemeMode(mode) {
-            if (!['day', 'night'].includes(mode)) mode = 'day';
             currentThemeMode = mode;
             localStorage.setItem('quran-theme-mode', mode);
             applyTheme();
@@ -1562,6 +1437,15 @@
             if (window.location.protocol !== 'file:') history.replaceState(null, null, '#' + currentFile);
         }
 
+        // متغیرهای زوم و پن
+        let currentScale = 1;
+        let translateX = 0, translateY = 0;
+        let lastTranslateX = 0, lastTranslateY = 0;
+        let initialPinchDistance = null;
+        let isPanning = false;
+        let lastTapTime = 0;
+        let hasMoved = false;
+
         function resetZoom() {
             currentScale = 1;
             translateX = 0; translateY = 0;
@@ -1619,7 +1503,7 @@
             dlBtn.style.pointerEvents = 'none';
             dlBtn.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="currentColor"/></svg>';
             progress.style.display = 'block';
-            progress.textContent = translations[currentLang].downloading;
+            progress.textContent = translations[currentLang].downloading || 'در حال دانلود...';
 
             try {
                 const cache = await caches.open('quran-cache-v1');
@@ -1640,12 +1524,12 @@
                     }
                     await Promise.all(promises);
                     downloaded += batch;
-                    progress.textContent = translations[currentLang].progress
-                        .replace('{current}', formatNumber(Math.min(downloaded, totalFiles-2)))
-                        .replace('{total}', formatNumber(totalFiles-2));
+                    progress.textContent = translations[currentLang].progress 
+                        ? translations[currentLang].progress.replace('{current}', formatNumber(Math.min(downloaded, totalFiles-2))).replace('{total}', formatNumber(totalFiles-2))
+                        : 'پیشرفت: ' + formatNumber(Math.min(downloaded, totalFiles-2)) + ' از ' + formatNumber(totalFiles-2);
                 }
                 setDownloadedUI();
-                await showDialogAlert(translations[currentLang].downloadSuccessMsg, translations[currentLang].confirmDownloadTitle);
+                await showDialogAlert(translations[currentLang].downloadSuccess, translations[currentLang].confirmDownloadTitle);
                 updatePages();
             } catch (err) {
                 progress.textContent = '❌ ' + translations[currentLang].downloadError;
@@ -1682,7 +1566,7 @@
             if (!confirmed) return;
             const prog = document.getElementById('progressPill');
             prog.style.display = 'block';
-            prog.textContent = translations[currentLang].downloading;
+            prog.textContent = translations[currentLang].downloading || 'در حال حذف...';
             try {
                 await caches.delete('quran-cache-v1');
                 resetDownloadedUI();
@@ -1769,6 +1653,7 @@
         document.getElementById('navLeft').addEventListener('click', nextPage);
         document.getElementById('splashContinue').addEventListener('click', () => closeOverlay('splashOverlay'));
         document.getElementById('splashJuzList').addEventListener('click', () => { closeOverlay('splashOverlay'); openOverlay('juzOverlay'); });
+        document.getElementById('juzContinueBtn').addEventListener('click', () => closeOverlay('juzOverlay'));
 
         // تنظیمات
         document.getElementById('themeToggle').addEventListener('click', toggleThemeMode);
@@ -1785,16 +1670,6 @@
         document.getElementById('dlStandard').addEventListener('click', () => startDownload('standard'));
         document.getElementById('dlHQ').addEventListener('click', () => startDownload('hq'));
         document.getElementById('downloadClose').addEventListener('click', () => closeOverlay('downloadOverlay'));
-
-        // نصب PWA
-        document.getElementById('installPwaBtn').addEventListener('click', async () => {
-            if (!deferredPrompt) return;
-            deferredPrompt.prompt();
-            const { outcome } = await deferredPrompt.userChoice;
-            console.log('User response to install prompt:', outcome);
-            deferredPrompt = null;
-            document.getElementById('installPwaBtn').style.display = 'none';
-        });
 
         // مدیریت حافظه
         const storageToggle = document.getElementById('storageToggle');
