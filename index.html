@@ -652,7 +652,7 @@
         .splash-link a:hover { color: var(--accent); }
         .splash-link svg { width: 15px; height: 15px; fill: currentColor; }
 
-        /* JUZ/Surah overlay */
+        /* JUZ/Surah overlay (بدون دکمه ادامه تلاوت) */
         .juz-overlay { z-index: 2500; }
         .juz-card {
             position: relative;
@@ -671,26 +671,6 @@
             flex-direction: column;
             animation: cardIn 0.3s ease;
         }
-        .juz-continue-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 14px;
-            border-radius: 16px;
-            border: 1px solid var(--accent);
-            background: var(--accent-soft);
-            color: var(--accent);
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.25s;
-            margin-bottom: 18px;
-            flex-shrink: 0;
-        }
-        .juz-continue-btn svg { width: 18px; height: 18px; fill: currentColor; }
-        .juz-continue-btn:hover { filter: brightness(1.1); transform: translateY(-2px); box-shadow: var(--shadow-md); }
 
         .tab-bar {
             display: flex;
@@ -987,14 +967,10 @@
         </div>
     </div>
 
-    <!-- مودال اجزاء و سوره‌ها -->
+    <!-- مودال اجزاء و سوره‌ها (بدون دکمه ادامه تلاوت) -->
     <div class="overlay juz-overlay" id="juzOverlay">
         <div class="overlay-backdrop"></div>
         <div class="juz-card">
-            <button class="juz-continue-btn" id="juzContinueBtn">
-                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                <span id="juzContinueText">ادامه تلاوت</span>
-            </button>
             <div class="tab-bar">
                 <button class="tab-btn active" id="tabJuzBtn">اجزاء</button>
                 <button class="tab-btn" id="tabSurahBtn">سوره‌ها</button>
@@ -1008,7 +984,7 @@
         </div>
     </div>
 
-    <!-- مودال تنظیمات با ترتیب جدید -->
+    <!-- مودال تنظیمات با ترتیب جدید و مدیریت حافظه همیشه قابل مشاهده -->
     <div class="overlay settings-overlay" id="settingsOverlay">
         <div class="overlay-backdrop"></div>
         <div class="modal-card">
@@ -1060,8 +1036,8 @@
                 </span>
             </div>
 
-            <!-- آیتم مدیریت حافظه -->
-            <div class="setting-item storage-toggle" id="storageToggle" style="display: none;">
+            <!-- آیتم مدیریت حافظه (همیشه قابل مشاهده) -->
+            <div class="setting-item storage-toggle" id="storageToggle">
                 <span class="setting-label">
                     <svg viewBox="0 0 24 24"><path d="M20 8h-2.81c-.45-.78-1.07-1.45-1.82-1.96L17 4.41 15.59 3l-2.17 2.17C12.96 5.06 12.49 5 12 5s-.96.06-1.41.17L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-6 8h-4v-2h4v2zm0-4h-4v-2h4v2z"/></svg>
                     <span id="storageLabel">مدیریت حافظه</span>
@@ -1204,7 +1180,6 @@
                 splashContinue: 'ادامه مطالعه',
                 splashJuz: 'فهرست اجزاء و سوره‌ها',
                 splashLink: 'پیشنهادات و نظریات',
-                juzContinue: 'ادامه تلاوت',
                 settingsTitle: 'تنظیمات',
                 themeLabel: 'تم',
                 languageLabel: 'زبان',
@@ -1256,7 +1231,6 @@
                 splashContinue: 'متابعة القراءة',
                 splashJuz: 'قائمة الأجزاء والسور',
                 splashLink: 'اقتراحات وملاحظات',
-                juzContinue: 'متابعة التلاوة',
                 settingsTitle: 'الإعدادات',
                 themeLabel: 'السمة',
                 languageLabel: 'اللغة',
@@ -1334,7 +1308,7 @@
             updateLangButtons();
             rebuildSurahGrid();
             updateTitles();
-            updateThemeModeButtons(); // برای به‌روزرسانی متن دکمه‌های روز/شب
+            updateThemeModeButtons();
         }
 
         function applyTranslations() {
@@ -1343,7 +1317,6 @@
             document.getElementById('splashContinueText').textContent = t.splashContinue;
             document.getElementById('splashJuzText').textContent = t.splashJuz;
             document.getElementById('splashLinkText').textContent = t.splashLink;
-            document.getElementById('juzContinueText').textContent = t.juzContinue;
             document.getElementById('settingsTitle').textContent = t.settingsTitle;
             document.getElementById('themeLabel').textContent = t.themeLabel;
             document.getElementById('languageLabel').textContent = t.languageLabel;
@@ -1580,13 +1553,7 @@
 
         // ================== مدیریت حافظه ==================
         function updateStorageVisibility() {
-            const storageToggle = document.getElementById('storageToggle');
-            if (isDownloaded) {
-                storageToggle.style.display = 'flex';
-            } else {
-                storageToggle.style.display = 'none';
-                document.getElementById('deleteOptionContainer').style.display = 'none';
-            }
+            // این تابع دیگر استفاده نمی‌شود چون آیتم همیشه نمایش داده می‌شود
         }
 
         async function startDownload(quality) {
@@ -1643,7 +1610,6 @@
             if (btn) { btn.style.display = 'none'; btn.classList.add('done'); }
             if (prog) prog.style.display = 'none';
             isDownloaded = true;
-            updateStorageVisibility();
         }
 
         function resetDownloadedUI() {
@@ -1655,8 +1621,6 @@
                 btn.classList.remove('done');
             }
             isDownloaded = false;
-            updateStorageVisibility();
-            document.getElementById('deleteOptionContainer').style.display = 'none';
         }
 
         async function deleteOfflineFiles() {
@@ -1678,13 +1642,49 @@
         }
 
         // ================== مودال‌ها ==================
-        function openOverlay(id) { document.getElementById(id).classList.add('active'); }
-        function closeOverlay(id) { document.getElementById(id).classList.remove('active'); }
+        function openOverlay(id) { 
+            document.getElementById(id).classList.add('active'); 
+        }
+        function closeOverlay(id) { 
+            document.getElementById(id).classList.remove('active'); 
+        }
+
+        // تابع برای بستن هر مودال فعال (برای دکمه برگشت)
+        function closeActiveOverlay() {
+            const overlays = ['juzOverlay', 'settingsOverlay', 'downloadOverlay'];
+            for (let id of overlays) {
+                if (document.getElementById(id).classList.contains('active')) {
+                    closeOverlay(id);
+                    return true;
+                }
+            }
+            return false;
+        }
 
         function toggleFullScreen() {
             if (!document.fullscreenElement) document.documentElement.requestFullscreen().catch(() => {});
             else if (document.exitFullscreen) document.exitFullscreen();
         }
+
+        // ================== دکمه برگشت سیستم ==================
+        history.pushState(null, null, location.href); // حالت اولیه
+        window.addEventListener('popstate', function(event) {
+            // اگر مودالی باز است، آن را ببند
+            if (closeActiveOverlay()) {
+                // بعد از بستن، یک state جدید اضافه کن تا بتوان دوباره برگشت
+                history.pushState(null, null, location.href);
+                return;
+            }
+            // اگر اسپلش باز نیست (یعنی در صفحه تلاوت هستیم)، اسپلش را باز کن
+            const splash = document.getElementById('splashOverlay');
+            if (!splash.classList.contains('active')) {
+                splash.classList.add('active');
+                history.pushState(null, null, location.href);
+                return;
+            }
+            // اگر اسپلش باز است، اجازه خروج بده (با عدم اضافه کردن state جدید)
+            // در این حالت مرورگر به صفحه قبلی می‌رود یا برنامه بسته می‌شود
+        });
 
         // ================== تولید JUZ grid ==================
         function buildJuzGrid() {
@@ -1751,7 +1751,6 @@
         document.getElementById('navLeft').addEventListener('click', nextPage);
         document.getElementById('splashContinue').addEventListener('click', () => closeOverlay('splashOverlay'));
         document.getElementById('splashJuzList').addEventListener('click', () => { closeOverlay('splashOverlay'); openOverlay('juzOverlay'); });
-        document.getElementById('juzContinueBtn').addEventListener('click', () => closeOverlay('juzOverlay'));
 
         // تنظیمات - تم اصلی
         document.getElementById('themeZardBtn').addEventListener('click', () => setThemeStyle('zard'));
@@ -1784,7 +1783,7 @@
         document.getElementById('dlHQ').addEventListener('click', () => startDownload('hq'));
         document.getElementById('downloadClose').addEventListener('click', () => closeOverlay('downloadOverlay'));
 
-        // مدیریت حافظه
+        // مدیریت حافظه - کلیک روی آیتم باز کردن/بستن گزینه حذف
         const storageToggle = document.getElementById('storageToggle');
         const deleteContainer = document.getElementById('deleteOptionContainer');
         storageToggle.addEventListener('click', () => {
@@ -1882,12 +1881,6 @@
         window.addEventListener('resize', updatePages);
         window.addEventListener('orientationchange', () => setTimeout(updatePages, 50));
 
-        // ================== جلوگیری از بسته شدن با دکمه برگشت ==================
-        history.pushState(null, null, location.href);
-        window.addEventListener('popstate', function(event) {
-            history.pushState(null, null, location.href);
-        });
-
         // ================== مقداردهی اولیه ==================
         (function init() {
             applyTheme();
@@ -1901,8 +1894,6 @@
                 cache.match('images/Quran003.jpg').then(res => {
                     if (res) {
                         setDownloadedUI();
-                    } else {
-                        updateStorageVisibility();
                     }
                 });
             });
